@@ -47,17 +47,35 @@
         background: var(--color-background);
         color: var(--color-text);
         width: 100%;
-        padding: 1rem;
+        padding-bottom: 2rem;
 
         display: flex;
         flex-direction: column;
+
+        & h1,
+        & h2,
+        & h3,
+        & h4,
+        & h5,
+        & p,
+        & small {
+          padding: 0 max(5vw, 1rem);
+        }
 
         & h3 {
           margin: 2rem 0 0.25rem;
         }
 
         & h4 {
-          margin-top: 1.5rem;
+          margin: 1.5rem 0 0.25rem;
+        }
+
+        & p {
+          margin-bottom: 0.25rem;
+        }
+
+        & small {
+          margin-bottom: 0.125rem;
         }
 
         & section.gallery {
@@ -66,50 +84,86 @@
           display: flex;
           flex-direction: row;
           flex-wrap: wrap;
+          justify-content: center;
+          align-items: center;
           gap: 2rem;
-
-          & img {
-            object-fit: cover;
-            aspect-ratio: 2 / 3;
-          }
         }
       }
     </style>
   </head>
-  <body>
-    <h1>Kalyra</h1>
+  <body id="app">
+    <img
+      class="feature"
+      src="https://res.cloudinary.com/dqvb6qgtj/image/upload/c_scale,h_200/goddess_feature_pvsiau.png"
+      alt=""
+    />
+
+    <h1>Kalyra, a Deusa da Euforia</h1>
+
+    <p>
+      "Não preciso de altares. Toda taverna é meu templo, e toda plateia, minha
+      congregação."
+    </p>
 
     <small>Barda – Colégio da Espada – Nível 3</small>
     <small>Feiticeira – Alma Favorecida – Nível 1</small>
+
+    <h3>🛡️ Descrição</h3>
+    <p>
+      Kalyra acredita ser uma deusa exilada – ou talvez apenas esquecida – da
+      alegria, da arte e da chama passageira. Suas memórias são fragmentos de um
+      sonho: salões dourados onde música e vinho fluíam eternamente, luas que a
+      chamavam de "filha", e um nome verdadeiro que ela quase consegue
+      lembrar...
+      <br />
+    </p>
+    <p>
+      <strong>Olhos de Esmeralda Incandescente</strong>: Seu olhar carrega o
+      brilho de mil festas proibidas, e quando sua magia se manifesta, pequenas
+      faíscas verdes cintilam em suas pupilas.
+    </p>
+    <p>
+      <strong>Cabelos de Lua e Chama</strong>: Seus longos cabelos brancos,
+      levemente ondulados, brilham como prata sob a luz das estrelas – alguns
+      juram que, quando ela canta, fios dourados de fogo dançam entre eles, como
+      brasas ao vento.
+    </p>
+    <p>
+      <strong>Vestes de uma Divindade do Exílio</strong>: Seu vestido
+      vermelho-sangue é bordado com fios dourados que contam histórias de festas
+      divinas perdidas, e seu sobretudo marrom – manchado de poeira e aventura –
+      é seu único manto de "deusa errante". As medalhas de dançarina em seu
+      corpo tilintam como risos antigos, cada uma uma lembrança de um lugar onde
+      deixou sua marca.
+    </p>
 
     <h3>🛡️ Classe de Armadura (CA):</h3>
     <p>15 (Armadura de Couro Batido + Destreza)</p>
 
     <h3>🧪 Pontos de Vida (PV):</h3>
-    <p>Barda (3d8 + 6) + Feiticeira (ld6 + 2)</p>
+    <p>{{ hitPoints }}</p>
 
     <h3>🧬 Atributos</h3>
-    <p><strong>Força</strong> 10 +0</p>
-    <p><strong>Destreza</strong> 16 +3</p>
-    <p><strong>Constituição</strong> 14 +2</p>
-    <p><strong>Inteligência</strong> 8 -1</p>
-    <p><strong>Sabedoria</strong> 10 +0</p>
-    <p><strong>Carisma</strong> 18 +4</p>
+    <p v-for="key in listAtributes">
+      <strong>{{ atributes[key].description }}</strong>
+      {{ atributes[key].points }} ({{ atributes[key].modifier }})
+    </p>
 
     <h3>🧬 Salvaguardas</h3>
-    <p><strong>Força</strong> +0</p>
-    <p><strong>Destreza</strong> +0</p>
-    <p><strong>Constituição</strong> +0</p>
-    <p><strong>Inteligência</strong> +0</p>
-    <p><strong>Sabedoria</strong> +0</p>
-    <p><strong>Carisma</strong> +0</p>
+    <p v-for="key in listAtributes">
+      <strong>{{ atributes[key].description }}</strong>
+      {{ atributes[key].saveThrow }}
+    </p>
 
     <h3>Perícias</h3>
-    <p>Ferramentas: Violino, Alaude e Medalhas</p>
-    <p>Proficiência: Acrobacia, Atuação, Enganação, Intimidação e Persuasão</p>
+    <p><strong>Ferramentas</strong>: Violino, Alaude e Medalhas</p>
+    <p>
+      <strong>Proficiência</strong>: Acrobacia, Atuação, Enganação, Intimidação
+      e Persuasão
+    </p>
 
     <h3>Equipamentos</h3>
-    <p>2 Rapieiras (1d8 - Finesse)</p>
+    <p>2 Rapieiras (1d8{{ atributes.dexterity.modifier }} - Finesse)</p>
     <p>Violino</p>
     <p>Kit de Artista</p>
 
@@ -122,38 +176,54 @@
         contra ser enfeitiçado.
       </p>
       <p>
-        <strong>Inspiração de Bardo (d6):</strong> 3 vezes por descanso longo
+        <strong>Inspiração de Bardo (d6):</strong> {{ atributes.charisma.bonus
+        }} vezes por descanso longo
       </p>
-      <p>Pau pra Toda Obra: metade da proficiência testes não proficientes</p>
-      <p>Canção de Descanso</p>
-      <p>Especialista: dobrar proficiência em habilidade proficientes</p>
-      <p>Proficiência Bônus: proficiência com armadura media e cimitarras</p>
       <p>
-        Estilo de Luta (Combate com Duas Armas): modificador de habilidade ao
-        dano do segundo ataque
+        <strong>Pau pra Toda Obra</strong>: metade da proficiência testes não
+        proficientes
       </p>
-      <p>Floreio de Lâminas</p>
-      <p>Magia Divina (Boa): Habilidade de Curar Ferimentos</p>
-      <p>Favorecido pelos Deuses: adicionar 2d4 em falhas por descanso curto</p>
+      <p><strong>Canção de Descanso</strong>: cura de ld6 no descanso curto</p>
+      <p>
+        <strong>Especialista</strong>: dobrar proficiência em habilidade
+        proficientes
+      </p>
+      <p>
+        <strong>Proficiência Bônus</strong>: proficiência com armadura media e
+        cimitarras
+      </p>
+      <p>
+        <strong>Estilo de Luta (Combate com Duas Armas)</strong>: modificador de
+        habilidade ao dano do segundo ataque
+      </p>
+      <p><strong>Floreio de Lâminas</strong></p>
+      <p><strong>Magia Divina (Boa)</strong>: Habilidade de Curar Ferimentos</p>
+      <p>
+        <strong>Favorecido pelos Deuses</strong>: adicionar 2d4 em falhas por
+        descanso curto
+      </p>
     </section>
 
     <section>
-      <h3>🪄 Slots de magia</h3>
-      <p>Nível 1: 4</p>
-      <p>Nível 2: 3</p>
+      <h3>🪄 Espaços de magia</h3>
+      <p><strong>Nível 1</strong>: 4</p>
+      <p><strong>Nível 2</strong>: 3</p>
     </section>
 
     <section>
       <h3>🎶 Magias conhecidas:</h3>
 
       <h4>Truques:</h4>
-      Reparar Proteção contra Lâminas Luzes Dançantes
+      <p>Reparar</p>
+      <p>Proteção contra Lâminas</p>
+      <p>Luzes Dançantes</p>
       <p>Prestidigitação</p>
       <p>Taumaturgia</p>
       <p>Zombaria Viciosa (<em>Vicious Mockery</em>)</p>
 
-      <h4>Magias de Nível 1:(+2)</h4>
-      Queda Suave Compreender Idiomas
+      <h4>Magias de Nível 1:</h4>
+      <p>Queda Suave</p>
+      <p>Compreender Idiomas</p>
       <p>Curar Ferimentos</p>
       <p>
         Fada Ilusória (<em>Faerie Fire</em>) – Para dar vantagem aos aliados
@@ -176,301 +246,14 @@
 
     <section class="gallery">
       <img
+        v-for="image in images"
         sizes="(min-width: 25rem) 25rem, 95vw"
-        srcset="
-          https://res.cloudinary.com/dqvb6qgtj/image/upload/c_scale,w_256/inspiration_violin_x5j1zc.png   256w,
-          https://res.cloudinary.com/dqvb6qgtj/image/upload/c_scale,w_512/inspiration_violin_x5j1zc.png   512w,
-          https://res.cloudinary.com/dqvb6qgtj/image/upload/c_scale,w_768/inspiration_violin_x5j1zc.png   768w,
-          https://res.cloudinary.com/dqvb6qgtj/image/upload/c_scale,w_1024/inspiration_violin_x5j1zc.png 1024w,
-          https://res.cloudinary.com/dqvb6qgtj/image/upload/c_scale,w_1280/inspiration_violin_x5j1zc.png 1280w
-        "
-        src="https://res.cloudinary.com/dqvb6qgtj/image/upload/c_scale,w_512/inspiration_violin_x5j1zc.png"
-        alt=""
-      />
-
-      <img
-        sizes="(min-width: 25rem) 25rem, 95vw"
-        srcset="
-          https://res.cloudinary.com/dqvb6qgtj/image/upload/c_scale,w_256/horse_racing_qjjfsw.png   256w,
-          https://res.cloudinary.com/dqvb6qgtj/image/upload/c_scale,w_512/horse_racing_qjjfsw.png   512w,
-          https://res.cloudinary.com/dqvb6qgtj/image/upload/c_scale,w_768/horse_racing_qjjfsw.png   768w,
-          https://res.cloudinary.com/dqvb6qgtj/image/upload/c_scale,w_1024/horse_racing_qjjfsw.png 1024w,
-          https://res.cloudinary.com/dqvb6qgtj/image/upload/c_scale,w_1280/horse_racing_qjjfsw.png 1280w
-        "
-        src="https://res.cloudinary.com/dqvb6qgtj/image/upload/c_scale,w_512/horse_racing_qjjfsw.png"
-        alt=""
-      />
-
-      <img
-        sizes="(min-width: 25rem) 25rem, 95vw"
-        srcset="
-          https://res.cloudinary.com/dqvb6qgtj/image/upload/c_scale,w_256/hostile_m7tuja.png   256w,
-          https://res.cloudinary.com/dqvb6qgtj/image/upload/c_scale,w_512/hostile_m7tuja.png   512w,
-          https://res.cloudinary.com/dqvb6qgtj/image/upload/c_scale,w_768/hostile_m7tuja.png   768w,
-          https://res.cloudinary.com/dqvb6qgtj/image/upload/c_scale,w_1024/hostile_m7tuja.png 1024w,
-          https://res.cloudinary.com/dqvb6qgtj/image/upload/c_scale,w_1280/hostile_m7tuja.png 1280w
-        "
-        src="https://res.cloudinary.com/dqvb6qgtj/image/upload/c_scale,w_512/hostile_m7tuja.png"
-        alt=""
-      />
-
-      <img
-        sizes="(min-width: 25rem) 25rem, 95vw"
-        srcset="
-          https://res.cloudinary.com/dqvb6qgtj/image/upload/c_scale,w_256/rest_sound_gegstg.png   256w,
-          https://res.cloudinary.com/dqvb6qgtj/image/upload/c_scale,w_512/rest_sound_gegstg.png   512w,
-          https://res.cloudinary.com/dqvb6qgtj/image/upload/c_scale,w_768/rest_sound_gegstg.png   768w,
-          https://res.cloudinary.com/dqvb6qgtj/image/upload/c_scale,w_1024/rest_sound_gegstg.png 1024w,
-          https://res.cloudinary.com/dqvb6qgtj/image/upload/c_scale,w_1280/rest_sound_gegstg.png 1280w
-        "
-        src="https://res.cloudinary.com/dqvb6qgtj/image/upload/c_scale,w_512/rest_sound_gegstg.png"
-        alt=""
-      />
-
-      <img
-        sizes="(min-width: 25rem) 25rem, 95vw"
-        srcset="
-          https://res.cloudinary.com/dqvb6qgtj/image/upload/c_scale,w_256/dancing_square_u8cjft.png   256w,
-          https://res.cloudinary.com/dqvb6qgtj/image/upload/c_scale,w_512/dancing_square_u8cjft.png   512w,
-          https://res.cloudinary.com/dqvb6qgtj/image/upload/c_scale,w_768/dancing_square_u8cjft.png   768w,
-          https://res.cloudinary.com/dqvb6qgtj/image/upload/c_scale,w_1024/dancing_square_u8cjft.png 1024w,
-          https://res.cloudinary.com/dqvb6qgtj/image/upload/c_scale,w_1280/dancing_square_u8cjft.png 1280w
-        "
-        src="https://res.cloudinary.com/dqvb6qgtj/image/upload/c_scale,w_512/dancing_square_u8cjft.png"
-        alt=""
-      />
-
-      <img
-        sizes="(min-width: 25rem) 25rem, 95vw"
-        srcset="
-          https://res.cloudinary.com/dqvb6qgtj/image/upload/c_scale,w_256/inspiration_violin_cover_scnziq.png   256w,
-          https://res.cloudinary.com/dqvb6qgtj/image/upload/c_scale,w_512/inspiration_violin_cover_scnziq.png   512w,
-          https://res.cloudinary.com/dqvb6qgtj/image/upload/c_scale,w_768/inspiration_violin_cover_scnziq.png   768w,
-          https://res.cloudinary.com/dqvb6qgtj/image/upload/c_scale,w_1024/inspiration_violin_cover_scnziq.png 1024w,
-          https://res.cloudinary.com/dqvb6qgtj/image/upload/c_scale,w_1280/inspiration_violin_cover_scnziq.png 1280w
-        "
-        src="https://res.cloudinary.com/dqvb6qgtj/image/upload/c_scale,w_512/inspiration_violin_cover_scnziq.png"
-        alt=""
-      />
-
-      <img
-        sizes="(min-width: 25rem) 25rem, 95vw"
-        srcset="
-          https://res.cloudinary.com/dqvb6qgtj/image/upload/c_scale,w_256/card_cbrjjs.png   256w,
-          https://res.cloudinary.com/dqvb6qgtj/image/upload/c_scale,w_512/card_cbrjjs.png   512w,
-          https://res.cloudinary.com/dqvb6qgtj/image/upload/c_scale,w_768/card_cbrjjs.png   768w,
-          https://res.cloudinary.com/dqvb6qgtj/image/upload/c_scale,w_1024/card_cbrjjs.png 1024w,
-          https://res.cloudinary.com/dqvb6qgtj/image/upload/c_scale,w_1280/card_cbrjjs.png 1280w
-        "
-        src="https://res.cloudinary.com/dqvb6qgtj/image/upload/c_scale,w_512/card_cbrjjs.png"
-        alt=""
-      />
-
-      <img
-        sizes="(min-width: 25rem) 25rem, 95vw"
-        srcset="
-          https://res.cloudinary.com/dqvb6qgtj/image/upload/c_scale,w_256/dancing_court_enm6aj.png   256w,
-          https://res.cloudinary.com/dqvb6qgtj/image/upload/c_scale,w_512/dancing_court_enm6aj.png   512w,
-          https://res.cloudinary.com/dqvb6qgtj/image/upload/c_scale,w_768/dancing_court_enm6aj.png   768w,
-          https://res.cloudinary.com/dqvb6qgtj/image/upload/c_scale,w_1024/dancing_court_enm6aj.png 1024w,
-          https://res.cloudinary.com/dqvb6qgtj/image/upload/c_scale,w_1280/dancing_court_enm6aj.png 1280w
-        "
-        src="https://res.cloudinary.com/dqvb6qgtj/image/upload/c_scale,w_512/dancing_court_enm6aj.png"
-        alt=""
-      />
-
-      <img
-        sizes="(min-width: 25rem) 25rem, 95vw"
-        srcset="
-          https://res.cloudinary.com/dqvb6qgtj/image/upload/c_scale,w_256/dancing_court_cover_ddljxc.png   256w,
-          https://res.cloudinary.com/dqvb6qgtj/image/upload/c_scale,w_512/dancing_court_cover_ddljxc.png   512w,
-          https://res.cloudinary.com/dqvb6qgtj/image/upload/c_scale,w_768/dancing_court_cover_ddljxc.png   768w,
-          https://res.cloudinary.com/dqvb6qgtj/image/upload/c_scale,w_1024/dancing_court_cover_ddljxc.png 1024w,
-          https://res.cloudinary.com/dqvb6qgtj/image/upload/c_scale,w_1280/dancing_court_cover_ddljxc.png 1280w
-        "
-        src="https://res.cloudinary.com/dqvb6qgtj/image/upload/c_scale,w_512/dancing_court_cover_ddljxc.png"
-        alt=""
-      />
-
-      <img
-        sizes="(min-width: 25rem) 25rem, 95vw"
-        srcset="
-          https://res.cloudinary.com/dqvb6qgtj/image/upload/c_scale,w_256/vicious_mockery_rvldwv.png   256w,
-          https://res.cloudinary.com/dqvb6qgtj/image/upload/c_scale,w_512/vicious_mockery_rvldwv.png   512w,
-          https://res.cloudinary.com/dqvb6qgtj/image/upload/c_scale,w_768/vicious_mockery_rvldwv.png   768w,
-          https://res.cloudinary.com/dqvb6qgtj/image/upload/c_scale,w_1024/vicious_mockery_rvldwv.png 1024w,
-          https://res.cloudinary.com/dqvb6qgtj/image/upload/c_scale,w_1280/vicious_mockery_rvldwv.png 1280w
-        "
-        src="https://res.cloudinary.com/dqvb6qgtj/image/upload/c_scale,w_512/vicious_mockery_rvldwv.png"
-        alt=""
-      />
-
-      <img
-        sizes="(min-width: 25rem) 25rem, 95vw"
-        srcset="
-          https://res.cloudinary.com/dqvb6qgtj/image/upload/c_scale,w_256/desert_caravan_k4krno.png   256w,
-          https://res.cloudinary.com/dqvb6qgtj/image/upload/c_scale,w_512/desert_caravan_k4krno.png   512w,
-          https://res.cloudinary.com/dqvb6qgtj/image/upload/c_scale,w_768/desert_caravan_k4krno.png   768w,
-          https://res.cloudinary.com/dqvb6qgtj/image/upload/c_scale,w_1024/desert_caravan_k4krno.png 1024w,
-          https://res.cloudinary.com/dqvb6qgtj/image/upload/c_scale,w_1280/desert_caravan_k4krno.png 1280w
-        "
-        src="https://res.cloudinary.com/dqvb6qgtj/image/upload/c_scale,w_512/desert_caravan_k4krno.png"
-        alt=""
-      />
-
-      <img
-        sizes="(min-width: 25rem) 25rem, 95vw"
-        srcset="
-          https://res.cloudinary.com/dqvb6qgtj/image/upload/c_scale,w_256/sword_fighting_goblins_oo9qll.png   256w,
-          https://res.cloudinary.com/dqvb6qgtj/image/upload/c_scale,w_512/sword_fighting_goblins_oo9qll.png   512w,
-          https://res.cloudinary.com/dqvb6qgtj/image/upload/c_scale,w_768/sword_fighting_goblins_oo9qll.png   768w,
-          https://res.cloudinary.com/dqvb6qgtj/image/upload/c_scale,w_1024/sword_fighting_goblins_oo9qll.png 1024w,
-          https://res.cloudinary.com/dqvb6qgtj/image/upload/c_scale,w_1280/sword_fighting_goblins_oo9qll.png 1280w
-        "
-        src="https://res.cloudinary.com/dqvb6qgtj/image/upload/c_scale,w_512/sword_fighting_goblins_oo9qll.png"
-        alt=""
-      />
-
-      <img
-        sizes="(min-width: 25rem) 25rem, 95vw"
-        srcset="
-          https://res.cloudinary.com/dqvb6qgtj/image/upload/c_scale,w_256/duel_wylyqx.png   256w,
-          https://res.cloudinary.com/dqvb6qgtj/image/upload/c_scale,w_512/duel_wylyqx.png   512w,
-          https://res.cloudinary.com/dqvb6qgtj/image/upload/c_scale,w_768/duel_wylyqx.png   768w,
-          https://res.cloudinary.com/dqvb6qgtj/image/upload/c_scale,w_1024/duel_wylyqx.png 1024w,
-          https://res.cloudinary.com/dqvb6qgtj/image/upload/c_scale,w_1280/duel_wylyqx.png 1280w
-        "
-        src="https://res.cloudinary.com/dqvb6qgtj/image/upload/c_scale,w_512/duel_wylyqx.png"
-        alt=""
-      />
-
-      <img
-        sizes="(min-width: 25rem) 25rem, 95vw"
-        srcset="
-          https://res.cloudinary.com/dqvb6qgtj/image/upload/c_scale,w_256/fighting_horse_reveal_bob6um.png   256w,
-          https://res.cloudinary.com/dqvb6qgtj/image/upload/c_scale,w_512/fighting_horse_reveal_bob6um.png   512w,
-          https://res.cloudinary.com/dqvb6qgtj/image/upload/c_scale,w_768/fighting_horse_reveal_bob6um.png   768w,
-          https://res.cloudinary.com/dqvb6qgtj/image/upload/c_scale,w_1024/fighting_horse_reveal_bob6um.png 1024w,
-          https://res.cloudinary.com/dqvb6qgtj/image/upload/c_scale,w_1280/fighting_horse_reveal_bob6um.png 1280w
-        "
-        src="https://res.cloudinary.com/dqvb6qgtj/image/upload/c_scale,w_512/fighting_horse_reveal_bob6um.png"
-        alt=""
-      />
-
-      <img
-        sizes="(min-width: 25rem) 25rem, 95vw"
-        srcset="
-          https://res.cloudinary.com/dqvb6qgtj/image/upload/c_scale,w_256/fighting_house_psjx9w.png   256w,
-          https://res.cloudinary.com/dqvb6qgtj/image/upload/c_scale,w_512/fighting_house_psjx9w.png   512w,
-          https://res.cloudinary.com/dqvb6qgtj/image/upload/c_scale,w_768/fighting_house_psjx9w.png   768w,
-          https://res.cloudinary.com/dqvb6qgtj/image/upload/c_scale,w_1024/fighting_house_psjx9w.png 1024w,
-          https://res.cloudinary.com/dqvb6qgtj/image/upload/c_scale,w_1280/fighting_house_psjx9w.png 1280w
-        "
-        src="https://res.cloudinary.com/dqvb6qgtj/image/upload/c_scale,w_512/fighting_house_psjx9w.png"
-        alt=""
-      />
-
-      <img
-        sizes="(min-width: 25rem) 25rem, 95vw"
-        srcset="
-          https://res.cloudinary.com/dqvb6qgtj/image/upload/c_scale,w_256/show_fires_v7yyxn.png   256w,
-          https://res.cloudinary.com/dqvb6qgtj/image/upload/c_scale,w_512/show_fires_v7yyxn.png   512w,
-          https://res.cloudinary.com/dqvb6qgtj/image/upload/c_scale,w_768/show_fires_v7yyxn.png   768w,
-          https://res.cloudinary.com/dqvb6qgtj/image/upload/c_scale,w_1024/show_fires_v7yyxn.png 1024w,
-          https://res.cloudinary.com/dqvb6qgtj/image/upload/c_scale,w_1280/show_fires_v7yyxn.png 1280w
-        "
-        src="https://res.cloudinary.com/dqvb6qgtj/image/upload/c_scale,w_512/show_fires_v7yyxn.png"
-        alt=""
-      />
-
-      <img
-        sizes="(min-width: 25rem) 25rem, 95vw"
-        srcset="
-          https://res.cloudinary.com/dqvb6qgtj/image/upload/c_scale,w_256/show_cover_zuzr2k.png   256w,
-          https://res.cloudinary.com/dqvb6qgtj/image/upload/c_scale,w_512/show_cover_zuzr2k.png   512w,
-          https://res.cloudinary.com/dqvb6qgtj/image/upload/c_scale,w_768/show_cover_zuzr2k.png   768w,
-          https://res.cloudinary.com/dqvb6qgtj/image/upload/c_scale,w_1024/show_cover_zuzr2k.png 1024w,
-          https://res.cloudinary.com/dqvb6qgtj/image/upload/c_scale,w_1280/show_cover_zuzr2k.png 1280w
-        "
-        src="https://res.cloudinary.com/dqvb6qgtj/image/upload/c_scale,w_512/show_cover_zuzr2k.png"
-        alt=""
-      />
-
-      <img
-        sizes="(min-width: 25rem) 25rem, 95vw"
-        srcset="
-          https://res.cloudinary.com/dqvb6qgtj/image/upload/c_scale,w_256/reveal_swords_tqfdns.png   256w,
-          https://res.cloudinary.com/dqvb6qgtj/image/upload/c_scale,w_512/reveal_swords_tqfdns.png   512w,
-          https://res.cloudinary.com/dqvb6qgtj/image/upload/c_scale,w_768/reveal_swords_tqfdns.png   768w,
-          https://res.cloudinary.com/dqvb6qgtj/image/upload/c_scale,w_1024/reveal_swords_tqfdns.png 1024w,
-          https://res.cloudinary.com/dqvb6qgtj/image/upload/c_scale,w_1280/reveal_swords_tqfdns.png 1280w
-        "
-        src="https://res.cloudinary.com/dqvb6qgtj/image/upload/c_scale,w_512/reveal_swords_tqfdns.png"
-        alt=""
-      />
-
-      <img
-        sizes="(min-width: 25rem) 25rem, 95vw"
-        srcset="
-          https://res.cloudinary.com/dqvb6qgtj/image/upload/c_scale,w_256/reveal_square_hxmaxd.png   256w,
-          https://res.cloudinary.com/dqvb6qgtj/image/upload/c_scale,w_512/reveal_square_hxmaxd.png   512w,
-          https://res.cloudinary.com/dqvb6qgtj/image/upload/c_scale,w_768/reveal_square_hxmaxd.png   768w,
-          https://res.cloudinary.com/dqvb6qgtj/image/upload/c_scale,w_1024/reveal_square_hxmaxd.png 1024w,
-          https://res.cloudinary.com/dqvb6qgtj/image/upload/c_scale,w_1280/reveal_square_hxmaxd.png 1280w
-        "
-        src="https://res.cloudinary.com/dqvb6qgtj/image/upload/c_scale,w_512/reveal_square_hxmaxd.png"
-        alt=""
-      />
-
-      <img
-        sizes="(min-width: 25rem) 25rem, 95vw"
-        srcset="
-          https://res.cloudinary.com/dqvb6qgtj/image/upload/c_scale,w_256/reveal_aura_hskfib.png   256w,
-          https://res.cloudinary.com/dqvb6qgtj/image/upload/c_scale,w_512/reveal_aura_hskfib.png   512w,
-          https://res.cloudinary.com/dqvb6qgtj/image/upload/c_scale,w_768/reveal_aura_hskfib.png   768w,
-          https://res.cloudinary.com/dqvb6qgtj/image/upload/c_scale,w_1024/reveal_aura_hskfib.png 1024w,
-          https://res.cloudinary.com/dqvb6qgtj/image/upload/c_scale,w_1280/reveal_aura_hskfib.png 1280w
-        "
-        src="https://res.cloudinary.com/dqvb6qgtj/image/upload/c_scale,w_512/reveal_aura_hskfib.png"
-        alt=""
-      />
-
-      <img
-        sizes="(min-width: 25rem) 25rem, 95vw"
-        srcset="
-          https://res.cloudinary.com/dqvb6qgtj/image/upload/c_scale,w_256/reveal_square_cover_vym5eb.png   256w,
-          https://res.cloudinary.com/dqvb6qgtj/image/upload/c_scale,w_512/reveal_square_cover_vym5eb.png   512w,
-          https://res.cloudinary.com/dqvb6qgtj/image/upload/c_scale,w_768/reveal_square_cover_vym5eb.png   768w,
-          https://res.cloudinary.com/dqvb6qgtj/image/upload/c_scale,w_1024/reveal_square_cover_vym5eb.png 1024w,
-          https://res.cloudinary.com/dqvb6qgtj/image/upload/c_scale,w_1280/reveal_square_cover_vym5eb.png 1280w
-        "
-        src="https://res.cloudinary.com/dqvb6qgtj/image/upload/c_scale,w_512/reveal_square_cover_vym5eb.png"
-        alt=""
-      />
-
-      <img
-        sizes="(min-width: 25rem) 25rem, 95vw"
-        srcset="
-          https://res.cloudinary.com/dqvb6qgtj/image/upload/c_scale,w_256/cutting_flourish_fiulzx.png   256w,
-          https://res.cloudinary.com/dqvb6qgtj/image/upload/c_scale,w_512/cutting_flourish_fiulzx.png   512w,
-          https://res.cloudinary.com/dqvb6qgtj/image/upload/c_scale,w_768/cutting_flourish_fiulzx.png   768w,
-          https://res.cloudinary.com/dqvb6qgtj/image/upload/c_scale,w_1024/cutting_flourish_fiulzx.png 1024w,
-          https://res.cloudinary.com/dqvb6qgtj/image/upload/c_scale,w_1280/cutting_flourish_fiulzx.png 1280w
-        "
-        src="https://res.cloudinary.com/dqvb6qgtj/image/upload/c_scale,w_512/cutting_flourish_fiulzx.png"
-        alt=""
-      />
-
-      <img
-        sizes="(min-width: 25rem) 25rem, 95vw"
-        srcset="
-          https://res.cloudinary.com/dqvb6qgtj/image/upload/c_scale,w_256/beach_brazilian_fmobnx.png   256w,
-          https://res.cloudinary.com/dqvb6qgtj/image/upload/c_scale,w_512/beach_brazilian_fmobnx.png   512w,
-          https://res.cloudinary.com/dqvb6qgtj/image/upload/c_scale,w_768/beach_brazilian_fmobnx.png   768w,
-          https://res.cloudinary.com/dqvb6qgtj/image/upload/c_scale,w_1024/beach_brazilian_fmobnx.png 1024w,
-          https://res.cloudinary.com/dqvb6qgtj/image/upload/c_scale,w_1280/beach_brazilian_fmobnx.png 1280w
-        "
-        src="https://res.cloudinary.com/dqvb6qgtj/image/upload/c_scale,w_512/beach_brazilian_fmobnx.png"
+        v-bind:srcset="`https://res.cloudinary.com/dqvb6qgtj/image/upload/c_auto,w_256,ar_2:3/${image.file} 256w,
+      https://res.cloudinary.com/dqvb6qgtj/image/upload/c_auto,w_512,ar_2:3/${image.file} 512w,
+      https://res.cloudinary.com/dqvb6qgtj/image/upload/c_auto,w_768,ar_2:3/${image.file} 768w,
+      https://res.cloudinary.com/dqvb6qgtj/image/upload/c_auto,w_1024,ar_2:3/${image.file} 1024w,
+      https://res.cloudinary.com/dqvb6qgtj/image/upload/c_auto,w_1280,ar_2:3/${image.file} 1280w`"
+        v-bind:src="`https://res.cloudinary.com/dqvb6qgtj/image/upload/c_auto,w_512,ar_2:3/${image.file}`"
         alt=""
       />
     </section>
@@ -478,16 +261,28 @@
     <section class="skills">
       <h3>Habilidades</h3>
 
-      Visão no Escuro. Graças ao seu sangue élfico, você possui uma visão
-      superior no escuro. Você consegue enxergar até 18 metros na meia-luz como
-      se fosse dia e, na escuridão, como se fosse meia-luz. Na escuridão você só
-      consegue discernir tons de cinza. Ancestralidade Feérica. Nenhum tipo de
-      magia pode colocá-lo para dormir, e você tem vantagem em salvaguardas
-      contra ser enfeitiçado. Versatilidade com Perícias. Você ganha
-      proficiência em duas perícias à sua escolha. Idiomas. Você pode falar, ler
-      e escrever Comum, Élfico e outro idioma à sua escolha.
+      <h4>Visão no Escuro</h4>
+      <p>
+        Graças ao seu sangue élfico, você possui uma visão superior no escuro.
+        Você consegue enxergar até 18 metros na meia-luz como se fosse dia e, na
+        escuridão, como se fosse meia-luz. Na escuridão você só consegue
+        discernir tons de cinza.
+      </p>
 
-      <h4>Inspiração de Bardo (d6): 3 vezes por descanso longo</h4>
+      <h4>Ancestralidade Feérica</h4>
+      <p>
+        Nenhum tipo de magia pode colocá-lo para dormir, e você tem vantagem em
+        salvaguardas contra ser enfeitiçado. Versatilidade com Perícias. Você
+        ganha proficiência em duas perícias à sua escolha.
+      </p>
+
+      <h4>Idiomas</h4>
+      <p>
+        Você pode falar, ler e escrever Comum, Élfico e outro idioma à sua
+        escolha.
+      </p>
+
+      <h4>Inspiração de Bardo (d6)</h4>
       <p>
         Você pode inspirar os outros por meio da música ou das palavras. Para
         isso, no seu turno, deve usar uma ação bônus para escolher uma criatura
@@ -619,88 +414,224 @@
         <br />
         (Afinidade: Bem | Magia: curar ferimentos)
       </p>
-
-      <h4>Favorecido pelos Deuses</h4>
-      <p>
-        A partir do 1º nível, o poder divino protege seu destino. Se você falhar
-        em um teste de resistência ou errar um ataque, pode rolar 2d4 e
-        adicioná-lo ao total, possivelmente alterando o resultado. Depois de
-        usar essa característica, não pode usá-la novamente até terminar um
-        descanso curto ou longo
-      </p>
-
-      <h3>🎶 Magias conhecidas: (6 2)</h3>
-      <h4>Truques (+4):</h4>
-      <p>Prestidigitação</p>
-      <p>Taumaturgia</p>
-      <p>Zombaria Viciosa (<em>Vicious Mockery</em>)</p>
-
-      <h4>Magias de Nível 1:(+2)</h4>
-      <p>Curar Ferimentos</p>
-      <p>
-        Fada Ilusória (<em>Faerie Fire</em>) – Para dar vantagem aos aliados
-      </p>
-      <p>Palavra Curativa (<em>Healing Word</em>) – Cura rápida</p>
-      <p>
-        Disfarçar-se (<em>Disguise Self</em>) – Perfeita pra artista itinerante
-      </p>
-      <p>Passos Longos (<em>Longstrider</em>) – Velocidade extra</p>
-
-      <h4>Magias de Nível 2:</h4>
-      <p>Imagem Espelhada (<em>Mirror Image</em>) – Defesa contra ataques</p>
-      <p>
-        Calafrio Cortante (<em>Shatter</em>) – Um ataque explosivo, com som
-        estrondoso
-      </p>
     </section>
 
     <section class="grimoire">
       <h3>Grimório</h3>
 
-      <h4>PALAVRA CURATIVA</h4>
+      <h4>Palavra Curativa</h4>
       <p>
-        1 ° círculo, evocação
+        1° círculo, evocação
         <br />
-        Tempo de Conjuração: 1 ação bônus
+        <strong>Tempo de Conjuração</strong>: 1 ação bônus
         <br />
-        Alcance: 18 metros
+        <strong>Alcance</strong>: 18 metros
         <br />
-        Componentes: V
+        <strong>Componentes</strong>: V
         <br />
-        Duração: Instantânea
+        <strong>Duração</strong>: Instantânea
+        <br />
         <br />
         Escolha uma criatura à sua vista e no alcance da magia. Ela recupera uma
         quantidade de pontos de vida igual a ld4 + seu modificador de atributo
         de conjuração. Esta magia não tem efeito sobre mortos-vivos ou
         constructos.
         <br />
-        Em Círculos Superiores. Ao conjurar esta magia usando um espaço de magia
-        de 2° círculo ou superior, a cura aumenta em ld4 para cada círculo do
-        espaço acima do 1 °
+        <strong>Em Círculos Superiores</strong>. Ao conjurar esta magia usando
+        um espaço de magia de 2° círculo ou superior, a cura aumenta em ld4 para
+        cada círculo do espaço acima do 1 °
       </p>
 
       <h4>Curar Ferimentos</h4>
       <p>
         1 ° círculo, evocação
         <br />
-        Tempo de Conjuração: 1 ação
+        <strong>Tempo de Conjuração</strong>: 1 ação
         <br />
-        Alcance: Toque
+        <strong>Alcance</strong>: Toque
         <br />
-        Componentes: V, S
+        <strong>Componentes</strong>: V, S
         <br />
-        Duração: Instantânea
+        <strong>Duração</strong>: Instantânea
         <br />
         Uma criatura tocada por você recupera um número de pontos de vida igual
-        a ld8 + o modificador do seu atributo de conjuração. Esta magia não tem
-        efeito sobre mortos-vivos ou constructos.
+        a ld8 + o modificador do seu atributo de conjuração ({{
+        atributes.charisma.modifier }}). Esta magia não tem efeito sobre
+        mortos-vivos ou constructos.
         <br />
-        Em Círculos Superiores. Ao conjurar esta magia usando um espaço de magia
-        de 2° círculo ou superior, a cura aumenta em ld8 para cada círculo do
-        espaço acima do 1 °.
+        <strong>Em Círculos Superiores</strong>. Ao conjurar esta magia usando
+        um espaço de magia de 2° círculo ou superior, a cura aumenta em ld8 para
+        cada círculo do espaço acima do 1 °.
       </p>
     </section>
   </body>
 
-  <script type="text/javascript"></script>
+  <script src="https://unpkg.com/vue@3/dist/vue.global.prod.js"></script>
+  <script type="text/javascript">
+    const { createApp, ref } = Vue;
+    const atributes = {
+      strength: {
+        description: "Força",
+        proficient: false,
+        points: 10,
+      },
+      dexterity: {
+        description: "Destreza",
+        proficient: true,
+        points: 16,
+      },
+      constitution: {
+        description: "Constituição",
+        proficient: false,
+        points: 14,
+      },
+      intelligence: {
+        description: "Inteligência",
+        proficient: false,
+        points: 8,
+      },
+      wisdom: {
+        description: "Sabedoria",
+        proficient: false,
+        points: 10,
+      },
+      charisma: {
+        description: "Carisma",
+        proficient: true,
+        points: 18,
+      },
+    };
+
+    const images = [
+      {
+        file: "inspiration_violin_x5j1zc.png",
+      },
+      {
+        file: "horse_racing_qjjfsw.png",
+      },
+      {
+        file: "goddess_q9flg3.png",
+        landscape: true,
+      },
+      {
+        file: "hostile_m7tuja.png",
+      },
+      {
+        file: "rest_sound_gegstg.png",
+      },
+      {
+        file: "parade_glitter_usbzza.png",
+      },
+      {
+        file: "parade_pants_x0kcka.png",
+      },
+      {
+        file: "parade_feathers_hrdb1a.png",
+      },
+      {
+        file: "parade_violin_rlevg9.png",
+      },
+      {
+        file: "dancing_square_u8cjft.png",
+      },
+      {
+        file: "inspiration_violin_cover_scnziq.png",
+      },
+      {
+        file: "card_cbrjjs.png",
+      },
+      {
+        file: "dancing_court_enm6aj.png",
+      },
+      {
+        file: "dancing_guards_dh4vkk.png",
+      },
+      {
+        file: "violin_energitic_aor3cu.png",
+      },
+      {
+        file: "auto_violin_ispzs4.png",
+      },
+      {
+        file: "dancing_court_cover_ddljxc.png",
+      },
+      {
+        file: "vicious_mockery_rvldwv.png",
+      },
+      {
+        file: "desert_caravan_k4krno.png",
+      },
+      {
+        file: "sword_fighting_goblins_oo9qll.png",
+      },
+      {
+        file: "duel_wylyqx.png",
+      },
+      {
+        file: "fighting_horse_reveal_bob6um.png",
+      },
+      {
+        file: "fighting_house_psjx9w.png",
+      },
+      {
+        file: "show_fires_v7yyxn.png",
+      },
+      {
+        file: "show_cover_zuzr2k.png",
+      },
+      {
+        file: "reveal_swords_tqfdns.png",
+      },
+      {
+        file: "reveal_square_hxmaxd.png",
+      },
+      {
+        file: "reveal_aura_hskfib.png",
+      },
+      {
+        file: "reveal_square_cover_vym5eb.png",
+      },
+      {
+        file: "cutting_flourish_fiulzx.png",
+      },
+      {
+        file: "beach_brazilian_fmobnx.png",
+      },
+    ];
+
+    const getModifier = (value) => `${value >= 0 ? "+" : ""}${value}`;
+
+    createApp({
+      setup() {
+        const levelBard = 3;
+        const levelSorcerer = 1;
+
+        const proficiency = +2;
+        const listAtributes = Object.keys(atributes);
+        listAtributes.forEach((key) => {
+          const { proficient, points } = atributes[key];
+
+          const bonus = (points - 10) / 2;
+
+          atributes[key].bonus = bonus;
+          atributes[key].modifier = `${bonus >= 0 ? "+" : ""}${bonus}`;
+          atributes[key].saveThrow = getModifier(
+            bonus + (proficient ? proficiency : 0)
+          );
+        });
+
+        const hitPoints = `Barda (3d8+${
+          atributes.constitution.bonus * levelBard
+        }) + Feiticeira (ld6+${atributes.constitution.bonus * levelSorcerer})`;
+
+        return {
+          listAtributes,
+          atributes,
+          proficiency,
+          images,
+          hitPoints,
+        };
+      },
+    }).mount("#app");
+  </script>
 </html>
