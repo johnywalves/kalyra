@@ -347,17 +347,15 @@
     <h3>🖼️ Galeria - Anime</h3>
 
     <section class="gallery">
-      <a
-        v-for="image in images_anime"
-        v-bind:href="`${cndImages}/c_auto,w_512,ar_2:3/${image}`"
-      >
+      <a v-for="image in images_anime" v-bind:href="`${cndImages}/${image}`">
         <img
+          class="picture"
           sizes="(min-width: 25rem) 25rem, 95vw"
           v-bind:srcset="`${cndImages}/c_auto,w_256,ar_2:3/${image} 256w,
-          ${cndImages}/c_auto,w_512,ar_2:3/${image} 512w,
-          ${cndImages}/c_auto,w_768,ar_2:3/${image} 768w,
-          ${cndImages}/c_auto,w_1024,ar_2:3/${image} 1024w,
-          ${cndImages}/c_auto,w_1280,ar_2:3/${image} 1280w`"
+            ${cndImages}/c_auto,w_512,ar_2:3/${image} 512w,
+            ${cndImages}/c_auto,w_768,ar_2:3/${image} 768w,
+            ${cndImages}/c_auto,w_1024,ar_2:3/${image} 1024w,
+            ${cndImages}/c_auto,w_1280,ar_2:3/${image} 1280w`"
           v-bind:src="`${cndImages}/c_auto,w_512,ar_2:3/${image}`"
           alt=""
         />
@@ -367,17 +365,19 @@
     <h3>🖼️ Galeria - Realismo Fantástico</h3>
 
     <section class="gallery">
-      <img
-        v-for="image in images_realist"
-        sizes="(min-width: 25rem) 25rem, 95vw"
-        v-bind:srcset="`${cndImages}/c_auto,w_256,ar_2:3/${image} 256w,
-        ${cndImages}/c_auto,w_512,ar_2:3/${image} 512w,
-        ${cndImages}/c_auto,w_768,ar_2:3/${image} 768w,
-        ${cndImages}/c_auto,w_1024,ar_2:3/${image} 1024w,
-        ${cndImages}/c_auto,w_1280,ar_2:3/${image} 1280w`"
-        v-bind:src="`${cndImages}/c_auto,w_512,ar_2:3/${image}`"
-        alt=""
-      />
+      <a v-for="image in images_anime" v-bind:href="`${cndImages}/${image}`">
+        <img
+          class="picture"
+          sizes="(min-width: 25rem) 25rem, 95vw"
+          v-bind:srcset="`${cndImages}/c_auto,w_256,ar_2:3/${image} 256w,
+            ${cndImages}/c_auto,w_512,ar_2:3/${image} 512w,
+            ${cndImages}/c_auto,w_768,ar_2:3/${image} 768w,
+            ${cndImages}/c_auto,w_1024,ar_2:3/${image} 1024w,
+            ${cndImages}/c_auto,w_1280,ar_2:3/${image} 1280w`"
+          v-bind:src="`${cndImages}/c_auto,w_512,ar_2:3/${image}`"
+          alt=""
+        />
+      </a>
     </section>
 
     <section class="skills">
