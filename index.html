@@ -9,6 +9,40 @@
 
     <title>Kalyra</title>
     <meta name="title" property="og:title" content="Kalyra" />
+    <meta
+      name="image"
+      property="og:image"
+      itemprop="image"
+      content="https://res.cloudinary.com/dqvb6qgtj/image/upload/c_thumb,g_face,w_1200,h_630/dancing_square_u8cjft.png"
+    />
+    <meta name="type" property="og:type" content="website" />
+    <meta name="url" property="og:url" content="http://kalyra.jwalves.com/" />
+    <meta name="site_name" property="og:site_name" content="Kalyra" />
+    <meta name="locale" property="og:locale" content="pt_BR" />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:url" content="http://kalyra.jwalves.com/" />
+    <meta name="twitter:title" content="Kalyra" />
+    <meta
+      name="twitter:description"
+      content="Kalyra, a ‘deusa’ bardo-feiticeira: dança com rapieras, cura com êxtase e espalha festas onde passa. Será divindade ou só delírio encantador?"
+    />
+    <meta
+      name="twitter:image"
+      content="https://res.cloudinary.com/dqvb6qgtj/image/upload/c_thumb,g_face,w_1200,h_630/dancing_square_u8cjft.png"
+    />
+
+    <link
+      rel="icon"
+      href="https://kalyra.jwalves.com/favicon.ico"
+      type="image/ico"
+    />
+    <link
+      rel="icon"
+      href="https://kalyra.jwalves.com/favicon.png"
+      type="image/png"
+    />
+
     <style>
       /* Reset CSS */
       *,
@@ -85,7 +119,7 @@
         }
 
         & small {
-          margin-bottom: 0.125rem;
+          margin-bottom: 0.25rem;
         }
 
         & section.gallery {
@@ -95,6 +129,8 @@
           justify-content: center;
           align-items: center;
           gap: 2rem;
+
+          margin-top: 0.5rem;
         }
 
         & div.columns {
@@ -114,8 +150,10 @@
             padding-left: 0;
             padding-right: 0;
           }
+        }
 
-          @media (max-width: 980px) {
+        @media (max-width: 980px) {
+          & div.columns {
             grid-template-columns: 1fr;
             gap: 0;
           }
@@ -217,104 +255,113 @@
         <p>2 Rapieiras (1d8{{ atributes.dexterity.modifier }} - Finesse)</p>
         <p>Violino</p>
         <p>Kit de Artista</p>
+        <p>5d4 x 10 PO</p>
       </div>
     </div>
 
-    <section class="resources">
-      <h3>🎭 Recursos:</h3>
+    <div class="columns">
+      <div content="content">
+        <h3>🎭 Recursos:</h3>
 
-      <p><strong>Visão no Escuro</strong> Visibilidade de 18m</p>
-      <p>
-        <strong>Ancestralidade Feérica:</strong> Imunidade dormir e vantagem
-        contra ser enfeitiçado.
-      </p>
-      <p>
-        <strong>Inspiração de Bardo (d6):</strong> {{ atributes.charisma.bonus
-        }} vezes por descanso longo
-      </p>
-      <p>
-        <strong>Pau pra Toda Obra</strong>: metade da proficiência testes não
-        proficientes
-      </p>
-      <p>
-        <strong>Canção de Descanso</strong>: cura adicional de 1d6 no descanso
-        curto
-      </p>
-      <p>
-        <strong>Especialista</strong>: dobrar proficiência em habilidade
-        proficientes
-      </p>
-      <p>
-        <strong>Proficiência Bônus</strong>: proficiência com armadura media e
-        cimitarras
-      </p>
-      <p>
-        <strong>Estilo de Luta (Combate com Duas Armas)</strong>: modificador de
-        habilidade ao dano do segundo ataque
-      </p>
-      <p>
-        <strong>Floreio de Lâminas</strong>: exibições impressionantes de proeza
-        e velocidade marcial
-      </p>
-      <p><strong>Magia Divina (Caótica)</strong>: Habilidade Perdição</p>
-      <p>
-        <strong>Favorecido pelos Deuses</strong>: adicionar 2d4 em falhas por
-        descanso curto
-      </p>
-    </section>
+        <p><strong>Visão no Escuro</strong> visibilidade de 18m</p>
+        <p>
+          <strong>Ancestralidade Feérica</strong>: imunidade dormir e vantagem
+          contra ser enfeitiçado.
+        </p>
+        <p>
+          <strong>Inspiração de Bardo (d6)</strong>: {{ atributes.charisma.bonus
+          }} vezes por descanso longo
+        </p>
+        <p>
+          <strong>Pau pra Toda Obra</strong>: metade da proficiência testes não
+          proficientes
+        </p>
+        <p>
+          <strong>Canção de Descanso</strong>: cura adicional de 1d6 no descanso
+          curto
+        </p>
+        <p>
+          <strong>Especialista</strong>: dobrar proficiência em habilidade
+          proficientes
+        </p>
+        <p>
+          <strong>Proficiência Bônus</strong>: proficiência com armadura media e
+          cimitarras
+        </p>
+        <p>
+          <strong>Estilo de Luta (Combate com Duas Armas)</strong>: modificador
+          de habilidade ao dano do segundo ataque
+        </p>
+        <p>
+          <strong>Floreio de Lâminas</strong>: exibições impressionantes de
+          proeza e velocidade marcial
+        </p>
+        <p><strong>Magia Divina (Caótica)</strong>: conhecer magia Perdição</p>
+        <p>
+          <strong>Favorecido pelos Deuses</strong>: adicionar 2d4 em falhas por
+          descanso curto
+        </p>
 
-    <section>
-      <h3>🪄 Espaços de magia</h3>
-      <p><strong>Nível 1</strong>: 4</p>
-      <p><strong>Nível 2</strong>: 3</p>
-    </section>
+        <section>
+          <h3>🪄 Espaços de magia</h3>
+          <p><strong>Nível 1</strong>: 4 espaços de magia</p>
+          <p><strong>Nível 2</strong>: 3 espaços de magia</p>
+        </section>
+      </div>
 
-    <section>
-      <h3>🎶 Magias conhecidas:</h3>
+      <div content="content">
+        <section>
+          <h3>🎶 Magias conhecidas:</h3>
 
-      <h4>Truques:</h4>
-      <p>Reparar</p>
-      <p>Proteção contra Lâminas</p>
-      <p>Luzes Dançantes</p>
-      <p>Prestidigitação</p>
-      <p>Taumaturgia</p>
-      <p>Zombaria Viciosa (<em>Vicious Mockery</em>)</p>
+          <h4>Truques:</h4>
+          <p>Prestidigitação</p>
+          <p>Golpe Certeiro</p>
+          <p>Ilusão Menor</p>
+          <p>Proteção contra Lâminas</p>
+          <p>Reparar</p>
+          <p>Luzes Dançantes</p>
+          <p>Zombaria Perversa (<em>Vicious Mockery</em>)</p>
 
-      <h4>Magias de Nível 1:</h4>
-      <p>Queda Suave (<em>Feather Fall</em>)</p>
-      <p>Compreender Idiomas (<em>Comprehend Languages</em>)</p>
-      <p>Curar Ferimentos (<em>Cure Wounds</em>)</p>
-      <p>
-        Fada Ilusória (<em>Faerie Fire</em>) – Para dar vantagem aos aliados
-      </p>
-      <p>Palavra Curativa (<em>Healing Word</em>) – Cura rápida</p>
-      <p>
-        Disfarçar-se (<em>Disguise Self</em>) – Perfeita pra artista itinerante
-      </p>
-      <p>Passos Longos (<em>Longstrider</em>) – Velocidade extra</p>
+          <h4>Magias de Nível 1:</h4>
+          <p>Queda Suave (<em>Feather Fall</em>)</p>
+          <p>Compreender Idiomas (<em>Comprehend Languages</em>)</p>
+          <p>Curar Ferimentos (<em>Cure Wounds</em>)</p>
+          <p>Perdição (<em>Damnation</em>)</p>
+          <p>Palavra Curativa (<em>Healing Word</em>) – Cura rápida</p>
+          <p>
+            Disfarçar-se (<em>Disguise Self</em>) – Perfeita pra artista
+            itinerante
+          </p>
+          <p>Falar com animaiis</p>
 
-      <h4>Magias de Nível 2:</h4>
-      <p>Imagem Espelhada (<em>Mirror Image</em>) – Defesa contra ataques</p>
-      <p>
-        Calafrio Cortante (<em>Shatter</em>) – Um ataque explosivo, com som
-        estrondoso
-      </p>
-    </section>
+          <h4>Magias de Nível 2:</h4>
+          <p>Restauração Menor</p>
+          <p>
+            Despedaçar (<em>Shatter</em>) – Um ataque explosivo, com som
+            estrondoso
+          </p>
+        </section>
+      </div>
+    </div>
 
     <h3>🖼️ Galeria - Anime</h3>
 
     <section class="gallery">
-      <img
+      <a
         v-for="image in images_anime"
-        sizes="(min-width: 25rem) 25rem, 95vw"
-        v-bind:srcset="`https://res.cloudinary.com/dqvb6qgtj/image/upload/c_auto,w_256,ar_2:3/${image.file} 256w,
-      https://res.cloudinary.com/dqvb6qgtj/image/upload/c_auto,w_512,ar_2:3/${image.file} 512w,
-      https://res.cloudinary.com/dqvb6qgtj/image/upload/c_auto,w_768,ar_2:3/${image.file} 768w,
-      https://res.cloudinary.com/dqvb6qgtj/image/upload/c_auto,w_1024,ar_2:3/${image.file} 1024w,
-      https://res.cloudinary.com/dqvb6qgtj/image/upload/c_auto,w_1280,ar_2:3/${image.file} 1280w`"
-        v-bind:src="`https://res.cloudinary.com/dqvb6qgtj/image/upload/c_auto,w_512,ar_2:3/${image.file}`"
-        alt=""
-      />
+        v-bind:href="`${cndImages}/c_auto,w_512,ar_2:3/${image}`"
+      >
+        <img
+          sizes="(min-width: 25rem) 25rem, 95vw"
+          v-bind:srcset="`${cndImages}/c_auto,w_256,ar_2:3/${image} 256w,
+          ${cndImages}/c_auto,w_512,ar_2:3/${image} 512w,
+          ${cndImages}/c_auto,w_768,ar_2:3/${image} 768w,
+          ${cndImages}/c_auto,w_1024,ar_2:3/${image} 1024w,
+          ${cndImages}/c_auto,w_1280,ar_2:3/${image} 1280w`"
+          v-bind:src="`${cndImages}/c_auto,w_512,ar_2:3/${image}`"
+          alt=""
+        />
+      </a>
     </section>
 
     <h3>🖼️ Galeria - Realismo Fantástico</h3>
@@ -323,12 +370,12 @@
       <img
         v-for="image in images_realist"
         sizes="(min-width: 25rem) 25rem, 95vw"
-        v-bind:srcset="`https://res.cloudinary.com/dqvb6qgtj/image/upload/c_auto,w_256,ar_2:3/${image.file} 256w,
-      https://res.cloudinary.com/dqvb6qgtj/image/upload/c_auto,w_512,ar_2:3/${image.file} 512w,
-      https://res.cloudinary.com/dqvb6qgtj/image/upload/c_auto,w_768,ar_2:3/${image.file} 768w,
-      https://res.cloudinary.com/dqvb6qgtj/image/upload/c_auto,w_1024,ar_2:3/${image.file} 1024w,
-      https://res.cloudinary.com/dqvb6qgtj/image/upload/c_auto,w_1280,ar_2:3/${image.file} 1280w`"
-        v-bind:src="`https://res.cloudinary.com/dqvb6qgtj/image/upload/c_auto,w_512,ar_2:3/${image.file}`"
+        v-bind:srcset="`${cndImages}/c_auto,w_256,ar_2:3/${image} 256w,
+        ${cndImages}/c_auto,w_512,ar_2:3/${image} 512w,
+        ${cndImages}/c_auto,w_768,ar_2:3/${image} 768w,
+        ${cndImages}/c_auto,w_1024,ar_2:3/${image} 1024w,
+        ${cndImages}/c_auto,w_1280,ar_2:3/${image} 1280w`"
+        v-bind:src="`${cndImages}/c_auto,w_512,ar_2:3/${image}`"
         alt=""
       />
     </section>
@@ -380,7 +427,7 @@
         ao final de um descanso longo.
         <br />
         Seu dado de Inspiração de Bardo muda quando você alcança certos níveis
-        nesta classe. O dado se torna 1d8 no 50 nível, 1dlO no 10° e 1dl2 no 15°
+        nesta classe. O dado se torna 1d8 no 50 nível, 1d1O no 10° e 1d12 no 15°
         nível.
       </p>
 
@@ -401,7 +448,7 @@
         mais.
         <br />
         A quantidade de pontos de vida adicionais aumenta quando você chega a
-        certos níveis nesta classe: 1d8 no 9° nível, 1dlO no 13° e 1dl2 no 17°
+        certos níveis nesta classe: 1d8 no 9° nível, 1d1O no 13° e 1d12 no 17°
         nível.
       </p>
 
@@ -503,6 +550,225 @@
 
       <div class="columns">
         <div class="content">
+          <h4>Curar Ferimentos</h4>
+          <small>1° círculo, evocação</small>
+          <ul>
+            <li><strong>Tempo de Conjuração</strong>: 1 ação</li>
+            <li><strong>Alcance</strong>: Toque</li>
+            <li><strong>Componentes</strong>: V, S</li>
+            <li><strong>Duração</strong>: Instantânea</li>
+          </ul>
+          <p>
+            Uma criatura tocada por você recupera um número de pontos de vida
+            igual a 1d8 + o modificador do seu atributo de conjuração ({{
+            atributes.charisma.modifier }}). Esta magia não tem efeito sobre
+            mortos-vivos ou constructos.
+            <br />
+            <strong>Em Círculos Superiores</strong>. Ao conjurar esta magia
+            usando um espaço de magia de 2° círculo ou superior, a cura aumenta
+            em 1d8 para cada círculo do espaço acima do 1°.
+          </p>
+        </div>
+
+        <div class="content">
+          <h4>Falar com Animais</h4>
+          <small>1 ° círculo, adivinhação (ritual)</small>
+          <ul>
+            <li><strong>Tempo de Conjuração</strong>: 1 ação</li>
+            <li><strong>Alcance</strong>: Pessoal</li>
+            <li><strong>Componentes</strong>: V, S</li>
+            <li><strong>Duração</strong>: 10 minutos</li>
+          </ul>
+          <p>
+            Você adquire a habilidade de compreender e se comunicar verbalmente
+            com feras enquanto a magia durar. O conhecimento e a consciência são
+            limitados pela inteligência delas mas, no mínimo, são capazes de dar
+            informação sobre localidades e monstros próximos, incluindo tudo o
+            que notam ou notaram nas últimas 24 horas. Você pode tentar
+            persuadir uma fera a lhe fazer um pequeno favor, a critério do DM.
+          </p>
+        </div>
+
+        <div class="content">
+          <h4>Restauração Menor</h4>
+          <small>2° círculo, abjuração</small>
+          <ul>
+            <li><strong>Tempo de Conjuração</strong>: 1 ação</li>
+            <li><strong>Alcance</strong>: Toque</li>
+            <li><strong>Componentes</strong>: V, S</li>
+            <li><strong>Duração</strong>: Instantânea</li>
+          </ul>
+          <p>
+            Você toca uma criatura e pode tanto curar uma doença quanto remover
+            uma condição que a aflija. A condição pode ser cego, envenenado,
+            paralisado ou surdo.
+          </p>
+        </div>
+
+        <div class="content">
+          <h4>Prestidigitação</h4>
+          <small>Truque, transmutação</small>
+          <ul>
+            <li><strong>Tempo de Conjuração</strong>: 1 ação</li>
+            <li><strong>Alcance</strong>: 3 metros</li>
+            <li><strong>Componentes</strong>: V, S</li>
+            <li><strong>Duração</strong>: Até 1 hora</li>
+          </ul>
+          <p>
+            Esta magia é um pequeno truque mágico que conjuradores iniciantes
+            usam para praticar. Crie um dos seguintes efeitos mágicos no alcance
+            da magia:
+          </p>
+          <p>
+            • Você cria um efeito sensorial instantâneo e inofensivo como uma
+            chuva de faíscas, um sopro de vento, notas ' musicais
+            fantasmagóricas ou um odor característico.
+          </p>
+          <p>
+            • Você faz com que uma vela, tocha ou pequena fogueira seja
+            imediatamente acesa ou apagada.
+          </p>
+          <p>
+            • Você instantaneamente limpa ou suja um objeto que não seja maior
+            que um cubo de 30 centímetros de lado.
+          </p>
+          <p>
+            • Você resfria, esquenta ou tempera um cubo de até 30 centímetros de
+            lado feito de matéria não-viva por 1 hora.
+          </p>
+          <p>
+            • Você colore, faz uma pequena marca ou um símbolo aparecer em um
+            objeto ou superfície por 1 hora.
+          </p>
+          <p>
+            • Você cria uma bugiganga não-mágica ou uma imagem ilusória que pode
+            caber em sua mão e esta dura até o fim do seu próximo turno.
+          </p>
+          <p>
+            Se você conjurar esta magia múltiplas vezes, é possível ter três de
+            seus efeitos não instantâneos ativos ao mesmo tempo e qualquer
+            desses efeitos pode ser encerrado com uma ação.
+          </p>
+        </div>
+
+        <div class="content">
+          <h4>Golpe Certeiro</h4>
+          <small>Truque, adivinhação</small>
+          <ul>
+            <li><strong>Tempo de Conjuração</strong>: 1 ação</li>
+            <li><strong>Alcance</strong>: 9 metros</li>
+            <li><strong>Componentes</strong>: S</li>
+            <li><strong>Duração</strong>: Concentração, até 1 rodada</li>
+          </ul>
+          <p>
+            Você aponta o seu dedo para um alvo no alcance. Sua magia garante
+            uma leve intuição das defesas do alvo. Em seu próximo turno, você
+            ganha vantagem em sua primeira jogada de ataque contra o alvo, desde
+            que a magia não tenha terminado.
+          </p>
+        </div>
+
+        <div class="content">
+          <h4>Ilusão Menor</h4>
+          <small>Truque, ilusão</small>
+          <ul>
+            <li><strong>Tempo de Conjuração</strong>: 1 ação</li>
+            <li><strong>Alcance</strong>: 9 metros</li>
+            <li><strong>Componentes</strong>: S, M (um pouco de lã)</li>
+            <li><strong>Duração</strong>: 1 minuto</li>
+          </ul>
+          <p>
+            Você cria um som ou uma imagem de um objeto ao alcance da magia, que
+            permanece enquanto esta durar. A ilusão termina se você a dispensar
+            com uma ação ou conjurá- -la novamente.
+          </p>
+          <p>
+            Se você cria um som, o volume emitido pode variar desde um sussurro
+            até um grito. Pode ser a sua voz, a voz de outra pessoa, o rugido de
+            um leão, a batida de tambores ou qualquer outro som à sua escolha. O
+            som continua no mesmo tom enquanto a magia durar, ou você pode fazer
+            sons mais discretos em momentos diferentes, antes que a magia
+            termine.
+          </p>
+          <p>
+            Se você criar uma imagem de um objeto - como uma cadeira, pegadas
+            lamacentas ou uma pequena arca - esta não pode ser maior que um cubo
+            de 1,5 metro. A imagem não pode emitir som, luz, odor ou qualquer
+            outro efeito sensorial. Interação física com a imagem revela que se
+            trata de uma ilusão, pois coisas passam através dela.
+          </p>
+          <p>
+            Se uma criatura usar uma ação para examinar o som ou a imagem, a
+            criatura pode determinar que é uma ilusão com um teste bem-sucedido
+            de Inteligência (Investigação) contra a CD para evitar sua magia. A
+            ilusão torna-se desbotada para uma criatura que consiga discerni-la.
+          </p>
+        </div>
+
+        <div class="content">
+          <h4>Proteção contra Lâminas</h4>
+          <small>Truque,abjuração</small>
+          <ul>
+            <li><strong>Tempo de Conjuração</strong>: 1 ação</li>
+            <li><strong>Alcance</strong>: Pessoal</li>
+            <li><strong>Componentes</strong>: V, S</li>
+            <li><strong>Duração</strong>: 1 rodada</li>
+          </ul>
+          <p>
+            Você estende a sua mão e traça um símbolo de proteção no ar. Até o
+            final do seu próximo turno, você tem resistência contra dano
+            contundente, cortante e perfurante causado por ataques armados.
+          </p>
+
+          <h4>Luzes Dançantes</h4>
+          <small>Truque, evocação</small>
+          <ul>
+            <li><strong>Tempo de Conjuração</strong>: 1 ação</li>
+            <li>Alcance: 36 metros</li>
+            <li>
+              <strong>Componentes</strong>: V, S, M (um pouco de fósforo, uma
+              folha de olmo ou uma larva luminosa)
+            </li>
+            <li><strong>Duração</strong>: Concentração, até 1 minuto</li>
+          </ul>
+          <p>
+            Você cria até quatro luzes no alcance da magia, fazendo com que se
+            pareçam com tochas, lanternas ou globos brilhantes que pairam no ar
+            por toda a duração da magia. Você também pode combinar as quatro
+            luzes para que brilhem em uma forma vagamente humanoide de tamanho
+            Médio. Qualquer que seja a forma escolhida, cada luz emite meia-luz
+            em um raio de 3 metros.
+          </p>
+          <p>
+            Com uma ação bônus em seu turno, você pode mover as luzes até 18
+            metros para um novo lugar dentro do alcance da magia. Uma luz deve
+            estar a até 6 metros de outra luz criada por esta magia, e uma luz
+            começa a piscar quando ultrapassa o alcance da magia.
+          </p>
+        </div>
+
+        <div class="content">
+          <h4>Zombaria Perversa</h4>
+          <small>Truque, encantamento</small>
+          <ul>
+            <li><strong>Tempo de Conjuração</strong>: 1 ação</li>
+            <li><strong>Alcance</strong>: 18 metros</li>
+            <li><strong>Componentes</strong>: V</li>
+            <li><strong>Duração</strong>: Instantânea</li>
+          </ul>
+          <p>
+            Você lança uma série de insultos carregados com sutis encantamentos
+            contra uma criatura à sua vista e no alcance da magia. Se o alvo
+            puder ouvir você (embora ele não precise lhe entender), ele deve ser
+            bem-sucedido em uma salvaguarda de Carisma. Se falhar, sofre ld4
+            pontos de dano psíquico e terá desvantagem na próxima jogada de
+            ataque que ele fizer antes do fim do próximo turno dele.
+          </p>
+          <p>
+            O dano desta magia aumenta em ld4 quando você alcança o 5° nível
+            (2d4), o 11° nível (3d4) e o 17° nível (4d4).
+          </p>
+
           <h4>Palavra Curativa</h4>
           <small>1° círculo, evocação</small>
           <ul>
@@ -524,23 +790,31 @@
         </div>
 
         <div class="content">
-          <h4>Curar Ferimentos</h4>
-          <small>1° círculo, evocação</small>
+          <h4>Despedaçar</h4>
+          <small>2° círculo, evocação</small>
           <ul>
             <li><strong>Tempo de Conjuração</strong>: 1 ação</li>
-            <li><strong>Alcance</strong>: Toque</li>
-            <li><strong>Componentes</strong>: V, S</li>
+            <li><strong>Alcance</strong>: 18 metros</li>
+            <li><strong>Componentes</strong>: V, S, M (uma lasca de mica)</li>
             <li><strong>Duração</strong>: Instantânea</li>
           </ul>
           <p>
-            Uma criatura tocada por você recupera um número de pontos de vida
-            igual a 1d8 + o modificador do seu atributo de conjuração ({{
-            atributes.charisma.modifier }}). Esta magia não tem efeito sobre
-            mortos-vivos ou constructos.
-            <br />
+            Um ruído súbito e estridente, dolorosamente intenso, irrompe a
+            partir de um ponto à sua escolha, no alcance da magia. Cada criatura
+            em uma esfera de 3 metros de raio centrado naquele ponto deve fazer
+            uma salvaguarda de Constituição. Se falhar, sofre 3d8 pontos de dano
+            trovejante, ou metade do dano em caso de sucesso. Uma criatura feita
+            de material inorgânico, como pedra, cristal ou metal tem desvantagem
+            nesta salvaguarda.
+          </p>
+          <p>
+            Um objeto não-mágico que não esteja sendo usado ou carregado também
+            sofre o dano se estiver na área da magia.
+          </p>
+          <p>
             <strong>Em Círculos Superiores</strong>. Ao conjurar esta magia
-            usando um espaço de magia de 2° círculo ou superior, a cura aumenta
-            em 1d8 para cada círculo do espaço acima do 1°.
+            usando um espaço de magia de 3° círculo ou superior, o dano aumenta
+            em ld8 para cada círculo do espaço acima do 2°.
           </p>
         </div>
 
@@ -587,7 +861,7 @@
       },
       constitution: {
         description: "Constituição",
-        proficient: false,
+        proficient: true,
         points: 14,
       },
       intelligence: {
@@ -608,124 +882,47 @@
     };
 
     const images_anime = [
-      {
-        file: "inspiration_violin_x5j1zc.png",
-      },
-      {
-        file: "horse_racing_qjjfsw.png",
-      },
-      {
-        file: "goddess_q9flg3.png",
-        landscape: true,
-      },
-      {
-        file: "hostile_m7tuja.png",
-      },
-      {
-        file: "rest_sound_gegstg.png",
-      },
-      {
-        file: "avance_flourish_o5xkoy.png",
-      },
-      {
-        file: "running_flourish_rjbffn.png",
-      },
-      {
-        file: "parade_glitter_usbzza.png",
-      },
-      {
-        file: "parade_pants_x0kcka.png",
-      },
-      {
-        file: "parade_feathers_hrdb1a.png",
-      },
-      {
-        file: "parade_violin_rlevg9.png",
-      },
-      {
-        file: "dancing_square_u8cjft.png",
-      },
-      {
-        file: "inspiration_violin_cover_scnziq.png",
-      },
-      {
-        file: "card_cbrjjs.png",
-      },
-      {
-        file: "dancing_court_enm6aj.png",
-      },
-      {
-        file: "dancing_guards_dh4vkk.png",
-      },
-      {
-        file: "violin_energitic_aor3cu.png",
-      },
-      {
-        file: "auto_violin_ispzs4.png",
-      },
-      {
-        file: "dancing_court_cover_ddljxc.png",
-      },
-      {
-        file: "vicious_mockery_rvldwv.png",
-      },
-      {
-        file: "desert_caravan_k4krno.png",
-      },
-      {
-        file: "sword_fighting_goblins_oo9qll.png",
-      },
-      {
-        file: "duel_wylyqx.png",
-      },
-      {
-        file: "fighting_horse_reveal_bob6um.png",
-      },
-      {
-        file: "fighting_house_psjx9w.png",
-      },
-      {
-        file: "show_fires_v7yyxn.png",
-      },
-      {
-        file: "show_cover_zuzr2k.png",
-      },
-      {
-        file: "reveal_swords_tqfdns.png",
-      },
-      {
-        file: "reveal_square_hxmaxd.png",
-      },
-      {
-        file: "reveal_aura_hskfib.png",
-      },
-      {
-        file: "reveal_square_cover_vym5eb.png",
-      },
-      {
-        file: "cutting_flourish_fiulzx.png",
-      },
-      {
-        file: "beach_brazilian_fmobnx.png",
-      },
+      "inspiration_violin_x5j1zc.png",
+      "horse_racing_qjjfsw.png",
+      "goddess_q9flg3.png",
+      "hostile_m7tuja.png",
+      "rest_sound_gegstg.png",
+      "avance_flourish_o5xkoy.png",
+      "running_flourish_rjbffn.png",
+      "parade_glitter_usbzza.png",
+      "parade_pants_x0kcka.png",
+      "parade_feathers_hrdb1a.png",
+      "parade_violin_rlevg9.png",
+      "dancing_square_u8cjft.png",
+      "inspiration_violin_cover_scnziq.png",
+      "card_cbrjjs.png",
+      "dancing_court_enm6aj.png",
+      "dancing_guards_dh4vkk.png",
+      "violin_energitic_aor3cu.png",
+      "auto_violin_ispzs4.png",
+      "dancing_court_cover_ddljxc.png",
+      "vicious_mockery_rvldwv.png",
+      "desert_caravan_k4krno.png",
+      "sword_fighting_goblins_oo9qll.png",
+      "duel_wylyqx.png",
+      "fighting_horse_reveal_bob6um.png",
+      "fighting_house_psjx9w.png",
+      "show_fires_v7yyxn.png",
+      "show_cover_zuzr2k.png",
+      "reveal_swords_tqfdns.png",
+      "reveal_square_hxmaxd.png",
+      "reveal_aura_hskfib.png",
+      "reveal_square_cover_vym5eb.png",
+      "cutting_flourish_fiulzx.png",
+      "beach_brazilian_fmobnx.png",
     ];
 
     const images_realist = [
-      {
-        file: "realist_rapier_ql2skt.png",
-      },
-      {
-        file: "realist_court_x6hov5.png",
-      },
-      {
-        file: "realist_sing_pn595g.png",
-      },
-      {
-        file: "realist_violin_xpdpgw.png",
-      },
-      {
-        file: "realist_carnaval_wcvagh.png",
-      },
+      "realist_rapier_ql2skt.png",
+      "realist_court_x6hov5.png",
+      "realist_sing_pn595g.png",
+      "realist_violin_xpdpgw.png",
+      "realist_carnaval_wcvagh.png",
     ];
 
     const getModifier = (value) => `${value >= 0 ? "+" : ""}${value}`;
@@ -734,13 +931,13 @@
       setup() {
         const levelBard = 3;
         const levelSorcerer = 1;
-        const proficiency = (levelBard + levelSorcerer + 1) / 2;
+        const proficiency = Math.floor((levelBard + levelSorcerer + 1) / 2);
 
         const listAtributes = Object.keys(atributes);
         listAtributes.forEach((key) => {
           const { proficient, points } = atributes[key];
 
-          const bonus = (points - 10) / 2;
+          const bonus = Math.floor((points - 10) / 2);
 
           atributes[key].bonus = bonus;
           atributes[key].modifier = getModifier(bonus);
@@ -751,7 +948,7 @@
 
         const hitPoints = `Barda (3d8+${
           atributes.constitution.bonus * levelBard
-        }) + Feiticeira (ld6+${atributes.constitution.bonus * levelSorcerer})`;
+        }) + Feiticeira (1d6+${atributes.constitution.bonus * levelSorcerer})`;
 
         return {
           listAtributes,
@@ -760,6 +957,7 @@
           images_anime,
           images_realist,
           hitPoints,
+          cndImages: "https://res.cloudinary.com/dqvb6qgtj/image/upload",
         };
       },
     }).mount("#app");
