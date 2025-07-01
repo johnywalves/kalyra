@@ -242,11 +242,27 @@
       </p>
     </section>
 
-    <h3>🖼️ Galeria</h3>
+    <h3>🖼️ Galeria - Anime</h3>
 
     <section class="gallery">
       <img
-        v-for="image in images"
+        v-for="image in images_anime"
+        sizes="(min-width: 25rem) 25rem, 95vw"
+        v-bind:srcset="`https://res.cloudinary.com/dqvb6qgtj/image/upload/c_auto,w_256,ar_2:3/${image.file} 256w,
+      https://res.cloudinary.com/dqvb6qgtj/image/upload/c_auto,w_512,ar_2:3/${image.file} 512w,
+      https://res.cloudinary.com/dqvb6qgtj/image/upload/c_auto,w_768,ar_2:3/${image.file} 768w,
+      https://res.cloudinary.com/dqvb6qgtj/image/upload/c_auto,w_1024,ar_2:3/${image.file} 1024w,
+      https://res.cloudinary.com/dqvb6qgtj/image/upload/c_auto,w_1280,ar_2:3/${image.file} 1280w`"
+        v-bind:src="`https://res.cloudinary.com/dqvb6qgtj/image/upload/c_auto,w_512,ar_2:3/${image.file}`"
+        alt=""
+      />
+    </section>
+
+    <h3>🖼️ Galeria - Realismo Fantástico</h3>
+
+    <section class="gallery">
+      <img
+        v-for="image in images_realist"
         sizes="(min-width: 25rem) 25rem, 95vw"
         v-bind:srcset="`https://res.cloudinary.com/dqvb6qgtj/image/upload/c_auto,w_256,ar_2:3/${image.file} 256w,
       https://res.cloudinary.com/dqvb6qgtj/image/upload/c_auto,w_512,ar_2:3/${image.file} 512w,
@@ -502,7 +518,7 @@
       },
     };
 
-    const images = [
+    const images_anime = [
       {
         file: "inspiration_violin_x5j1zc.png",
       },
@@ -518,6 +534,12 @@
       },
       {
         file: "rest_sound_gegstg.png",
+      },
+      {
+        file: "avance_flourish_o5xkoy.png",
+      },
+      {
+        file: "running_flourish_rjbffn.png",
       },
       {
         file: "parade_glitter_usbzza.png",
@@ -599,6 +621,21 @@
       },
     ];
 
+    const images_realist = [
+      {
+        file: "realist_rapier_ql2skt.png",
+      },
+      {
+        file: "realist_court_x6hov5.png",
+      },
+      {
+        file: "realist_sing_pn595g.png",
+      },
+      {
+        file: "realist_violin_xpdpgw.png",
+      },
+    ];
+
     const getModifier = (value) => `${value >= 0 ? "+" : ""}${value}`;
 
     createApp({
@@ -628,7 +665,8 @@
           listAtributes,
           atributes,
           proficiency,
-          images,
+          images_anime,
+          images_realist,
           hitPoints,
         };
       },
