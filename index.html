@@ -25,11 +25,6 @@
           Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
       }
 
-      ol,
-      ul {
-        list-style: none;
-      }
-
       a,
       a:hover,
       a:visited {
@@ -58,8 +53,13 @@
         & h4,
         & h5,
         & p,
+        & ul,
         & small {
           padding: 0 max(5vw, 1rem);
+        }
+
+        & h1 {
+          margin: 1rem 0 0.5rem;
         }
 
         & h3 {
@@ -72,6 +72,11 @@
 
         & p {
           margin-bottom: 0.25rem;
+          line-height: 175%;
+        }
+
+        & li {
+          margin: 0.25rem 0 0 1.25rem;
         }
 
         & small {
@@ -79,8 +84,6 @@
         }
 
         & section.gallery {
-          margin-top: 3rem;
-
           display: flex;
           flex-direction: row;
           flex-wrap: wrap;
@@ -108,7 +111,7 @@
     <small>Barda – Colégio da Espada – Nível 3</small>
     <small>Feiticeira – Alma Favorecida – Nível 1</small>
 
-    <h3>🛡️ Descrição</h3>
+    <h3>ℹ️ Descrição</h3>
     <p>
       Kalyra acredita ser uma deusa exilada – ou talvez apenas esquecida – da
       alegria, da arte e da chama passageira. Suas memórias são fragmentos de um
@@ -149,20 +152,21 @@
       {{ atributes[key].points }} ({{ atributes[key].modifier }})
     </p>
 
-    <h3>🧬 Salvaguardas</h3>
+    <h3>🎲 Salvaguardas</h3>
     <p v-for="key in listAtributes">
       <strong>{{ atributes[key].description }}</strong>
       {{ atributes[key].saveThrow }}
     </p>
 
-    <h3>Perícias</h3>
+    <h3>📘 Proficiência</h3>
     <p><strong>Ferramentas</strong>: Violino, Alaude e Medalhas</p>
     <p>
-      <strong>Proficiência</strong>: Acrobacia, Atuação, Enganação, Intimidação
-      e Persuasão
+      <strong>Perícias</strong>: Acrobacia, Atuação, Enganação, Intimidação e
+      Persuasão
     </p>
+    <p><strong>Idiomas</strong>: Comum, Élfico e Celestial</p>
 
-    <h3>Equipamentos</h3>
+    <h3>🎻Equipamentos</h3>
     <p>2 Rapieiras (1d8{{ atributes.dexterity.modifier }} - Finesse)</p>
     <p>Violino</p>
     <p>Kit de Artista</p>
@@ -170,7 +174,7 @@
     <section class="resources">
       <h3>🎭 Recursos:</h3>
 
-      <p><strong>Visão no Escuro</strong></p>
+      <p><strong>Visão no Escuro</strong> Visibilidade de 18m</p>
       <p>
         <strong>Ancestralidade Feérica:</strong> Imunidade dormir e vantagem
         contra ser enfeitiçado.
@@ -196,8 +200,11 @@
         <strong>Estilo de Luta (Combate com Duas Armas)</strong>: modificador de
         habilidade ao dano do segundo ataque
       </p>
-      <p><strong>Floreio de Lâminas</strong></p>
-      <p><strong>Magia Divina (Boa)</strong>: Habilidade de Curar Ferimentos</p>
+      <p>
+        <strong>Floreio de Lâminas</strong>: exibições impressionantes de proeza
+        e velocidade marcial
+      </p>
+      <p><strong>Magia Divina (Caótica)</strong>: Habilidade Perdição</p>
       <p>
         <strong>Favorecido pelos Deuses</strong>: adicionar 2d4 em falhas por
         descanso curto
@@ -222,9 +229,9 @@
       <p>Zombaria Viciosa (<em>Vicious Mockery</em>)</p>
 
       <h4>Magias de Nível 1:</h4>
-      <p>Queda Suave</p>
-      <p>Compreender Idiomas</p>
-      <p>Curar Ferimentos</p>
+      <p>Queda Suave (<em>Feather Fall</em>)</p>
+      <p>Compreender Idiomas (<em>Comprehend Languages</em>)</p>
+      <p>Curar Ferimentos (<em>Cure Wounds</em>)</p>
       <p>
         Fada Ilusória (<em>Faerie Fire</em>) – Para dar vantagem aos aliados
       </p>
@@ -259,7 +266,7 @@
     </section>
 
     <section class="skills">
-      <h3>Habilidades</h3>
+      <h3>💃🏼 Habilidades</h3>
 
       <h4>Visão no Escuro</h4>
       <p>
@@ -395,7 +402,7 @@
         desocupado dentro de 1,5 metros do alvo.
       </p>
 
-      <h4>Magia Divina (Boa)</h4>
+      <h4>Magia Divina (Caótica)</h4>
       <p>
         Seu vínculo com o divino permite que você aprenda magias da classe
         clérigo. Quando o sua característica como conjurador permite que você
@@ -412,26 +419,29 @@
         conhecidas. Se você substituir mais tarde essa magia, você deve
         substituí-la por uma magia da lista de magias do clérigo.
         <br />
-        (Afinidade: Bem | Magia: curar ferimentos)
+        (Afinidade: Caótica | Magia: Perdição)
+      </p>
+
+      <h4>Favorecido pelos Deuses</h4>
+      <p>
+        A partir do 1 o nível, o poder divino protege seu destino. Se você
+        falhar em um teste de resistência ou errar um ataque, pode rolar 2d4 e
+        adicioná-lo ao total,
       </p>
     </section>
 
     <section class="grimoire">
-      <h3>Grimório</h3>
+      <h3>📘 Grimório</h3>
 
       <h4>Palavra Curativa</h4>
+      <small>1° círculo, evocação</small>
+      <ul>
+        <li><strong>Tempo de Conjuração</strong>: 1 ação bônus</li>
+        <li><strong>Alcance</strong>: 18 metros</li>
+        <li><strong>Componentes</strong>: V</li>
+        <li><strong>Duração</strong>: Instantânea</li>
+      </ul>
       <p>
-        1° círculo, evocação
-        <br />
-        <strong>Tempo de Conjuração</strong>: 1 ação bônus
-        <br />
-        <strong>Alcance</strong>: 18 metros
-        <br />
-        <strong>Componentes</strong>: V
-        <br />
-        <strong>Duração</strong>: Instantânea
-        <br />
-        <br />
         Escolha uma criatura à sua vista e no alcance da magia. Ela recupera uma
         quantidade de pontos de vida igual a ld4 + seu modificador de atributo
         de conjuração. Esta magia não tem efeito sobre mortos-vivos ou
@@ -443,17 +453,14 @@
       </p>
 
       <h4>Curar Ferimentos</h4>
+      <small>1° círculo, evocação</small>
+      <ul>
+        <li><strong>Tempo de Conjuração</strong>: 1 ação</li>
+        <li><strong>Alcance</strong>: Toque</li>
+        <li><strong>Componentes</strong>: V, S</li>
+        <li><strong>Duração</strong>: Instantânea</li>
+      </ul>
       <p>
-        1 ° círculo, evocação
-        <br />
-        <strong>Tempo de Conjuração</strong>: 1 ação
-        <br />
-        <strong>Alcance</strong>: Toque
-        <br />
-        <strong>Componentes</strong>: V, S
-        <br />
-        <strong>Duração</strong>: Instantânea
-        <br />
         Uma criatura tocada por você recupera um número de pontos de vida igual
         a ld8 + o modificador do seu atributo de conjuração ({{
         atributes.charisma.modifier }}). Esta magia não tem efeito sobre
@@ -461,7 +468,28 @@
         <br />
         <strong>Em Círculos Superiores</strong>. Ao conjurar esta magia usando
         um espaço de magia de 2° círculo ou superior, a cura aumenta em ld8 para
-        cada círculo do espaço acima do 1 °.
+        cada círculo do espaço acima do 1°.
+      </p>
+
+      <h4>Perdição</h4>
+      <small>1° círculo, encantamento</small>
+      <ul>
+        <li><strong>Tempo de Conjuração</strong>: 1 ação</li>
+        <li><strong>Alcance</strong>: 9 metros</li>
+        <li><strong>Componentes</strong>: V, S, M (um gota de sangue)</li>
+        <li><strong>Duração</strong>: Concentração, até 1 minuto</li>
+      </ul>
+
+      <p>
+        Até três criaturas, à sua escolha, que você possa ver dentro do alcance,
+        devem realizar um teste de resistência de Carisma. Sempre que um alvo
+        que falhou nessa resistência realizar uma jogada de ataque ou um teste
+        de resistência antes da magia acabar, o alvo deve rolar um d4 e subtrair
+        o valor rolado da jogada de ataque ou teste de resistência.
+        <br />
+        <strong>Em Círculos Superiores</strong>. Quando você conjurar essa magia
+        usando um espaço de magia de 2° nível ou superior, você pode afetar uma
+        criatura adicional para cada nível do espaço acima do 1°.
       </p>
     </section>
   </body>
@@ -605,8 +633,8 @@
       setup() {
         const levelBard = 3;
         const levelSorcerer = 1;
+        const proficiency = (levelBard + levelSorcerer + 1) / 2;
 
-        const proficiency = +2;
         const listAtributes = Object.keys(atributes);
         listAtributes.forEach((key) => {
           const { proficient, points } = atributes[key];
@@ -614,7 +642,7 @@
           const bonus = (points - 10) / 2;
 
           atributes[key].bonus = bonus;
-          atributes[key].modifier = `${bonus >= 0 ? "+" : ""}${bonus}`;
+          atributes[key].modifier = getModifier(bonus);
           atributes[key].saveThrow = getModifier(
             bonus + (proficient ? proficiency : 0)
           );
