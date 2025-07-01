@@ -34,8 +34,13 @@
 
       /* Content CSS */
       :root {
-        --color-background: #282c35;
-        --color-text: #eeeeee;
+        --color-background: #eeeeee;
+        --color-text: #282c35;
+
+        @media (prefers-color-scheme: dark) {
+          --color-background: #282c35;
+          --color-text: #eeeeee;
+        }
       }
 
       body {
@@ -91,6 +96,30 @@
           align-items: center;
           gap: 2rem;
         }
+
+        & div.columns {
+          display: grid;
+          grid-template-columns: 1fr 1fr;
+          gap: 2rem;
+          padding: 0 max(5vw, 1rem);
+
+          & h1,
+          & h2,
+          & h3,
+          & h4,
+          & h5,
+          & p,
+          & ul,
+          & small {
+            padding-left: 0;
+            padding-right: 0;
+          }
+
+          @media (max-width: 980px) {
+            grid-template-columns: 1fr;
+            gap: 0;
+          }
+        }
       }
     </style>
   </head>
@@ -140,36 +169,56 @@
       deixou sua marca.
     </p>
 
-    <h3>🛡️ Classe de Armadura (CA):</h3>
-    <p>15 (Armadura de Couro Batido + Destreza)</p>
+    <div class="columns">
+      <section>
+        <h3>🛡️ Classe de Armadura (CA):</h3>
+        <p>15 (Armadura de Couro Batido + Destreza)</p>
+      </section>
 
-    <h3>🧪 Pontos de Vida (PV):</h3>
-    <p>{{ hitPoints }}</p>
+      <section>
+        <h3>🧪 Pontos de Vida (PV):</h3>
+        <p>{{ hitPoints }}</p>
+      </section>
+    </div>
 
-    <h3>🧬 Atributos</h3>
-    <p v-for="key in listAtributes">
-      <strong>{{ atributes[key].description }}</strong>
-      {{ atributes[key].points }} ({{ atributes[key].modifier }})
-    </p>
+    <div class="columns">
+      <div content="content">
+        <h3>🧬 Atributos</h3>
+        <p v-for="key in listAtributes">
+          <strong>{{ atributes[key].description }}</strong>
+          {{ atributes[key].points }} ({{ atributes[key].modifier }})
+        </p>
+      </div>
 
-    <h3>🎲 Salvaguardas</h3>
-    <p v-for="key in listAtributes">
-      <strong>{{ atributes[key].description }}</strong>
-      {{ atributes[key].saveThrow }}
-    </p>
+      <div content="content">
+        <h3>🎲 Salvaguardas</h3>
+        <p v-for="key in listAtributes">
+          <strong>{{ atributes[key].description }}</strong>
+          {{ atributes[key].saveThrow }}
+        </p>
+      </div>
+    </div>
 
-    <h3>📘 Proficiência</h3>
-    <p><strong>Ferramentas</strong>: Violino, Alaude e Medalhas</p>
-    <p>
-      <strong>Perícias</strong>: Acrobacia, Atuação, Enganação, Intimidação e
-      Persuasão
-    </p>
-    <p><strong>Idiomas</strong>: Comum, Élfico e Celestial</p>
+    <div class="columns">
+      <div content="content">
+        <h3>📘 Proficiência</h3>
+        <p><strong>Ferramentas</strong>: Violino, Alaude e Medalhas</p>
+        <p><strong>Armaduras</strong>: Leves e Médias</p>
+        <p><strong>Armas</strong>: Leves, Rapier e Cimitarra</p>
+        <p>
+          <strong>Perícias</strong>: Acrobacia, Atuação, Enganação, Intimidação
+          e Persuasão
+        </p>
+        <p><strong>Idiomas</strong>: Comum, Élfico e Celestial</p>
+      </div>
 
-    <h3>🎻Equipamentos</h3>
-    <p>2 Rapieiras (1d8{{ atributes.dexterity.modifier }} - Finesse)</p>
-    <p>Violino</p>
-    <p>Kit de Artista</p>
+      <div content="content">
+        <h3>🎻Equipamentos</h3>
+        <p>2 Rapieiras (1d8{{ atributes.dexterity.modifier }} - Finesse)</p>
+        <p>Violino</p>
+        <p>Kit de Artista</p>
+      </div>
+    </div>
 
     <section class="resources">
       <h3>🎭 Recursos:</h3>
@@ -187,7 +236,10 @@
         <strong>Pau pra Toda Obra</strong>: metade da proficiência testes não
         proficientes
       </p>
-      <p><strong>Canção de Descanso</strong>: cura de ld6 no descanso curto</p>
+      <p>
+        <strong>Canção de Descanso</strong>: cura adicional de 1d6 no descanso
+        curto
+      </p>
       <p>
         <strong>Especialista</strong>: dobrar proficiência em habilidade
         proficientes
@@ -310,7 +362,7 @@
         Você pode inspirar os outros por meio da música ou das palavras. Para
         isso, no seu turno, deve usar uma ação bônus para escolher uma criatura
         que não seja você mesmo, que esteja a no máximo 18 metros de distância,
-        e que seja capaz de ouvi-lo. Essa criatura ganha ld6 de Inspiração de
+        e que seja capaz de ouvi-lo. Essa criatura ganha 1d6 de Inspiração de
         Bardo.
         <br />
         Uma vez durante os próximos 10 minutos, essa criatura poderá jogar o d6
@@ -328,7 +380,7 @@
         ao final de um descanso longo.
         <br />
         Seu dado de Inspiração de Bardo muda quando você alcança certos níveis
-        nesta classe. O dado se torna ld8 no 50 nível, ldlO no 10° e ldl2 no 15°
+        nesta classe. O dado se torna 1d8 no 50 nível, 1dlO no 10° e 1dl2 no 15°
         nível.
       </p>
 
@@ -345,11 +397,11 @@
         música ou discurso tranquilizador para ajudar a revitalizar seus aliados
         feridos. Ao final do descanso, se você ou quaisquer criaturas amigáveis
         que possam ouvir sua atuação tiverem recuperado pontos de vida devido ao
-        gasto de um ou mais Dados de Vida, todos recuperam ld6 pontos de vida a
+        gasto de um ou mais Dados de Vida, todos recuperam 1d6 pontos de vida a
         mais.
         <br />
         A quantidade de pontos de vida adicionais aumenta quando você chega a
-        certos níveis nesta classe: ld8 no 9 ° nível, ldlO no 13° e ldl2 no 17°
+        certos níveis nesta classe: 1d8 no 9° nível, 1dlO no 13° e 1dl2 no 17°
         nível.
       </p>
 
@@ -378,11 +430,11 @@
         Escolha uma das seguintes opções. Você não pode escolher um estilo uma
         opção mais de uma vez, mesmo que algo no jogo lhe permita.
         <br />
-        <strong>Duelo.</strong> Quando você está empunhando uma arma corpo a
+        <strong>Duelo</strong>. Quando você está empunhando uma arma corpo a
         corpo em uma mão e nenhuma outra, você ganha um bônus de +2 nas rolagens
         de ataque com essa arma.
         <br />
-        <strong>Combate com Duas Armas.</strong> Quando você se empenha em duas
+        <strong>Combate com Duas Armas</strong>. Quando você se empenha em duas
         armas, você pode adicionar o modificador de habilidade ao dano do
         segundo ataque.
       </p>
@@ -398,18 +450,18 @@
         uma das seguintes opções de Floreios de Lâmina de sua escolha. Você pode
         usar apenas uma opção por turno.
         <br />
-        <strong>Floreio Defensivo.</strong> Você pode gastar uma Inspiração de
+        <strong>Floreio Defensivo</strong>. Você pode gastar uma Inspiração de
         Bardo para causar dano extra ao alvo que acerta. O dano é igual ao
         número que você rola no dado de inspiração de bardo. Você também
         adiciona o número rolado a sua CA até o início de seu próximo turno.
         <br />
-        <strong>Floreio Cortante.</strong> Você pode gastar uma de suas
+        <strong>Floreio Cortante</strong>. Você pode gastar uma de suas
         Inspirações de Bardo para causar dano extra ao alvo que acerta e a
         qualquer outra criatura de sua escolha que você possa a 1,5 metros de
         você. O dano é igual ao número que você rola no dado de inspiração de
         bardo.
         <br />
-        <strong>Floreio Móvel.</strong> Você pode gastar uma de suas Inspirações
+        <strong>Floreio Móvel</strong>. Você pode gastar uma de suas Inspirações
         de Bardo para causar dano extra ao alvo que acerta. O dano é igual ao
         número que você rola no dado de inspiração de bardo. Você também pode
         empurrar o alvo até 1,5 metros de distância de você, além de um valor de
@@ -422,9 +474,9 @@
       <p>
         Seu vínculo com o divino permite que você aprenda magias da classe
         clérigo. Quando o sua característica como conjurador permite que você
-        aprenda ou substitua um truque ou uma magia de feiticeiro de 1 o nível
-        ou superior, você pode escolher a nova magia da lista de magias do
-        clérigo ou da lista de magias do feiticeiro. Você deve obedecer todas as
+        aprenda ou substitua um truque ou uma magia de feiticeiro de 1° nível ou
+        superior, você pode escolher a nova magia da lista de magias do clérigo
+        ou da lista de magias do feiticeiro. Você deve obedecer todas as
         restrições para selecionar a magia, e isso a toma uma magia de
         feiticeiro para você.
         <br />
@@ -440,8 +492,8 @@
 
       <h4>Favorecido pelos Deuses</h4>
       <p>
-        A partir do 1 o nível, o poder divino protege seu destino. Se você
-        falhar em um teste de resistência ou errar um ataque, pode rolar 2d4 e
+        A partir do 1° nível, o poder divino protege seu destino. Se você falhar
+        em um teste de resistência ou errar um ataque, pode rolar 2d4 e
         adicioná-lo ao total,
       </p>
     </section>
@@ -449,64 +501,73 @@
     <section class="grimoire">
       <h3>📘 Grimório</h3>
 
-      <h4>Palavra Curativa</h4>
-      <small>1° círculo, evocação</small>
-      <ul>
-        <li><strong>Tempo de Conjuração</strong>: 1 ação bônus</li>
-        <li><strong>Alcance</strong>: 18 metros</li>
-        <li><strong>Componentes</strong>: V</li>
-        <li><strong>Duração</strong>: Instantânea</li>
-      </ul>
-      <p>
-        Escolha uma criatura à sua vista e no alcance da magia. Ela recupera uma
-        quantidade de pontos de vida igual a ld4 + seu modificador de atributo
-        de conjuração. Esta magia não tem efeito sobre mortos-vivos ou
-        constructos.
-        <br />
-        <strong>Em Círculos Superiores</strong>. Ao conjurar esta magia usando
-        um espaço de magia de 2° círculo ou superior, a cura aumenta em ld4 para
-        cada círculo do espaço acima do 1 °
-      </p>
+      <div class="columns">
+        <div class="content">
+          <h4>Palavra Curativa</h4>
+          <small>1° círculo, evocação</small>
+          <ul>
+            <li><strong>Tempo de Conjuração</strong>: 1 ação bônus</li>
+            <li><strong>Alcance</strong>: 18 metros</li>
+            <li><strong>Componentes</strong>: V</li>
+            <li><strong>Duração</strong>: Instantânea</li>
+          </ul>
+          <p>
+            Escolha uma criatura à sua vista e no alcance da magia. Ela recupera
+            uma quantidade de pontos de vida igual a 1d4 + seu modificador de
+            atributo de conjuração. Esta magia não tem efeito sobre mortos-vivos
+            ou constructos.
+            <br />
+            <strong>Em Círculos Superiores</strong>. Ao conjurar esta magia
+            usando um espaço de magia de 2° círculo ou superior, a cura aumenta
+            em 1d4 para cada círculo do espaço acima do 1°
+          </p>
+        </div>
 
-      <h4>Curar Ferimentos</h4>
-      <small>1° círculo, evocação</small>
-      <ul>
-        <li><strong>Tempo de Conjuração</strong>: 1 ação</li>
-        <li><strong>Alcance</strong>: Toque</li>
-        <li><strong>Componentes</strong>: V, S</li>
-        <li><strong>Duração</strong>: Instantânea</li>
-      </ul>
-      <p>
-        Uma criatura tocada por você recupera um número de pontos de vida igual
-        a ld8 + o modificador do seu atributo de conjuração ({{
-        atributes.charisma.modifier }}). Esta magia não tem efeito sobre
-        mortos-vivos ou constructos.
-        <br />
-        <strong>Em Círculos Superiores</strong>. Ao conjurar esta magia usando
-        um espaço de magia de 2° círculo ou superior, a cura aumenta em ld8 para
-        cada círculo do espaço acima do 1°.
-      </p>
+        <div class="content">
+          <h4>Curar Ferimentos</h4>
+          <small>1° círculo, evocação</small>
+          <ul>
+            <li><strong>Tempo de Conjuração</strong>: 1 ação</li>
+            <li><strong>Alcance</strong>: Toque</li>
+            <li><strong>Componentes</strong>: V, S</li>
+            <li><strong>Duração</strong>: Instantânea</li>
+          </ul>
+          <p>
+            Uma criatura tocada por você recupera um número de pontos de vida
+            igual a 1d8 + o modificador do seu atributo de conjuração ({{
+            atributes.charisma.modifier }}). Esta magia não tem efeito sobre
+            mortos-vivos ou constructos.
+            <br />
+            <strong>Em Círculos Superiores</strong>. Ao conjurar esta magia
+            usando um espaço de magia de 2° círculo ou superior, a cura aumenta
+            em 1d8 para cada círculo do espaço acima do 1°.
+          </p>
+        </div>
 
-      <h4>Perdição</h4>
-      <small>1° círculo, encantamento</small>
-      <ul>
-        <li><strong>Tempo de Conjuração</strong>: 1 ação</li>
-        <li><strong>Alcance</strong>: 9 metros</li>
-        <li><strong>Componentes</strong>: V, S, M (um gota de sangue)</li>
-        <li><strong>Duração</strong>: Concentração, até 1 minuto</li>
-      </ul>
+        <div class="content">
+          <h4>Perdição</h4>
+          <small>1° círculo, encantamento</small>
+          <ul>
+            <li><strong>Tempo de Conjuração</strong>: 1 ação</li>
+            <li><strong>Alcance</strong>: 9 metros</li>
+            <li><strong>Componentes</strong>: V, S, M (um gota de sangue)</li>
+            <li><strong>Duração</strong>: Concentração, até 1 minuto</li>
+          </ul>
 
-      <p>
-        Até três criaturas, à sua escolha, que você possa ver dentro do alcance,
-        devem realizar um teste de resistência de Carisma. Sempre que um alvo
-        que falhou nessa resistência realizar uma jogada de ataque ou um teste
-        de resistência antes da magia acabar, o alvo deve rolar um d4 e subtrair
-        o valor rolado da jogada de ataque ou teste de resistência.
-        <br />
-        <strong>Em Círculos Superiores</strong>. Quando você conjurar essa magia
-        usando um espaço de magia de 2° nível ou superior, você pode afetar uma
-        criatura adicional para cada nível do espaço acima do 1°.
-      </p>
+          <p>
+            Até três criaturas, à sua escolha, que você possa ver dentro do
+            alcance, devem realizar um teste de resistência de Carisma. Sempre
+            que um alvo que falhou nessa resistência realizar uma jogada de
+            ataque ou um teste de resistência antes da magia acabar, o alvo deve
+            rolar um d4 e subtrair o valor rolado da jogada de ataque ou teste
+            de resistência.
+            <br />
+            <strong>Em Círculos Superiores</strong>. Quando você conjurar essa
+            magia usando um espaço de magia de 2° nível ou superior, você pode
+            afetar uma criatura adicional para cada nível do espaço acima do 1°.
+          </p>
+        </div>
+      </div>
     </section>
   </body>
 
@@ -661,6 +722,9 @@
       },
       {
         file: "realist_violin_xpdpgw.png",
+      },
+      {
+        file: "realist_carnaval_wcvagh.png",
       },
     ];
 
