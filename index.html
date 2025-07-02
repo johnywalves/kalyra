@@ -122,6 +122,10 @@
           margin: 0.25rem 0 0 1.25rem;
         }
 
+        & ul {
+          margin-bottom: 0.5rem;
+        }
+
         & small {
           margin-bottom: 0.25rem;
         }
@@ -168,7 +172,13 @@
   <body id="app">
     <img
       class="feature"
-      src="https://res.cloudinary.com/dqvb6qgtj/image/upload/c_scale,h_200/goddess_feature_pvsiau.png"
+      v-bind:srcset="`${cndImages}/c_thumb,g_face,w_256,h_360/goddess_q9flg3.png 256w,
+            ${cndImages}/c_thumb,g_face,w_512,h_360/goddess_q9flg3.png 512w,
+            ${cndImages}/c_thumb,g_face,w_768,h_360/goddess_q9flg3.png 768w,
+            ${cndImages}/c_thumb,g_face,w_1024,h_360/goddess_q9flg3.png 1024w,
+            ${cndImages}/c_thumb,g_face,w_1280,h_320/goddess_q9flg3.png 1280w,
+            ${cndImages}/c_thumb,g_face,w_1366,h_280/goddess_q9flg3.png 1366w`"
+      v-bind:src="`${cndImages}/c_thumb,g_face,w_1280,h_240/goddess_q9flg3.png`"
       alt=""
     />
 
@@ -318,32 +328,58 @@
           <h3>🎶 Magias conhecidas:</h3>
 
           <h4>Truques:</h4>
-          <p>Prestidigitação</p>
-          <p>Golpe Certeiro</p>
-          <p>Ilusão Menor</p>
-          <p>Proteção contra Lâminas</p>
-          <p>Reparar</p>
-          <p>Luzes Dançantes</p>
-          <p>Zombaria Perversa (<em>Vicious Mockery</em>)</p>
+          <a href="#prestidigitation">
+            <p>Prestidigitação (<em>Prestidigitation</em>)</p>
+          </a>
+          <a href="#sure_shot">
+            <p>Golpe Certeiro (<em>Sure Shot</em>)</p>
+          </a>
+          <a href="#minor_illusion">
+            <p>Ilusão Menor (<em>Minor Illusion</em>)</p>
+          </a>
+          <a href="#blade_barrier">
+            <p>Proteção contra Lâminas (<em>Blade Barrier</em>)</p>
+          </a>
+          <a href="#repair">
+            <p>Reparar (<em>Repair</em>)</p>
+          </a>
+          <a href="#dancing_lights">
+            <p>Luzes Dançantes (<em>Dancing Lights</em>)</p>
+          </a>
+          <a href="#vicious_mockery">
+            <p>Zombaria Perversa (<em>Vicious Mockery</em>)</p>
+          </a>
 
           <h4>Magias de Nível 1:</h4>
-          <p>Queda Suave (<em>Feather Fall</em>)</p>
-          <p>Compreender Idiomas (<em>Comprehend Languages</em>)</p>
-          <p>Curar Ferimentos (<em>Cure Wounds</em>)</p>
-          <p>Perdição (<em>Damnation</em>)</p>
-          <p>Palavra Curativa (<em>Healing Word</em>) – Cura rápida</p>
-          <p>
-            Disfarçar-se (<em>Disguise Self</em>) – Perfeita pra artista
-            itinerante
-          </p>
-          <p>Falar com animaiis</p>
+          <a href="#comprehend_languages">
+            <p>Compreender Idiomas (<em>Comprehend Languages</em>)</p>
+          </a>
+          <a href="#cure_wounds">
+            <p>Curar Ferimentos (<em>Cure Wounds</em>)</p>
+          </a>
+          <a href="#disguise_self">
+            <p>Disfarçar-se (<em>Disguise Self</em>)</p>
+          </a>
+          <a href="#speak_with_animals">
+            <p>Falar com Animais (<em>Speak with Animals</em>)</p>
+          </a>
+          <a href="#damnation">
+            <p>Perdição (<em>Damnation</em>)</p>
+          </a>
+          <a href="#healing_word">
+            <p>Palavra Curativa (<em>Healing Word</em>)</p>
+          </a>
+          <a href="#feather_fall">
+            <p>Queda Suave (<em>Feather Fall</em>)</p>
+          </a>
 
           <h4>Magias de Nível 2:</h4>
-          <p>Restauração Menor</p>
-          <p>
-            Despedaçar (<em>Shatter</em>) – Um ataque explosivo, com som
-            estrondoso
-          </p>
+          <a href="#shatter">
+            <p>Despedaçar (<em>Shatter</em>)</p>
+          </a>
+          <a href="#lesser_restoration">
+            <p>Restauração Menor (<em>Lesser Restoration</em>)</p>
+          </a>
         </section>
       </div>
     </div>
@@ -553,7 +589,7 @@
       <h3>📘 Grimório</h3>
 
       <div class="columns">
-        <div class="content">
+        <div id="cure_wounds" class="content">
           <h4>Curar Ferimentos</h4>
           <small>1° círculo, evocação</small>
           <ul>
@@ -574,7 +610,7 @@
           </p>
         </div>
 
-        <div class="content">
+        <div id="speak_with_animals" class="content">
           <h4>Falar com Animais</h4>
           <small>1 ° círculo, adivinhação (ritual)</small>
           <ul>
@@ -593,7 +629,7 @@
           </p>
         </div>
 
-        <div class="content">
+        <div id="lesser_restoration" class="content">
           <h4>Restauração Menor</h4>
           <small>2° círculo, abjuração</small>
           <ul>
@@ -609,7 +645,7 @@
           </p>
         </div>
 
-        <div class="content">
+        <div id="prestidigitation" class="content">
           <h4>Prestidigitação</h4>
           <small>Truque, transmutação</small>
           <ul>
@@ -655,7 +691,7 @@
           </p>
         </div>
 
-        <div class="content">
+        <div id="sure_shot" class="content">
           <h4>Golpe Certeiro</h4>
           <small>Truque, adivinhação</small>
           <ul>
@@ -672,7 +708,7 @@
           </p>
         </div>
 
-        <div class="content">
+        <div id="minor_illusion" class="content">
           <h4>Ilusão Menor</h4>
           <small>Truque, ilusão</small>
           <ul>
@@ -709,7 +745,7 @@
           </p>
         </div>
 
-        <div class="content">
+        <div id="blade_barrier" class="content">
           <h4>Proteção contra Lâminas</h4>
           <small>Truque,abjuração</small>
           <ul>
@@ -723,7 +759,9 @@
             final do seu próximo turno, você tem resistência contra dano
             contundente, cortante e perfurante causado por ataques armados.
           </p>
+        </div>
 
+        <div id="dancing_lights" class="content">
           <h4>Luzes Dançantes</h4>
           <small>Truque, evocação</small>
           <ul>
@@ -751,7 +789,7 @@
           </p>
         </div>
 
-        <div class="content">
+        <div id="vicious_mockery" class="content">
           <h4>Zombaria Perversa</h4>
           <small>Truque, encantamento</small>
           <ul>
@@ -772,7 +810,9 @@
             O dano desta magia aumenta em ld4 quando você alcança o 5° nível
             (2d4), o 11° nível (3d4) e o 17° nível (4d4).
           </p>
+        </div>
 
+        <div id="healing_word" class="content">
           <h4>Palavra Curativa</h4>
           <small>1° círculo, evocação</small>
           <ul>
@@ -793,7 +833,7 @@
           </p>
         </div>
 
-        <div class="content">
+        <div id="shatter" class="content">
           <h4>Despedaçar</h4>
           <small>2° círculo, evocação</small>
           <ul>
@@ -822,7 +862,78 @@
           </p>
         </div>
 
-        <div class="content">
+        <div id="comprehend_languages" class="content">
+          <h4>Compreender Idiomas</h4>
+          <small>1° círculo, adivinhação (ritual)</small>
+          <ul>
+            <li><strong>Tempo de Conjuração</strong>: 1 ação</li>
+            <li><strong>Alcance</strong>: Pessoal</li>
+            <li>
+              <strong>Componentes</strong>: V, S, M (uma pitada de fuligem e
+              sal)
+            </li>
+            <li><strong>Duração</strong>: 1 hora</li>
+          </ul>
+          <p>
+            Enquanto a magia durar, você entende o significado literal de
+            qualquer idioma falado que ouvir. Você também entende qualquer
+            idioma escrito que veja, mas deve tocar a superfície sobre a qual as
+            palavras estão escritas. Demora cerca de 1 minuto para ler uma
+            página de texto.
+          </p>
+          <p>
+            Esta magia não decodifica mensagens secretas em um texto ou um
+            glifo, como um selo arcano, que não faça parte de um idioma escrito.
+          </p>
+        </div>
+
+        <div id="repair" class="content">
+          <h4>Reparar</h4>
+          <small>Truque, transmutação</small>
+          <ul>
+            <li><strong>Tempo de Conjuração</strong>: 1 minuto</li>
+            <li><strong>Alcance</strong>: Toque</li>
+            <li><strong>Componentes</strong>: V, S, M (duas magnetitas)</li>
+            <li><strong>Duração</strong>: Instantânea</li>
+          </ul>
+
+          <p>
+            Esta magia repara um objeto quebrado ou rompido que você toque, como
+            um elo de corrente quebrp.do, duas metades de uma chave quebrada, um
+            manto rasgado ou um odre vazando. Se a quebra ou ruptura não for
+            maior do que 30 centímetros em qualquer direção, você a repara sem
+            deixar traços do dano anterior.
+          </p>
+          <p>
+            Esta magia pode reparar um item mágico ou constructo, mas não pode
+            restaurar a magia de tal objeto.
+          </p>
+        </div>
+
+        <div id="feather_fall" class="content">
+          <h4>Queda Suave</h4>
+          <small>1° círculo, transmutação</small>
+          <ul>
+            <li>
+              <strong>Tempo de Conjuração</strong>: 1 reação, executada quando
+              você ou uma criatura a 18 metros do seu alcance cai
+            </li>
+            <li><strong>Alcance</strong>: 18 metros</li>
+            <li>
+              <strong>Componentes</strong>: V, M (uma pena pequena ou penugem)
+            </li>
+            <li><strong>Duração</strong>: 1 minuto</li>
+          </ul>
+          <p>
+            Escolha até cinco criaturas no alcance da magia e que estejam
+            caindo. A velocidade de queda de uma criatura é reduzida para 18
+            metros por rodada enquanto a magia durar. Se a criatura pousar antes
+            do fim da magia, não sofrerá dano por queda, podendo aterrissar eiv-
+            pé, e a magia se encerra para ela.
+          </p>
+        </div>
+
+        <div id="damnation" class="content">
           <h4>Perdição</h4>
           <small>1° círculo, encantamento</small>
           <ul>
@@ -843,6 +954,42 @@
             <strong>Em Círculos Superiores</strong>. Quando você conjurar essa
             magia usando um espaço de magia de 2° nível ou superior, você pode
             afetar uma criatura adicional para cada nível do espaço acima do 1°.
+          </p>
+        </div>
+
+        <div id="disguise_self" class="content">
+          <h4>Disfarçar-se</h4>
+          <small>1° círculo, ilusão</small>
+          <ul>
+            <li><strong>Tempo de Conjuração</strong>: 1 ação</li>
+            <li><strong>Alcance</strong>: Pessoal</li>
+            <li><strong>Componentes</strong>: V, S</li>
+            <li><strong>Duração</strong>: 1 hora</li>
+          </ul>
+          <p>
+            Você faz com que você mesmo - incluindo suas roupas, armaduras,
+            armas e outros pertences que esteja carregando - ganhe outra
+            aparência, enquanto a magia durar ou até que você use sua ação para
+            encerrá-la. Você pode parecer 30 centímetros mais baixo ou mais
+            alto, e parecer magro, gordo ou algo entre os dois. Você não pode
+            alterar o seu tipo de corpo, portanto, deve adotar uma forma que
+            tenha a mesma disposição básica de membros. No mais, a extensão da
+            ilusão cabe a você.
+          </p>
+          <p>
+            As alterações feitas por esta magia não se sustentam diante de uma
+            inspeção física. Por exemplo, se você usar esta magia para adicionar
+            um chapéu à sua indumentária, objetos atravessam o chapéu, e quem o
+            tocar não sentirá nada ou sentirá sua cabeça e cabelos. Se você usar
+            esta magia para parecer mais magro do que é, alguém que estenda a
+            mão para tocá-lo pode esbarrar em você enquanto ela ainda estiver,
+            aparentemente, tocando o ar.
+          </p>
+          <p>
+            Para descobrir que você está disfarçado, uma criatura pode usar a
+            ação dela para inspecionar sua aparência, devendo ser bem-sucedida
+            em um teste de Inteligência (Investigação) contra a CD para evitar
+            sua magia.
           </p>
         </div>
       </div>
