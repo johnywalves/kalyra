@@ -126,17 +126,6 @@
           margin-bottom: 0.25rem;
         }
 
-        & section.gallery {
-          display: flex;
-          flex-direction: row;
-          flex-wrap: wrap;
-          justify-content: center;
-          align-items: center;
-          gap: 2rem;
-
-          margin-top: 0.5rem;
-        }
-
         & div.columns {
           display: grid;
           grid-template-columns: 1fr 1fr;
@@ -160,6 +149,42 @@
           & div.columns {
             grid-template-columns: 1fr;
             gap: 0;
+          }
+        }
+
+        & section.gallery {
+          display: flex;
+          flex-direction: row;
+          flex-wrap: wrap;
+          justify-content: center;
+          align-items: center;
+          gap: 2rem;
+
+          margin-top: 0.5rem;
+        }
+
+        & section.references {
+          display: flex;
+          flex-direction: column;
+          gap: 2rem;
+
+          & div.text {
+            margin-bottom: 2rem;
+
+            & p {
+              margin-top: 0.5rem;
+            }
+          }
+
+          & div.video {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            & iframe {
+              border: none;
+              outline: none;
+            }
           }
         }
       }
@@ -844,6 +869,138 @@
             magia usando um espaço de magia de 2° nível ou superior, você pode
             afetar uma criatura adicional para cada nível do espaço acima do 1°.
           </p>
+        </div>
+      </div>
+    </section>
+
+    <section id="references" class="references">
+      <h3>🧵 Referências</h3>
+      <p>
+        Kalyra é uma mistura caótica dessas referências: a confiança de Tengen,
+        o astral de Miku, o duelo cômico de Inigo, a atitude de Hibana e a
+        musicalidade de Lindsey. O resultado é uma personagem que rouba a cena
+        seja com um golpe preciso, uma canção ou uma gargalhada.
+      </p>
+
+      <div class="columns">
+        <div class="text">
+          <h4>Tengen Uzui (Demon Slayer)</h4>
+          <small>Confiança extravagante</small>
+          <p>
+            Ela age como se fosse a estrela de qualquer situação – seja em
+            combate, música ou sedução – sempre com pose dramática e frases de
+            efeito. Assim como Tengen, ela vê a vida como um espetáculo.
+          </p>
+        </div>
+
+        <div class="video">
+          <iframe
+            width="560"
+            height="315"
+            src="https://www.youtube.com/embed/_1XjvWVQLpI?si=BaSt8-Y1d0PuREkR"
+            title="YouTube video player"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            referrerpolicy="strict-origin-when-cross-origin"
+            allowfullscreen
+          ></iframe>
+        </div>
+      </div>
+
+      <div class="columns">
+        <div class="text">
+          <h4>"Brazilian Hatsune Miku" (Memes da Internet)</h4>
+          <small>Energia contagiante e alegria absurdamente vibrante</small>
+          <p>
+            Sua personalidade é hipercarismática, transformando até situações
+            sombrias em "festivais". Ela espalha entusiasmo como uma "Miku
+            caótica de taverna", usando música e dança para unir (ou distrair)
+            pessoas.
+          </p>
+        </div>
+
+        <div class="video">
+          <iframe
+            width="560"
+            height="315"
+            src="https://www.youtube.com/embed/gjbguYbJQNo?si=K5qH8u8mU9XzIRhB"
+            title="YouTube video player"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            referrerpolicy="strict-origin-when-cross-origin"
+            allowfullscreen
+          ></iframe>
+        </div>
+      </div>
+
+      <div class="columns">
+        <div class="text">
+          <h4>Inigo Montoya (The Princess Bride)</h4>
+          <small>Estilo de combate zombeteiro com rapieiras</small>
+          <p>
+            Luta com duas rapieiras de forma acrobática, provoca inimigos com
+            piadas durante a batalha ("Você luta como um camponês bêbado!") e
+            adora duelos estilizados. Porém, diferentemente de Inigo, ela não
+            busca vingança – só diversão.
+          </p>
+        </div>
+
+        <div class="video">
+          <iframe
+            width="560"
+            height="315"
+            src="https://www.youtube.com/embed/WDlZ_SXx5gA?si=DadRR8QIC6jOXYP4&amp;clip=Ugkxqh6omcSEHbJYiAs5OpWF22ou6zTW8MKW&amp;clipt=EMD-DBig0xA"
+            title="YouTube video player"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            referrerpolicy="strict-origin-when-cross-origin"
+            allowfullscreen
+          ></iframe>
+        </div>
+      </div>
+
+      <div class="columns">
+        <div class="text">
+          <h4>Hibana (Fire Force)</h4>
+          <small>Ar de superioridade irônica</small>
+          <p>
+            Tem um lado "diva" que menospreza oponentes medíocres ("Você
+            realmente acha que pode tocar nesta deusa?"), mas é mais teatral que
+            cruel. Sua "superioridade" é performática, não maligna.
+          </p>
+        </div>
+
+        <div class="video">
+          <iframe
+            width="560"
+            height="315"
+            src="https://www.youtube.com/embed/5jxLqU_wxEg?si=c1QM2dVLqtUc2jEs"
+            title="YouTube video player"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            referrerpolicy="strict-origin-when-cross-origin"
+            allowfullscreen
+          ></iframe>
+        </div>
+      </div>
+
+      <div class="columns">
+        <div class="text">
+          <h4>Lindsey Stirling (Artista)</h4>
+          <small>Música como espetáculo de combate</small>
+          <p>
+            Seu violino não é só instrumento – é arma e magia. Ela toca enquanto
+            dança em batalhas, usando melodias para lançar feitiços ou distrair
+            inimigos (e, claro, para shows improvisados em tavernas).
+          </p>
+        </div>
+
+        <div class="video">
+          <iframe
+            width="560"
+            height="315"
+            src="https://www.youtube.com/embed/kxGrd7mlB5M?si=Gpz8EaR6erIzggKL"
+            title="YouTube video player"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            referrerpolicy="strict-origin-when-cross-origin"
+            allowfullscreen
+          ></iframe>
         </div>
       </div>
     </section>
