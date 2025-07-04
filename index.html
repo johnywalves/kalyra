@@ -66,8 +66,16 @@
       a,
       a:hover,
       a:visited {
-        text-decoration: none;
         color: inherit;
+      }
+
+      a,
+      a:visited {
+        text-decoration: none;
+      }
+
+      a:hover {
+        text-decoration: underline;
       }
 
       /* Content CSS */
@@ -168,27 +176,44 @@
         }
 
         & section.references {
-          display: flex;
-          flex-direction: column;
-          gap: 2rem;
+          & div.videos {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
 
-          & div.text {
-            margin-bottom: 2rem;
+            & div.text {
+              margin-bottom: 2rem;
 
-            & p {
-              margin-top: 0.5rem;
+              & p {
+                margin-top: 0.5rem;
+              }
+            }
+
+            & div.video {
+              display: flex;
+              justify-content: center;
+              align-items: center;
+
+              & iframe {
+                width: min(calc(100vw - max(5vw, 1rem) * 2), 560px);
+                aspect-ratio: 16 / 9;
+                border: none;
+                outline: none;
+              }
             }
           }
+        }
 
-          & div.video {
-            display: flex;
-            justify-content: center;
-            align-items: center;
+        & footer {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          padding: 3rem 0 0.5rem;
 
-            & iframe {
-              border: none;
-              outline: none;
-            }
+          & a,
+          a:hover,
+          a:visited {
+            color: #e0138c;
           }
         }
       }
@@ -281,17 +306,23 @@
         <h3>📘 Proficiência</h3>
         <p><strong>Ferramentas</strong>: Violino, Alaude e Medalhas</p>
         <p><strong>Armaduras</strong>: Leves e Médias</p>
-        <p><strong>Armas</strong>: Leves, Rapier e Cimitarra</p>
+        <p><strong>Armas</strong>: Leves, Rapieira e Cimitarra</p>
         <p>
           <strong>Perícias</strong>: Acrobacia, Atuação, Enganação, Intimidação
           e Persuasão
         </p>
-        <p><strong>Idiomas</strong>: Comum, Élfico e Celestial</p>
+        <p><strong>Idiomas</strong>: Comum, Élfico e Dracônico</p>
       </div>
 
       <div content="content">
         <h3>🎻Equipamentos</h3>
-        <p>2 Rapieiras (1d8{{ atributes.dexterity.modifier }} - Finesse)</p>
+        <p>
+          Rapieira (1d8{{ atributes.dexterity.modifier }} - <em>Finesse</em>)
+        </p>
+        <p>
+          Cimitarra (1d6{{ atributes.dexterity.modifier }} - <em>Finesse</em>,
+          <em>Light</em>)
+        </p>
         <p>Violino</p>
         <p>Kit de Artista</p>
         <p>5d4 x 10 PO</p>
@@ -305,7 +336,7 @@
         <p><strong>Visão no Escuro</strong> visibilidade de 18m</p>
         <p>
           <strong>Ancestralidade Feérica</strong>: imunidade dormir e vantagem
-          contra ser enfeitiçado.
+          contra ser enfeitiçado
         </p>
         <p>
           <strong>Inspiração de Bardo (d6)</strong>: {{ atributes.charisma.bonus
@@ -320,8 +351,8 @@
           curto
         </p>
         <p>
-          <strong>Especialista</strong>: dobrar proficiência em habilidade
-          proficientes
+          <strong>Especialista</strong>: dobrar proficiência em duas habilidade
+          proficientes (Atuação e Persuasão)
         </p>
         <p>
           <strong>Proficiência Bônus</strong>: proficiência com armadura media e
@@ -492,7 +523,7 @@
         ao final de um descanso longo.
         <br />
         Seu dado de Inspiração de Bardo muda quando você alcança certos níveis
-        nesta classe. O dado se torna 1d8 no 50 nível, 1d1O no 10° e 1d12 no 15°
+        nesta classe. O dado se torna 1d8 no 50 nível, 1d10 no 10° e 1d12 no 15°
         nível.
       </p>
 
@@ -1029,128 +1060,130 @@
         seja com um golpe preciso, uma canção ou uma gargalhada.
       </p>
 
-      <div class="columns">
-        <div class="text">
-          <h4>Tengen Uzui (Demon Slayer)</h4>
-          <small>Confiança extravagante</small>
-          <p>
-            Ela age como se fosse a estrela de qualquer situação – seja em
-            combate, música ou sedução – sempre com pose dramática e frases de
-            efeito. Assim como Tengen, ela vê a vida como um espetáculo.
-          </p>
+      <div class="videos">
+        <div class="columns">
+          <div class="text">
+            <h4>Tengen Uzui (Demon Slayer)</h4>
+            <small>Confiança extravagante</small>
+            <p>
+              Ela age como se fosse a estrela de qualquer situação – seja em
+              combate, música ou sedução – sempre com pose dramática e frases de
+              efeito. Assim como Tengen, ela vê a vida como um espetáculo.
+            </p>
+          </div>
+
+          <div class="video">
+            <iframe
+              src="https://www.youtube.com/embed/LiiY6tZ_aWg?si=4OV7scD9YjY5Pphs"
+              title="YouTube video player"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              referrerpolicy="strict-origin-when-cross-origin"
+              allowfullscreen
+            ></iframe>
+          </div>
         </div>
 
-        <div class="video">
-          <iframe
-            width="560"
-            height="315"
-            src="https://www.youtube.com/embed/_1XjvWVQLpI?si=BaSt8-Y1d0PuREkR"
-            title="YouTube video player"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-            referrerpolicy="strict-origin-when-cross-origin"
-            allowfullscreen
-          ></iframe>
-        </div>
-      </div>
+        <div class="columns">
+          <div class="text">
+            <h4>"Brazilian Hatsune Miku" (Memes da Internet)</h4>
+            <small>Energia contagiante e alegria absurdamente vibrante</small>
+            <p>
+              Sua personalidade é hipercarismática, transformando até situações
+              sombrias em "festivais". Ela espalha entusiasmo como uma "Miku
+              caótica de taverna", usando música e dança para unir (ou distrair)
+              pessoas.
+            </p>
+          </div>
 
-      <div class="columns">
-        <div class="text">
-          <h4>"Brazilian Hatsune Miku" (Memes da Internet)</h4>
-          <small>Energia contagiante e alegria absurdamente vibrante</small>
-          <p>
-            Sua personalidade é hipercarismática, transformando até situações
-            sombrias em "festivais". Ela espalha entusiasmo como uma "Miku
-            caótica de taverna", usando música e dança para unir (ou distrair)
-            pessoas.
-          </p>
+          <div class="video">
+            <iframe
+              src="https://www.youtube.com/embed/gjbguYbJQNo?si=K5qH8u8mU9XzIRhB"
+              title="YouTube video player"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              referrerpolicy="strict-origin-when-cross-origin"
+              allowfullscreen
+            ></iframe>
+          </div>
         </div>
 
-        <div class="video">
-          <iframe
-            width="560"
-            height="315"
-            src="https://www.youtube.com/embed/gjbguYbJQNo?si=K5qH8u8mU9XzIRhB"
-            title="YouTube video player"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-            referrerpolicy="strict-origin-when-cross-origin"
-            allowfullscreen
-          ></iframe>
-        </div>
-      </div>
+        <div class="columns">
+          <div class="text">
+            <h4>Inigo Montoya (The Princess Bride)</h4>
+            <small>Estilo de combate zombeteiro com rapieiras</small>
+            <p>
+              Luta com duas rapieiras de forma acrobática, provoca inimigos com
+              piadas durante a batalha ("Você luta como um camponês bêbado!") e
+              adora duelos estilizados. Porém, diferentemente de Inigo, ela não
+              busca vingança – só diversão.
+            </p>
+          </div>
 
-      <div class="columns">
-        <div class="text">
-          <h4>Inigo Montoya (The Princess Bride)</h4>
-          <small>Estilo de combate zombeteiro com rapieiras</small>
-          <p>
-            Luta com duas rapieiras de forma acrobática, provoca inimigos com
-            piadas durante a batalha ("Você luta como um camponês bêbado!") e
-            adora duelos estilizados. Porém, diferentemente de Inigo, ela não
-            busca vingança – só diversão.
-          </p>
+          <div class="video">
+            <iframe
+              src="https://www.youtube.com/embed/WDlZ_SXx5gA?si=DadRR8QIC6jOXYP4&amp;clip=Ugkxqh6omcSEHbJYiAs5OpWF22ou6zTW8MKW&amp;clipt=EMD-DBig0xA"
+              title="YouTube video player"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              referrerpolicy="strict-origin-when-cross-origin"
+              allowfullscreen
+            ></iframe>
+          </div>
         </div>
 
-        <div class="video">
-          <iframe
-            width="560"
-            height="315"
-            src="https://www.youtube.com/embed/WDlZ_SXx5gA?si=DadRR8QIC6jOXYP4&amp;clip=Ugkxqh6omcSEHbJYiAs5OpWF22ou6zTW8MKW&amp;clipt=EMD-DBig0xA"
-            title="YouTube video player"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-            referrerpolicy="strict-origin-when-cross-origin"
-            allowfullscreen
-          ></iframe>
-        </div>
-      </div>
+        <div class="columns">
+          <div class="text">
+            <h4>Hibana (Fire Force)</h4>
+            <small>Ar de superioridade irônica</small>
+            <p>
+              Tem um lado "diva" que menospreza oponentes medíocres ("Você
+              realmente acha que pode tocar nesta deusa?"), mas é mais teatral
+              que cruel. Sua "superioridade" é performática, não maligna.
+            </p>
+          </div>
 
-      <div class="columns">
-        <div class="text">
-          <h4>Hibana (Fire Force)</h4>
-          <small>Ar de superioridade irônica</small>
-          <p>
-            Tem um lado "diva" que menospreza oponentes medíocres ("Você
-            realmente acha que pode tocar nesta deusa?"), mas é mais teatral que
-            cruel. Sua "superioridade" é performática, não maligna.
-          </p>
+          <div class="video">
+            <iframe
+              src="https://www.youtube.com/embed/5jxLqU_wxEg?si=c1QM2dVLqtUc2jEs"
+              title="YouTube video player"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              referrerpolicy="strict-origin-when-cross-origin"
+              allowfullscreen
+            ></iframe>
+          </div>
         </div>
 
-        <div class="video">
-          <iframe
-            width="560"
-            height="315"
-            src="https://www.youtube.com/embed/5jxLqU_wxEg?si=c1QM2dVLqtUc2jEs"
-            title="YouTube video player"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-            referrerpolicy="strict-origin-when-cross-origin"
-            allowfullscreen
-          ></iframe>
-        </div>
-      </div>
+        <div class="columns">
+          <div class="text">
+            <h4>Lindsey Stirling (Artista)</h4>
+            <small>Música como espetáculo de combate</small>
+            <p>
+              Seu violino não é só instrumento – é arma e magia. Ela toca
+              enquanto dança em batalhas, usando melodias para lançar feitiços
+              ou distrair inimigos (e, claro, para shows improvisados em
+              tavernas).
+            </p>
+          </div>
 
-      <div class="columns">
-        <div class="text">
-          <h4>Lindsey Stirling (Artista)</h4>
-          <small>Música como espetáculo de combate</small>
-          <p>
-            Seu violino não é só instrumento – é arma e magia. Ela toca enquanto
-            dança em batalhas, usando melodias para lançar feitiços ou distrair
-            inimigos (e, claro, para shows improvisados em tavernas).
-          </p>
-        </div>
-
-        <div class="video">
-          <iframe
-            width="560"
-            height="315"
-            src="https://www.youtube.com/embed/kxGrd7mlB5M?si=Gpz8EaR6erIzggKL"
-            title="YouTube video player"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-            referrerpolicy="strict-origin-when-cross-origin"
-            allowfullscreen
-          ></iframe>
+          <div class="video">
+            <iframe
+              src="https://www.youtube.com/embed/kxGrd7mlB5M?si=Gpz8EaR6erIzggKL"
+              title="YouTube video player"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              referrerpolicy="strict-origin-when-cross-origin"
+              allowfullscreen
+            ></iframe>
+          </div>
         </div>
       </div>
     </section>
+
+    <footer>
+      <p>
+        Made with <span>♥</span> by
+        <a href="https://www.johnywalves.com.br" target="_blank">
+          Johny W. Alves
+        </a>
+      </p>
+    </footer>
   </body>
 
   <script src="https://unpkg.com/vue@3/dist/vue.global.prod.js"></script>
