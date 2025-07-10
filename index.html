@@ -80,12 +80,14 @@
 
       /* Content CSS */
       :root {
-        --color-background: #eeeeee;
+        --color-background: #f5f5f5;
+        --color-hover: #d4d4d4;
         --color-text: #282c35;
 
         @media (prefers-color-scheme: dark) {
           --color-background: #282c35;
-          --color-text: #eeeeee;
+          --color-hover: #464d5d;
+          --color-text: #f5f5f5;
         }
       }
 
@@ -94,6 +96,8 @@
         color: var(--color-text);
         width: 100%;
         padding-bottom: 2rem;
+
+        position: relative;
 
         display: flex;
         flex-direction: column;
@@ -173,6 +177,17 @@
           gap: 2rem;
 
           margin-top: 0.5rem;
+
+          & picture {
+            display: block;
+            width: min(calc(100vw - 2rem), 400px);
+            aspect-ratio: 2 / 3;
+
+            & img {
+              width: 100%;
+              object-fit: contain;
+            }
+          }
         }
 
         & section.references {
@@ -216,6 +231,34 @@
             color: #e0138c;
           }
         }
+
+        & button#moveToTop {
+          position: fixed;
+          right: 1rem;
+          bottom: 1rem;
+
+          width: 2.5rem;
+          height: 2.5rem;
+          border-radius: 50%;
+          cursor: pointer;
+
+          border: none;
+          border: 1px solid var(--color-text);
+          background-color: var(--color-background);
+
+          &:hover {
+            background-color: var(--color-hover);
+          }
+
+          & div {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            width: 100%;
+            height: 100%;
+          }
+        }
       }
     </style>
   </head>
@@ -228,7 +271,7 @@
             ${cndImages}/c_thumb,g_face,w_1024,h_360/goddess_q9flg3.png 1024w,
             ${cndImages}/c_thumb,g_face,w_1280,h_320/goddess_q9flg3.png 1280w,
             ${cndImages}/c_thumb,g_face,w_1366,h_280/goddess_q9flg3.png 1366w`"
-      v-bind:src="`${cndImages}/c_thumb,g_face,w_1280,h_240/goddess_q9flg3.png`"
+      v-bind:src="`${cndImages}/c_thumb,g_face,w_1280,h_280/goddess_q9flg3.png`"
       alt=""
     />
 
@@ -292,8 +335,9 @@
         </p>
       </div>
 
-      <div content="content">
-        <h3>🎲 Salvaguardas</h3>
+      <div id="save-throw" content="content">
+        <a href="#save-throw"><h3>🎲 Salvaguardas</h3></a>
+
         <p v-for="key in listAtributes">
           <strong>{{ atributes[key].description }}</strong>
           {{ atributes[key].saveThrow }}
@@ -314,8 +358,9 @@
         <p><strong>Idiomas</strong>: Comum, Élfico e Dracônico</p>
       </div>
 
-      <div content="content">
-        <h3>🎻Equipamentos</h3>
+      <div id="equipament" content="content">
+        <a href="#equipament"><h3>🎻 Equipamentos</h3></a>
+
         <p>
           Rapieira (1d8{{ atributes.dexterity.modifier }} - <em>Finesse</em>)
         </p>
@@ -330,8 +375,8 @@
     </div>
 
     <div class="columns">
-      <div content="content">
-        <h3>🎭 Recursos:</h3>
+      <div id="resources" content="content">
+        <a href="#resources"><h3>🎭 Recursos</h3></a>
 
         <p><strong>Visão no Escuro</strong> visibilidade de 18m</p>
         <p>
@@ -372,16 +417,16 @@
           descanso curto
         </p>
 
-        <section>
-          <h3>🪄 Espaços de magia</h3>
+        <section id="magic-slot">
+          <a href="#magic-slot"><h3>🪄 Espaços de magia</h3></a>
           <p><strong>Nível 1</strong>: 4 espaços de magia</p>
           <p><strong>Nível 2</strong>: 3 espaços de magia</p>
         </section>
       </div>
 
       <div content="content">
-        <section>
-          <h3>🎶 Magias conhecidas:</h3>
+        <section id="magic">
+          <a href="#magic"><h3>🎶 Magias conhecidas:</h3></a>
 
           <h4>Truques:</h4>
           <a href="#prestidigitation">
@@ -444,17 +489,15 @@
 
     <section class="gallery">
       <a v-for="image in images_anime" v-bind:href="`${cndImages}/${image}`">
-        <img
-          class="picture"
-          sizes="(min-width: 25rem) 25rem, 95vw"
-          v-bind:srcset="`${cndImages}/c_auto,w_256,ar_2:3/${image} 256w,
-            ${cndImages}/c_auto,w_512,ar_2:3/${image} 512w,
-            ${cndImages}/c_auto,w_768,ar_2:3/${image} 768w,
-            ${cndImages}/c_auto,w_1024,ar_2:3/${image} 1024w,
-            ${cndImages}/c_auto,w_1280,ar_2:3/${image} 1280w`"
-          v-bind:src="`${cndImages}/c_auto,w_512,ar_2:3/${image}`"
-          alt=""
-        />
+        <picture>
+          <img
+            sizes="(min-width: 25rem) 25rem, 95vw"
+            v-bind:srcset="`${cndImages}/c_auto,w_256,ar_2:3/${image} 256w,
+            ${cndImages}/c_auto,w_400,ar_2:3/${image} 512w`"
+            v-bind:src="`${cndImages}/c_auto,w_400,ar_2:3/${image}`"
+            alt=""
+          />
+        </picture>
       </a>
     </section>
 
@@ -463,7 +506,6 @@
     <section class="gallery">
       <a v-for="image in images_realist" v-bind:href="`${cndImages}/${image}`">
         <img
-          class="picture"
           sizes="(min-width: 25rem) 25rem, 95vw"
           v-bind:srcset="`${cndImages}/c_auto,w_256,ar_2:3/${image} 256w,
             ${cndImages}/c_auto,w_512,ar_2:3/${image} 512w,
@@ -476,8 +518,8 @@
       </a>
     </section>
 
-    <section class="skills">
-      <h3>💃🏼 Habilidades</h3>
+    <section id="skills" class="skills">
+      <a href="#skills"><h3>💃🏼 Habilidades</h3></a>
 
       <h4>Visão no Escuro</h4>
       <p>
@@ -641,8 +683,8 @@
       </p>
     </section>
 
-    <section class="grimoire">
-      <h3>📘 Grimório</h3>
+    <section id="grimoire" class="grimoire">
+      <a href="#grimoire"><h3>📘 Grimório</h3></a>
 
       <div class="columns">
         <div id="cure_wounds" class="content">
@@ -1052,7 +1094,7 @@
     </section>
 
     <section id="references" class="references">
-      <h3>🧵 Referências</h3>
+      <a href="#references"><h3>🧵 Referências</h3></a>
       <p>
         Kalyra é uma mistura caótica dessas referências: a confiança de Tengen,
         o astral de Miku, o duelo cômico de Inigo, a atitude de Hibana e a
@@ -1184,6 +1226,25 @@
         </a>
       </p>
     </footer>
+
+    <button onclick="fnMoveTop()" id="moveToTop" title="Go to top">
+      <div>
+        <svg
+          fill="none"
+          viewBox="0 0 24 24"
+          width="20"
+          height="20"
+          style="z-index: 10; color: var(--color-text)"
+        >
+          <path
+            fill="var(--color-text)"
+            fill-rule="evenodd"
+            clip-rule="evenodd"
+            d="M11 20V6.164l-4.293 4.293a1 1 0 1 1-1.414-1.414l5.293-5.293.151-.138a2 2 0 0 1 2.677.138l5.293 5.293.068.076a1 1 0 0 1-1.406 1.406l-.076-.068L13 6.164V20a1 1 0 0 1-2 0Z"
+          ></path>
+        </svg>
+      </div>
+    </button>
   </body>
 
   <script src="https://unpkg.com/vue@3/dist/vue.global.prod.js"></script>
@@ -1232,21 +1293,14 @@
       "running_flourish_rjbffn.png",
       "parade_glitter_usbzza.png",
       "parade_pants_x0kcka.png",
-      "parade_feathers_hrdb1a.png",
       "parade_violin_rlevg9.png",
       "dancing_square_u8cjft.png",
-      "inspiration_violin_cover_scnziq.png",
-      "card_cbrjjs.png",
       "dancing_court_enm6aj.png",
       "dancing_guards_dh4vkk.png",
-      "violin_energitic_aor3cu.png",
-      "auto_violin_ispzs4.png",
       "dancing_court_cover_ddljxc.png",
       "vicious_mockery_rvldwv.png",
       "desert_caravan_k4krno.png",
       "sword_fighting_goblins_oo9qll.png",
-      "duel_wylyqx.png",
-      "fighting_horse_reveal_bob6um.png",
       "fighting_house_psjx9w.png",
       "show_fires_v7yyxn.png",
       "show_cover_zuzr2k.png",
@@ -1254,7 +1308,6 @@
       "reveal_square_hxmaxd.png",
       "reveal_aura_hskfib.png",
       "reveal_square_cover_vym5eb.png",
-      "cutting_flourish_fiulzx.png",
       "beach_brazilian_fmobnx.png",
     ];
 
@@ -1302,5 +1355,26 @@
         };
       },
     }).mount("#app");
+
+    const fnMoveTop = () => {
+      window.scroll({
+        top: 0,
+        left: 0,
+        behavior: "smooth",
+      });
+    };
+
+    const btMoveToTop = document.getElementById("moveToTop");
+    const listenerScroll = () => {
+      if (
+        document.body.scrollTop > 40 ||
+        document.documentElement.scrollTop > 40
+      ) {
+        btMoveToTop.style.display = "block";
+      } else {
+        btMoveToTop.style.display = "none";
+      }
+    };
+    window.onscroll = listenerScroll;
   </script>
 </html>
