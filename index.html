@@ -266,7 +266,6 @@
   <body id="app">
     <img
       class="feature"
-      sizes="(min-width: 25rem) 25rem, 95vw"
       v-bind:srcset="`${cndImages}/c_thumb,g_face,w_256,h_360/goddess_q9flg3.png 256w,
             ${cndImages}/c_thumb,g_face,w_512,h_360/goddess_q9flg3.png 512w,
             ${cndImages}/c_thumb,g_face,w_768,h_360/goddess_q9flg3.png 768w,
@@ -496,7 +495,11 @@
       <a href="#gallery-anime"><h2>🖼️ Galeria - Anime</h2></a>
 
       <section class="gallery">
-        <a v-for="image in images_anime" v-bind:href="`${cndImages}/${image}`">
+        <a
+          v-for="image in images_anime"
+          v-bind:href="`${cndImages}/${image}`"
+          aria-label="Ver imagem completa"
+        >
           <picture>
             <img
               sizes="(min-width: 25rem) 25rem, 95vw"
@@ -517,6 +520,7 @@
         <a
           v-for="image in images_realist"
           v-bind:href="`${cndImages}/${image}`"
+          aria-label="Ver imagem completa"
         >
           <img
             sizes="(min-width: 25rem) 25rem, 95vw"
