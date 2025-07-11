@@ -10,6 +10,7 @@
     <title>Kalyra</title>
     <meta name="title" property="og:title" content="Kalyra" />
     <meta
+      name="description"
       property="og:description"
       content="Kalyra, a ‘deusa’ bardo-feiticeira: dança com rapieiras, cura com êxtase e espalha festas onde passa. Será divindade ou só delírio encantador?"
     />
@@ -117,11 +118,11 @@
           margin: 1rem 0 0.5rem;
         }
 
-        & h3 {
-          margin: 2rem 0 0.25rem;
+        & h2 {
+          margin: 2rem 0 0.5rem;
         }
 
-        & h4 {
+        & h3 {
           margin: 1.5rem 0 0.25rem;
         }
 
@@ -139,7 +140,7 @@
         }
 
         & small {
-          margin-bottom: 0.25rem;
+          margin-bottom: 0.5rem;
         }
 
         & div.columns {
@@ -265,13 +266,14 @@
   <body id="app">
     <img
       class="feature"
+      sizes="(min-width: 25rem) 25rem, 95vw"
       v-bind:srcset="`${cndImages}/c_thumb,g_face,w_256,h_360/goddess_q9flg3.png 256w,
             ${cndImages}/c_thumb,g_face,w_512,h_360/goddess_q9flg3.png 512w,
             ${cndImages}/c_thumb,g_face,w_768,h_360/goddess_q9flg3.png 768w,
             ${cndImages}/c_thumb,g_face,w_1024,h_360/goddess_q9flg3.png 1024w,
             ${cndImages}/c_thumb,g_face,w_1280,h_320/goddess_q9flg3.png 1280w,
             ${cndImages}/c_thumb,g_face,w_1366,h_280/goddess_q9flg3.png 1366w`"
-      v-bind:src="`${cndImages}/c_thumb,g_face,w_1280,h_280/goddess_q9flg3.png`"
+      v-bind:src="`${cndImages}/c_thumb,g_face,w_768,h_360/goddess_q9flg3.png`"
       alt=""
     />
 
@@ -285,50 +287,54 @@
     <small>Barda – Colégio da Espada – Nível 3</small>
     <small>Feiticeira – Alma Favorecida – Nível 1</small>
 
-    <h3>ℹ️ Descrição</h3>
-    <p>
-      Kalyra acredita ser uma deusa exilada – ou talvez apenas esquecida – da
-      alegria, da arte e da chama passageira. Suas memórias são fragmentos de um
-      sonho: salões dourados onde música e vinho fluíam eternamente, luas que a
-      chamavam de "filha", e um nome verdadeiro que ela quase consegue
-      lembrar...
-      <br />
-    </p>
-    <p>
-      <strong>Olhos de Esmeralda Incandescente</strong>: Seu olhar carrega o
-      brilho de mil festas proibidas, e quando sua magia se manifesta, pequenas
-      faíscas verdes cintilam em suas pupilas.
-    </p>
-    <p>
-      <strong>Cabelos de Lua e Chama</strong>: Seus longos cabelos brancos,
-      levemente ondulados, brilham como prata sob a luz das estrelas – alguns
-      juram que, quando ela canta, fios dourados de fogo dançam entre eles, como
-      brasas ao vento.
-    </p>
-    <p>
-      <strong>Vestes de uma Divindade do Exílio</strong>: Seu vestido
-      vermelho-sangue é bordado com fios dourados que contam histórias de festas
-      divinas perdidas, e seu sobretudo marrom – manchado de poeira e aventura –
-      é seu único manto de "deusa errante". As medalhas de dançarina em seu
-      corpo tilintam como risos antigos, cada uma uma lembrança de um lugar onde
-      deixou sua marca.
-    </p>
+    <section id="description">
+      <a href="#description"><h2>ℹ️ Descrição</h2></a>
+
+      <p>
+        Kalyra acredita ser uma deusa exilada – ou talvez apenas esquecida – da
+        alegria, da arte e da chama passageira. Suas memórias são fragmentos de
+        um sonho: salões dourados onde música e vinho fluíam eternamente, luas
+        que a chamavam de "filha", e um nome verdadeiro que ela quase consegue
+        lembrar...
+        <br />
+      </p>
+      <p>
+        <strong>Olhos de Esmeralda Incandescente</strong>: Seu olhar carrega o
+        brilho de mil festas proibidas, e quando sua magia se manifesta,
+        pequenas faíscas verdes cintilam em suas pupilas.
+      </p>
+      <p>
+        <strong>Cabelos de Lua e Chama</strong>: Seus longos cabelos brancos,
+        levemente ondulados, brilham como prata sob a luz das estrelas – alguns
+        juram que, quando ela canta, fios dourados de fogo dançam entre eles,
+        como brasas ao vento.
+      </p>
+      <p>
+        <strong>Vestes de uma Divindade do Exílio</strong>: Seu vestido
+        vermelho-sangue é bordado com fios dourados que contam histórias de
+        festas divinas perdidas, e seu sobretudo marrom – manchado de poeira e
+        aventura – é seu único manto de "deusa errante". As medalhas de
+        dançarina em seu corpo tilintam como risos antigos, cada uma uma
+        lembrança de um lugar onde deixou sua marca.
+      </p>
+    </section>
 
     <div class="columns">
-      <section>
-        <h3>🛡️ Classe de Armadura (CA):</h3>
+      <section id="ca">
+        <a href="#ca"><h2>🛡️ Classe de Armadura (CA)</h2></a>
         <p>15 (Armadura de Couro Batido + Destreza)</p>
       </section>
 
-      <section>
-        <h3>🧪 Pontos de Vida (PV):</h3>
+      <section id="pv">
+        <a href="#pv"><h2>🧪 Pontos de Vida (PV)</h2></a>
         <p>{{ hitPoints }}</p>
       </section>
     </div>
 
     <div class="columns">
-      <div content="content">
-        <h3>🧬 Atributos</h3>
+      <div id="attributes" content="content">
+        <a href="#attributes"><h2>🧬 Atributos</h2></a>
+
         <p v-for="key in listAtributes">
           <strong>{{ atributes[key].description }}</strong>
           {{ atributes[key].points }} ({{ atributes[key].modifier }})
@@ -336,7 +342,7 @@
       </div>
 
       <div id="save-throw" content="content">
-        <a href="#save-throw"><h3>🎲 Salvaguardas</h3></a>
+        <a href="#save-throw"><h2>🎲 Salvaguardas</h2></a>
 
         <p v-for="key in listAtributes">
           <strong>{{ atributes[key].description }}</strong>
@@ -346,8 +352,9 @@
     </div>
 
     <div class="columns">
-      <div content="content">
-        <h3>📘 Proficiência</h3>
+      <div id="proficiency" content="content">
+        <a href="#proficiency"><h2>📘 Proficiência</h2></a>
+
         <p><strong>Ferramentas</strong>: Violino, Alaude e Medalhas</p>
         <p><strong>Armaduras</strong>: Leves e Médias</p>
         <p><strong>Armas</strong>: Leves, Rapieira e Cimitarra</p>
@@ -359,7 +366,7 @@
       </div>
 
       <div id="equipament" content="content">
-        <a href="#equipament"><h3>🎻 Equipamentos</h3></a>
+        <a href="#equipament"><h2>🎻 Equipamentos</h2></a>
 
         <p>
           Rapieira (1d8{{ atributes.dexterity.modifier }} - <em>Finesse</em>)
@@ -376,7 +383,7 @@
 
     <div class="columns">
       <div id="resources" content="content">
-        <a href="#resources"><h3>🎭 Recursos</h3></a>
+        <a href="#resources"><h2>🎭 Recursos</h2></a>
 
         <p><strong>Visão no Escuro</strong> visibilidade de 18m</p>
         <p>
@@ -418,7 +425,7 @@
         </p>
 
         <section id="magic-slot">
-          <a href="#magic-slot"><h3>🪄 Espaços de magia</h3></a>
+          <a href="#magic-slot"><h2>🪄 Espaços de magia</h2></a>
           <p><strong>Nível 1</strong>: 4 espaços de magia</p>
           <p><strong>Nível 2</strong>: 3 espaços de magia</p>
         </section>
@@ -426,9 +433,9 @@
 
       <div content="content">
         <section id="magic">
-          <a href="#magic"><h3>🎶 Magias conhecidas:</h3></a>
+          <a href="#magic"><h2>🎶 Magias conhecidas:</h2></a>
 
-          <h4>Truques:</h4>
+          <h3>Truques:</h3>
           <a href="#prestidigitation">
             <p>Prestidigitação (<em>Prestidigitation</em>)</p>
           </a>
@@ -451,7 +458,7 @@
             <p>Zombaria Perversa (<em>Vicious Mockery</em>)</p>
           </a>
 
-          <h4>Magias de Nível 1:</h4>
+          <h3>Magias de Nível 1:</h3>
           <a href="#comprehend_languages">
             <p>Compreender Idiomas (<em>Comprehend Languages</em>)</p>
           </a>
@@ -474,7 +481,7 @@
             <p>Queda Suave (<em>Feather Fall</em>)</p>
           </a>
 
-          <h4>Magias de Nível 2:</h4>
+          <h3>Magias de Nível 2:</h3>
           <a href="#shatter">
             <p>Despedaçar (<em>Shatter</em>)</p>
           </a>
@@ -485,43 +492,50 @@
       </div>
     </div>
 
-    <h3>🖼️ Galeria - Anime</h3>
+    <section id="gallery-anime">
+      <a href="#gallery-anime"><h2>🖼️ Galeria - Anime</h2></a>
 
-    <section class="gallery">
-      <a v-for="image in images_anime" v-bind:href="`${cndImages}/${image}`">
-        <picture>
+      <section class="gallery">
+        <a v-for="image in images_anime" v-bind:href="`${cndImages}/${image}`">
+          <picture>
+            <img
+              sizes="(min-width: 25rem) 25rem, 95vw"
+              v-bind:srcset="`${cndImages}/c_auto,w_256,ar_2:3/${image} 256w,
+            ${cndImages}/c_auto,w_400,ar_2:3/${image} 512w`"
+              v-bind:src="`${cndImages}/c_auto,w_400,ar_2:3/${image}`"
+              alt=""
+            />
+          </picture>
+        </a>
+      </section>
+    </section>
+
+    <section id="gallery-realism">
+      <a href="#gallery-realism"><h2>🖼️ Galeria - Realismo Fantástico</h2></a>
+
+      <section class="gallery">
+        <a
+          v-for="image in images_realist"
+          v-bind:href="`${cndImages}/${image}`"
+        >
           <img
             sizes="(min-width: 25rem) 25rem, 95vw"
             v-bind:srcset="`${cndImages}/c_auto,w_256,ar_2:3/${image} 256w,
-            ${cndImages}/c_auto,w_400,ar_2:3/${image} 512w`"
-            v-bind:src="`${cndImages}/c_auto,w_400,ar_2:3/${image}`"
-            alt=""
-          />
-        </picture>
-      </a>
-    </section>
-
-    <h3>🖼️ Galeria - Realismo Fantástico</h3>
-
-    <section class="gallery">
-      <a v-for="image in images_realist" v-bind:href="`${cndImages}/${image}`">
-        <img
-          sizes="(min-width: 25rem) 25rem, 95vw"
-          v-bind:srcset="`${cndImages}/c_auto,w_256,ar_2:3/${image} 256w,
             ${cndImages}/c_auto,w_512,ar_2:3/${image} 512w,
             ${cndImages}/c_auto,w_768,ar_2:3/${image} 768w,
             ${cndImages}/c_auto,w_1024,ar_2:3/${image} 1024w,
             ${cndImages}/c_auto,w_1280,ar_2:3/${image} 1280w`"
-          v-bind:src="`${cndImages}/c_auto,w_512,ar_2:3/${image}`"
-          alt=""
-        />
-      </a>
+            v-bind:src="`${cndImages}/c_auto,w_512,ar_2:3/${image}`"
+            alt=""
+          />
+        </a>
+      </section>
     </section>
 
     <section id="skills" class="skills">
-      <a href="#skills"><h3>💃🏼 Habilidades</h3></a>
+      <a href="#skills"><h2>💃🏼 Habilidades</h2></a>
 
-      <h4>Visão no Escuro</h4>
+      <h3>Visão no Escuro</h3>
       <p>
         Graças ao seu sangue élfico, você possui uma visão superior no escuro.
         Você consegue enxergar até 18 metros na meia-luz como se fosse dia e, na
@@ -529,20 +543,20 @@
         discernir tons de cinza.
       </p>
 
-      <h4>Ancestralidade Feérica</h4>
+      <h3>Ancestralidade Feérica</h3>
       <p>
         Nenhum tipo de magia pode colocá-lo para dormir, e você tem vantagem em
         salvaguardas contra ser enfeitiçado. Versatilidade com Perícias. Você
         ganha proficiência em duas perícias à sua escolha.
       </p>
 
-      <h4>Idiomas</h4>
+      <h3>Idiomas</h3>
       <p>
         Você pode falar, ler e escrever Comum, Élfico e outro idioma à sua
         escolha.
       </p>
 
-      <h4>Inspiração de Bardo (d6)</h4>
+      <h3>Inspiração de Bardo (d6)</h3>
       <p>
         Você pode inspirar os outros por meio da música ou das palavras. Para
         isso, no seu turno, deve usar uma ação bônus para escolher uma criatura
@@ -569,14 +583,14 @@
         nível.
       </p>
 
-      <h4>Pau pra Toda Obra</h4>
+      <h3>Pau pra Toda Obra</h3>
       <p>
         A partir do 2° nível, você pode adicionar metade do seu bônus de
         proficiência, arredondado para baixo, a qualquer teste de atributo que
         realizar e que já não inclua seu bônus de proficiência.
       </p>
 
-      <h4>Canção de Descanso</h4>
+      <h3>Canção de Descanso</h3>
       <p>
         A partir do 2° nível, durante um descanso curto, você pode usar uma
         música ou discurso tranquilizador para ajudar a revitalizar seus aliados
@@ -590,7 +604,7 @@
         nível.
       </p>
 
-      <h4>Especialista</h4>
+      <h3>Especialista</h3>
       <p>
         No 3° nível, escolha duas perícias na quais já seja proficiente. Seu
         bônus de proficiência é duplicado em qualquer teste de atributo que
@@ -600,7 +614,7 @@
         perícias em que seja proficiente.
       </p>
 
-      <h4>Proficiência Bônus</h4>
+      <h3>Proficiência Bônus</h3>
       <p>
         Quando você entra no Colégio das Espadas no 3° nível, você ganha
         proficiência com armadura media e cimitarras.
@@ -609,7 +623,7 @@
         como foco de feitiço para os seus feitiços difíceis.
       </p>
 
-      <h4>Estilo de Luta</h4>
+      <h3>Estilo de Luta</h3>
       <p>
         No 3° nível, você adota um estilo de luta como sua especialidade.
         Escolha uma das seguintes opções. Você não pode escolher um estilo uma
@@ -624,7 +638,7 @@
         segundo ataque.
       </p>
 
-      <h4>Floreio de Lâminas</h4>
+      <h3>Floreio de Lâminas</h3>
       <p>
         No 3° nível, você aprende a realizar exibições impressionantes de proeza
         e velocidade marcial.
@@ -655,7 +669,7 @@
         desocupado dentro de 1,5 metros do alvo.
       </p>
 
-      <h4>Magia Divina (Caótica)</h4>
+      <h3>Magia Divina (Caótica)</h3>
       <p>
         Seu vínculo com o divino permite que você aprenda magias da classe
         clérigo. Quando o sua característica como conjurador permite que você
@@ -675,7 +689,7 @@
         (Afinidade: Caótica | Magia: Perdição)
       </p>
 
-      <h4>Favorecido pelos Deuses</h4>
+      <h3>Favorecido pelos Deuses</h3>
       <p>
         A partir do 1° nível, o poder divino protege seu destino. Se você falhar
         em um teste de resistência ou errar um ataque, pode rolar 2d4 e
@@ -684,11 +698,11 @@
     </section>
 
     <section id="grimoire" class="grimoire">
-      <a href="#grimoire"><h3>📘 Grimório</h3></a>
+      <a href="#grimoire"><h2>📘 Grimório</h2></a>
 
       <div class="columns">
         <div id="cure_wounds" class="content">
-          <h4>Curar Ferimentos</h4>
+          <h3>Curar Ferimentos</h3>
           <small>1° círculo, evocação</small>
           <ul>
             <li><strong>Tempo de Conjuração</strong>: 1 ação</li>
@@ -709,7 +723,7 @@
         </div>
 
         <div id="speak_with_animals" class="content">
-          <h4>Falar com Animais</h4>
+          <h3>Falar com Animais</h3>
           <small>1 ° círculo, adivinhação (ritual)</small>
           <ul>
             <li><strong>Tempo de Conjuração</strong>: 1 ação</li>
@@ -728,7 +742,7 @@
         </div>
 
         <div id="lesser_restoration" class="content">
-          <h4>Restauração Menor</h4>
+          <h3>Restauração Menor</h3>
           <small>2° círculo, abjuração</small>
           <ul>
             <li><strong>Tempo de Conjuração</strong>: 1 ação</li>
@@ -744,7 +758,7 @@
         </div>
 
         <div id="prestidigitation" class="content">
-          <h4>Prestidigitação</h4>
+          <h3>Prestidigitação</h3>
           <small>Truque, transmutação</small>
           <ul>
             <li><strong>Tempo de Conjuração</strong>: 1 ação</li>
@@ -790,7 +804,7 @@
         </div>
 
         <div id="sure_shot" class="content">
-          <h4>Golpe Certeiro</h4>
+          <h3>Golpe Certeiro</h3>
           <small>Truque, adivinhação</small>
           <ul>
             <li><strong>Tempo de Conjuração</strong>: 1 ação</li>
@@ -807,7 +821,7 @@
         </div>
 
         <div id="minor_illusion" class="content">
-          <h4>Ilusão Menor</h4>
+          <h3>Ilusão Menor</h3>
           <small>Truque, ilusão</small>
           <ul>
             <li><strong>Tempo de Conjuração</strong>: 1 ação</li>
@@ -844,7 +858,7 @@
         </div>
 
         <div id="blade_barrier" class="content">
-          <h4>Proteção contra Lâminas</h4>
+          <h3>Proteção contra Lâminas</h3>
           <small>Truque,abjuração</small>
           <ul>
             <li><strong>Tempo de Conjuração</strong>: 1 ação</li>
@@ -860,7 +874,7 @@
         </div>
 
         <div id="dancing_lights" class="content">
-          <h4>Luzes Dançantes</h4>
+          <h3>Luzes Dançantes</h3>
           <small>Truque, evocação</small>
           <ul>
             <li><strong>Tempo de Conjuração</strong>: 1 ação</li>
@@ -888,7 +902,7 @@
         </div>
 
         <div id="vicious_mockery" class="content">
-          <h4>Zombaria Perversa</h4>
+          <h3>Zombaria Perversa</h3>
           <small>Truque, encantamento</small>
           <ul>
             <li><strong>Tempo de Conjuração</strong>: 1 ação</li>
@@ -911,7 +925,7 @@
         </div>
 
         <div id="healing_word" class="content">
-          <h4>Palavra Curativa</h4>
+          <h3>Palavra Curativa</h3>
           <small>1° círculo, evocação</small>
           <ul>
             <li><strong>Tempo de Conjuração</strong>: 1 ação bônus</li>
@@ -932,7 +946,7 @@
         </div>
 
         <div id="shatter" class="content">
-          <h4>Despedaçar</h4>
+          <h3>Despedaçar</h3>
           <small>2° círculo, evocação</small>
           <ul>
             <li><strong>Tempo de Conjuração</strong>: 1 ação</li>
@@ -961,7 +975,7 @@
         </div>
 
         <div id="comprehend_languages" class="content">
-          <h4>Compreender Idiomas</h4>
+          <h3>Compreender Idiomas</h3>
           <small>1° círculo, adivinhação (ritual)</small>
           <ul>
             <li><strong>Tempo de Conjuração</strong>: 1 ação</li>
@@ -986,7 +1000,7 @@
         </div>
 
         <div id="repair" class="content">
-          <h4>Reparar</h4>
+          <h3>Reparar</h3>
           <small>Truque, transmutação</small>
           <ul>
             <li><strong>Tempo de Conjuração</strong>: 1 minuto</li>
@@ -1009,7 +1023,7 @@
         </div>
 
         <div id="feather_fall" class="content">
-          <h4>Queda Suave</h4>
+          <h3>Queda Suave</h3>
           <small>1° círculo, transmutação</small>
           <ul>
             <li>
@@ -1032,7 +1046,7 @@
         </div>
 
         <div id="damnation" class="content">
-          <h4>Perdição</h4>
+          <h3>Perdição</h3>
           <small>1° círculo, encantamento</small>
           <ul>
             <li><strong>Tempo de Conjuração</strong>: 1 ação</li>
@@ -1056,7 +1070,7 @@
         </div>
 
         <div id="disguise_self" class="content">
-          <h4>Disfarçar-se</h4>
+          <h3>Disfarçar-se</h3>
           <small>1° círculo, ilusão</small>
           <ul>
             <li><strong>Tempo de Conjuração</strong>: 1 ação</li>
@@ -1094,7 +1108,7 @@
     </section>
 
     <section id="references" class="references">
-      <a href="#references"><h3>🧵 Referências</h3></a>
+      <a href="#references"><h2>🧵 Referências</h2></a>
       <p>
         Kalyra é uma mistura caótica dessas referências: a confiança de Tengen,
         o astral de Miku, o duelo cômico de Inigo, a atitude de Hibana e a
@@ -1105,7 +1119,7 @@
       <div class="videos">
         <div class="columns">
           <div class="text">
-            <h4>Tengen Uzui (Demon Slayer)</h4>
+            <h3>Tengen Uzui (Demon Slayer)</h3>
             <small>Confiança extravagante</small>
             <p>
               Ela age como se fosse a estrela de qualquer situação – seja em
@@ -1117,7 +1131,7 @@
           <div class="video">
             <iframe
               src="https://www.youtube.com/embed/LiiY6tZ_aWg?si=4OV7scD9YjY5Pphs"
-              title="YouTube video player"
+              title="Tengen Uzui"
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
               referrerpolicy="strict-origin-when-cross-origin"
               allowfullscreen
@@ -1127,7 +1141,7 @@
 
         <div class="columns">
           <div class="text">
-            <h4>"Brazilian Hatsune Miku" (Memes da Internet)</h4>
+            <h3>"Brazilian Hatsune Miku" (Memes da Internet)</h3>
             <small>Energia contagiante e alegria absurdamente vibrante</small>
             <p>
               Sua personalidade é hipercarismática, transformando até situações
@@ -1140,7 +1154,7 @@
           <div class="video">
             <iframe
               src="https://www.youtube.com/embed/gjbguYbJQNo?si=K5qH8u8mU9XzIRhB"
-              title="YouTube video player"
+              title="Brazilian Hatsune Miku"
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
               referrerpolicy="strict-origin-when-cross-origin"
               allowfullscreen
@@ -1150,7 +1164,7 @@
 
         <div class="columns">
           <div class="text">
-            <h4>Inigo Montoya (The Princess Bride)</h4>
+            <h3>Inigo Montoya (The Princess Bride)</h3>
             <small>Estilo de combate zombeteiro com rapieiras</small>
             <p>
               Luta com duas rapieiras de forma acrobática, provoca inimigos com
@@ -1163,7 +1177,7 @@
           <div class="video">
             <iframe
               src="https://www.youtube.com/embed/WDlZ_SXx5gA?si=DadRR8QIC6jOXYP4&amp;clip=Ugkxqh6omcSEHbJYiAs5OpWF22ou6zTW8MKW&amp;clipt=EMD-DBig0xA"
-              title="YouTube video player"
+              title="Inigo Montoya"
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
               referrerpolicy="strict-origin-when-cross-origin"
               allowfullscreen
@@ -1173,7 +1187,7 @@
 
         <div class="columns">
           <div class="text">
-            <h4>Hibana (Fire Force)</h4>
+            <h3>Hibana (Fire Force)</h3>
             <small>Ar de superioridade irônica</small>
             <p>
               Tem um lado "diva" que menospreza oponentes medíocres ("Você
@@ -1185,7 +1199,7 @@
           <div class="video">
             <iframe
               src="https://www.youtube.com/embed/5jxLqU_wxEg?si=c1QM2dVLqtUc2jEs"
-              title="YouTube video player"
+              title="Hibana"
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
               referrerpolicy="strict-origin-when-cross-origin"
               allowfullscreen
@@ -1195,7 +1209,7 @@
 
         <div class="columns">
           <div class="text">
-            <h4>Lindsey Stirling (Artista)</h4>
+            <h3>Lindsey Stirling (Artista)</h3>
             <small>Música como espetáculo de combate</small>
             <p>
               Seu violino não é só instrumento – é arma e magia. Ela toca
@@ -1208,7 +1222,7 @@
           <div class="video">
             <iframe
               src="https://www.youtube.com/embed/kxGrd7mlB5M?si=Gpz8EaR6erIzggKL"
-              title="YouTube video player"
+              title="Lindsey Stirling"
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
               referrerpolicy="strict-origin-when-cross-origin"
               allowfullscreen
