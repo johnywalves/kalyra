@@ -482,7 +482,9 @@
           <strong>Floreio de Lâminas</strong>: exibições impressionantes de
           proeza e velocidade marcial
         </p>
-        <p><strong>Magia Divina (Caótica)</strong>: conhecer magia Perdição</p>
+        <p>
+          <strong>Magia Divina (Boa)</strong>: conhecer magia Curar Ferimentos
+        </p>
         <p>
           <strong>Favorecido pelos Deuses</strong>: adicionar 2d4 em falhas por
           descanso curto
@@ -549,8 +551,8 @@
           <a href="#speak_with_animals">
             <p>Falar com Animais (<em>Speak with Animals</em>)</p>
           </a>
-          <a href="#damnation">
-            <p>Perdição (<em>Damnation</em>)</p>
+          <a href="#witch-bolt">
+            <p>Raio de Bruxa (<em>Witch Bolt</em>)</p>
           </a>
           <a href="#healing_word">
             <p>Palavra Curativa (<em>Healing Word</em>)</p>
@@ -680,6 +682,23 @@
         <p>
           <strong>Dano</strong>: 2d4{{ attributes.charisma.modifier }}
           (psíquico, efeito: confuso)
+        </p>
+
+        <h3>Raio de Bruxa</h3>
+        <a
+          href="https://youtu.be/SWwFogRQVnk?si=BLI77572ZVKX9rpO&t=34"
+          target="_blank"
+        >
+          <small>🎞️ Representação visual</small>
+        </a>
+        <p>
+          <strong>Ataque</strong> (1° círculo, evocação: V, S, M): +{{
+          proficiency + attributes.charisma.bonus }}
+        </p>
+        <p>
+          <strong>Dano</strong>: 1d12{{ attributes.charisma.modifier }} (1°) /
+          2d12{{ attributes.charisma.modifier }} (2°) / 3d12{{
+          attributes.charisma.modifier }} (3°) (elétrico, efeito: continuado)
         </p>
 
         <h3>Raio de Fogo</h3>
@@ -863,7 +882,7 @@
         desocupado dentro de 1,5 metros do alvo.
       </p>
 
-      <h3>Magia Divina (Caótica)</h3>
+      <h3>Magia Divina (Boa)</h3>
       <p>
         Seu vínculo com o divino permite que você aprenda magias da classe
         clérigo. Quando o sua característica como conjurador permite que você
@@ -880,7 +899,7 @@
         conhecidas. Se você substituir mais tarde essa magia, você deve
         substituí-la por uma magia da lista de magias do clérigo.
         <br />
-        (Afinidade: Caótica | Magia: Perdição)
+        (Afinidade: Boa | Magia: Curar Ferimentos)
       </p>
 
       <h3>Favorecido pelos Deuses</h3>
@@ -1190,6 +1209,36 @@
           </p>
         </div>
 
+        <div id="witch-bolt" class="content">
+          <h3>Raio de Bruxa</h3>
+          <small>1° círculo, evocação</small>
+          <ul>
+            <li><strong>Tempo de Conjuração</strong>: 1 ação</li>
+            <li><strong>Alcance</strong>: 9 metros</li>
+            <li>
+              <strong>Componentes</strong>: V, S, M (um galho de uma árvore que
+              foi atingido por um raio)
+            </li>
+            <li><strong>Duração</strong>: Concentração, até 1 minuto</li>
+          </ul>
+
+          <p>
+            Você lança um raio de energia azul crepitante em direção a uma
+            criatura no alcance da magia, formando um arco elétrico contínuo
+            entre você e o alvo. Faça um ataque mágico a distância contra o
+            alvo. Se acertar, o alvo sofre ld12 pontos de dano elétrico, e em
+            cada um dos seus turnos, enquanto a magia durar, você pode usar uma
+            ação para causar ldl2 pontos de dano elétrico no alvo
+            automaticamente. A magia se encerra se você usar a sua ação para
+            fazer qualquer outra coisa. A magia também se encerra se o alvo sair
+            do alcance da magia ou tiver cobertura total.
+            <br />
+            <strong>Em Círculos Superiores</strong>. Ao conjurar esta magia
+            usando um espaço de magia de 2° círculo ou superior, o dano aumenta
+            em 1d12 para cada círculo do espaço acima do 1°.
+          </p>
+        </div>
+
         <div id="repair" class="content">
           <h3>Reparar</h3>
           <small>Truque, transmutação</small>
@@ -1233,30 +1282,6 @@
             metros por rodada enquanto a magia durar. Se a criatura pousar antes
             do fim da magia, não sofrerá dano por queda, podendo aterrissar eiv-
             pé, e a magia se encerra para ela.
-          </p>
-        </div>
-
-        <div id="damnation" class="content">
-          <h3>Perdição</h3>
-          <small>1° círculo, encantamento</small>
-          <ul>
-            <li><strong>Tempo de Conjuração</strong>: 1 ação</li>
-            <li><strong>Alcance</strong>: 9 metros</li>
-            <li><strong>Componentes</strong>: V, S, M (um gota de sangue)</li>
-            <li><strong>Duração</strong>: Concentração, até 1 minuto</li>
-          </ul>
-
-          <p>
-            Até três criaturas, à sua escolha, que você possa ver dentro do
-            alcance, devem realizar um teste de resistência de Carisma. Sempre
-            que um alvo que falhou nessa resistência realizar uma jogada de
-            ataque ou um teste de resistência antes da magia acabar, o alvo deve
-            rolar um d4 e subtrair o valor rolado da jogada de ataque ou teste
-            de resistência.
-            <br />
-            <strong>Em Círculos Superiores</strong>. Quando você conjurar essa
-            magia usando um espaço de magia de 2° nível ou superior, você pode
-            afetar uma criatura adicional para cada nível do espaço acima do 1°.
           </p>
         </div>
 
