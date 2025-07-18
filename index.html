@@ -191,6 +191,20 @@
           }
         }
 
+        & section.expertise {
+          & p {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            gap: 0.5rem;
+
+            & span {
+              font-size: 0.75rem;
+              margin-right: 0.25rem;
+            }
+          }
+        }
+
         & section.references {
           & div.videos {
             display: flex;
@@ -283,15 +297,15 @@
       congregação."
     </p>
 
-    <small>Barda – Colégio da Espada – Nível 3</small>
-    <small>Feiticeira – Alma Favorecida – Nível 1</small>
+    <small>Barda – Colégio da Espada – Nível {{ levelBard }}</small>
+    <small>Feiticeira – Alma Favorecida – Nível {{ levelSorcerer }}</small>
 
     <section id="description">
       <a href="#description"><h2>ℹ️ Descrição</h2></a>
       <p>
         Esta página apresenta Kalyra, uma personagem pronta para aventuras em
-        D&D 5ª Edição (nível 4), criada para brilhar tanto socialmente quanto em
-        combate tático.
+        D&D 5ª Edição (nível {{ levelBard + levelSorcerer }}), criada para
+        brilhar tanto socialmente quanto em combate tático.
       </p>
       <p>Destaques:</p>
       <p>
@@ -361,7 +375,10 @@
     <div class="columns">
       <section id="ca">
         <a href="#ca"><h2>🛡️ Classe de Armadura (CA)</h2></a>
-        <p>15 (Armadura de Couro Batido + Destreza)</p>
+        <p>
+          {{ 12 + attributes.dexterity.bonus }} (Armadura de Couro Batido +
+          Destreza)
+        </p>
       </section>
 
       <section id="pv">
@@ -374,18 +391,18 @@
       <div id="attributes" content="content">
         <a href="#attributes"><h2>🧬 Atributos</h2></a>
 
-        <p v-for="key in listAtributes">
-          <strong>{{ atributes[key].description }}</strong>
-          {{ atributes[key].points }} ({{ atributes[key].modifier }})
+        <p v-for="key in listAttributes">
+          <strong>{{ attributes[key].description }}</strong>
+          {{ attributes[key].modifier }} ({{ attributes[key].points }})
         </p>
       </div>
 
       <div id="save-throw" content="content">
         <a href="#save-throw"><h2>🎲 Salvaguardas</h2></a>
 
-        <p v-for="key in listAtributes">
-          <strong>{{ atributes[key].description }}</strong>
-          {{ atributes[key].saveThrow }}
+        <p v-for="key in listAttributes">
+          <strong>{{ attributes[key].description }}</strong>
+          {{ attributes[key].saveThrow }}
         </p>
       </div>
     </div>
@@ -399,7 +416,10 @@
           Medalhas
         </p>
         <p><strong>Armaduras</strong>: Leves e Médias</p>
-        <p><strong>Armas</strong>: Leves, Rapieira e Cimitarra</p>
+        <p>
+          <strong>Armas</strong>: Simples, Leves, Bestas de Mão, Espadas Longas,
+          Espadas Curtas, Rapieiras e Cimitarras
+        </p>
         <p>
           <strong>Perícias</strong>: Acrobacia, Atuação, Furtividade, Enganação,
           Intimidação, Persuasão e Prestidigitação
@@ -411,11 +431,11 @@
         <a href="#equipament"><h2>🎻 Equipamentos</h2></a>
 
         <p>
-          Rapieira (1d8{{ atributes.dexterity.modifier }} - <em>Finesse</em>)
+          Rapieira (1d8{{ attributes.dexterity.modifier }} - <em>Acuidade</em>)
         </p>
         <p>
-          Cimitarra (1d6{{ atributes.dexterity.modifier }} - <em>Finesse</em>,
-          <em>Light</em>)
+          Cimitarra (1d6{{ attributes.dexterity.modifier }} - <em>Acuidade</em>,
+          <em>Leve</em>)
         </p>
         <p>Violino</p>
         <p>Kit de Artista</p>
@@ -435,8 +455,8 @@
           contra ser enfeitiçado
         </p>
         <p>
-          <strong>Inspiração de Bardo (d6)</strong>: {{ atributes.charisma.bonus
-          }} vezes por descanso longo
+          <strong>Inspiração de Bardo (d6)</strong>: {{
+          attributes.charisma.bonus }} vezes por descanso longo
         </p>
         <p>
           <strong>Pau pra Toda Obra</strong>: metade da proficiência testes não
@@ -468,10 +488,24 @@
           descanso curto
         </p>
 
+        <p><strong>Aumento no Valor de Atributo</strong>: +2 em Carisma</p>
+
         <section id="magic-slot">
-          <a href="#magic-slot"><h2>🪄 Espaços de magia</h2></a>
+          <a href="#magic-slot"><h2>🪄 Características da magia</h2></a>
+          <p><strong>Habilidade Chave</strong>: Car</p>
+          <p>
+            <strong>Classe de Dificuldade</strong>: {{ 8 + proficiency +
+            attributes.charisma.bonus }}
+          </p>
+          <p>
+            <strong>Bonus de Ataque</strong>: +{{ proficiency +
+            attributes.charisma.bonus }}
+          </p>
+
+          <h3>Espaços de magia</h3>
           <p><strong>Nível 1</strong>: 4 espaços de magia</p>
           <p><strong>Nível 2</strong>: 3 espaços de magia</p>
+          <p><strong>Nível 3</strong>: 2 espaços de magia</p>
         </section>
       </div>
 
@@ -486,8 +520,8 @@
           <a href="#sure_shot">
             <p>Golpe Certeiro (<em>Sure Shot</em>)</p>
           </a>
-          <a href="#minor_illusion">
-            <p>Ilusão Menor (<em>Minor Illusion</em>)</p>
+          <a href="#fire_bolt">
+            <p>Raio de Fogo (<em>Fire Bolt</em>)</p>
           </a>
           <a href="#blade_barrier">
             <p>Proteção contra Lâminas (<em>Blade Barrier</em>)</p>
@@ -581,9 +615,98 @@
       </section>
     </section>
 
+    <section id="gallery-3d">
+      <a href="#gallery-3d"><h2>🖼️ Galeria - 3D Realista</h2></a>
+
+      <section class="gallery">
+        <a
+          v-for="image in images_3d"
+          v-bind:href="`${cndImages}/${image}`"
+          aria-label="Ver imagem completa"
+        >
+          <img
+            sizes="(min-width: 25rem) 25rem, 95vw"
+            v-bind:srcset="`${cndImages}/c_auto,w_256,ar_2:3/${image} 256w,
+            ${cndImages}/c_auto,w_512,ar_2:3/${image} 512w,
+            ${cndImages}/c_auto,w_768,ar_2:3/${image} 768w,
+            ${cndImages}/c_auto,w_1024,ar_2:3/${image} 1024w,
+            ${cndImages}/c_auto,w_1280,ar_2:3/${image} 1280w`"
+            v-bind:src="`${cndImages}/c_auto,w_512,ar_2:3/${image}`"
+            alt=""
+          />
+        </a>
+      </section>
+    </section>
+
+    <div class="columns">
+      <section id="attacks" class="attacks">
+        <a href="#attacks"><h2>🎯 Ataques</h2></a>
+
+        <h3>Rapieira</h3>
+        <p>
+          <strong>Ataque</strong> (arma): +{{ proficiency +
+          attributes.dexterity.bonus }}
+        </p>
+        <p>
+          <strong>Dano</strong>: 1d8{{ attributes.dexterity.modifier }}
+          (perfurante)
+        </p>
+
+        <h3>Cimitarra</h3>
+        <p>
+          <strong>Ataque</strong> (arma): +{{ proficiency +
+          attributes.dexterity.bonus }}
+        </p>
+        <p>
+          <strong>Dano</strong>: 1d6{{ attributes.dexterity.modifier }}
+          (cortante)
+        </p>
+
+        <h3>Zombaria Perversa</h3>
+        <p>
+          <strong>Ataque</strong> (truque, encantamento: V): +{{ proficiency +
+          attributes.charisma.bonus }}
+        </p>
+        <p>
+          <strong>Dano</strong>: 2d4{{ attributes.charisma.modifier }}
+          (psíquico, efeito: confuso)
+        </p>
+
+        <h3>Raio de Fogo</h3>
+        <p>
+          <strong>Ataque</strong> (truque, evocação: V, S): +{{ proficiency +
+          attributes.charisma.bonus }}
+        </p>
+        <p>
+          <strong>Dano</strong>: 2d10{{ attributes.charisma.modifier }} (fogo,
+          efeito: incêndio)
+        </p>
+
+        <h3>Despedaçar</h3>
+        <p>
+          <strong>Ataque</strong> (2° círculo, evocação: V, S, M): +{{
+          proficiency + attributes.charisma.bonus }}
+        </p>
+        <p>
+          <strong>Dano</strong>: 3d8{{ attributes.charisma.modifier }} (2°) /
+          4d8{{ attributes.charisma.modifier }} (3°) (trovejante, efeito:
+          resistível (Con), destrutivo)
+        </p>
+      </section>
+
+      <section id="expertise" class="expertise">
+        <a href="#expertise"><h2>🔨 Perícias</h2></a>
+        <p v-for="expertise in expertises">
+          <span v-if="expertise.proficient > 0.9">🟢</span>
+          <span v-if="expertise.proficient < 1">⭕</span>
+          <strong>{{ expertise.name }}</strong> ({{ expertise.attribute.short
+          }}) {{ expertise.bonus }}
+        </p>
+      </section>
+    </div>
+
     <section id="skills" class="skills">
       <a href="#skills"><h2>💃🏼 Habilidades</h2></a>
-
       <h3>Visão no Escuro</h3>
       <p>
         Graças ao seu sangue élfico, você possui uma visão superior no escuro.
@@ -744,6 +867,16 @@
         em um teste de resistência ou errar um ataque, pode rolar 2d4 e
         adicioná-lo ao total,
       </p>
+
+      <h3>Aumento no Valor de Atributo</h3>
+      <p>
+        Ao alcançar o 4° nível e novamente no 8°, 12°, 16° e 19° níveis, você
+        pode aumentar em 2 o valor de um atributo à sua escolha, ou pode
+        aumentar em 1 o valor de dois atributos.
+        <br />
+        Como sempre, não é possível aumentar o valor de um atributo acima de 20
+        usando esta característica.
+      </p>
     </section>
 
     <section id="grimoire" class="grimoire">
@@ -762,7 +895,7 @@
           <p>
             Uma criatura tocada por você recupera um número de pontos de vida
             igual a 1d8 + o modificador do seu atributo de conjuração ({{
-            atributes.charisma.modifier }}). Esta magia não tem efeito sobre
+            attributes.charisma.modifier }}). Esta magia não tem efeito sobre
             mortos-vivos ou constructos.
             <br />
             <strong>Em Círculos Superiores</strong>. Ao conjurar esta magia
@@ -869,43 +1002,6 @@
           </p>
         </div>
 
-        <div id="minor_illusion" class="content">
-          <h3>Ilusão Menor</h3>
-          <small>Truque, ilusão</small>
-          <ul>
-            <li><strong>Tempo de Conjuração</strong>: 1 ação</li>
-            <li><strong>Alcance</strong>: 9 metros</li>
-            <li><strong>Componentes</strong>: S, M (um pouco de lã)</li>
-            <li><strong>Duração</strong>: 1 minuto</li>
-          </ul>
-          <p>
-            Você cria um som ou uma imagem de um objeto ao alcance da magia, que
-            permanece enquanto esta durar. A ilusão termina se você a dispensar
-            com uma ação ou conjurá- -la novamente.
-          </p>
-          <p>
-            Se você cria um som, o volume emitido pode variar desde um sussurro
-            até um grito. Pode ser a sua voz, a voz de outra pessoa, o rugido de
-            um leão, a batida de tambores ou qualquer outro som à sua escolha. O
-            som continua no mesmo tom enquanto a magia durar, ou você pode fazer
-            sons mais discretos em momentos diferentes, antes que a magia
-            termine.
-          </p>
-          <p>
-            Se você criar uma imagem de um objeto - como uma cadeira, pegadas
-            lamacentas ou uma pequena arca - esta não pode ser maior que um cubo
-            de 1,5 metro. A imagem não pode emitir som, luz, odor ou qualquer
-            outro efeito sensorial. Interação física com a imagem revela que se
-            trata de uma ilusão, pois coisas passam através dela.
-          </p>
-          <p>
-            Se uma criatura usar uma ação para examinar o som ou a imagem, a
-            criatura pode determinar que é uma ilusão com um teste bem-sucedido
-            de Inteligência (Investigação) contra a CD para evitar sua magia. A
-            ilusão torna-se desbotada para uma criatura que consiga discerni-la.
-          </p>
-        </div>
-
         <div id="blade_barrier" class="content">
           <h3>Proteção contra Lâminas</h3>
           <small>Truque,abjuração</small>
@@ -919,6 +1015,28 @@
             Você estende a sua mão e traça um símbolo de proteção no ar. Até o
             final do seu próximo turno, você tem resistência contra dano
             contundente, cortante e perfurante causado por ataques armados.
+          </p>
+        </div>
+
+        <div id="fire_bolt" class="content">
+          <h3>Raio de Fogo</h3>
+          <small>Truque, evocação</small>
+          <ul>
+            <li><strong>Tempo de Conjuração</strong>: 1 ação</li>
+            <li><strong>Alcance</strong>: 36 metros</li>
+            <li><strong>Componentes</strong>: V, S</li>
+            <li><strong>Duração</strong>: Instantânea</li>
+          </ul>
+          <p>
+            Você lança uma faísca de fogo em uma criatura ou objeto no alcance
+            da magia. Faça um ataque mágico à distância contra o alvo. Se
+            acertar, o alvo sofre 1d1O pontos de dano ígneo. Um objeto
+            inflamável atingido por esta magia inflama-se caso não esteja sendo
+            vestido ou carregado.
+          </p>
+          <p>
+            O dano desta magia aumenta em ld6 quando você alcança o 5° nível
+            (2d10), o 11 ° nível (3d10) e o 17° nível (4d10).
           </p>
         </div>
 
@@ -1313,38 +1431,81 @@
   <script src="https://unpkg.com/vue@3/dist/vue.global.prod.js"></script>
   <script type="text/javascript">
     const { createApp, ref } = Vue;
-    const atributes = {
+    const attributes = {
       strength: {
+        short: "For",
         description: "Força",
         proficient: false,
         points: 10,
       },
       dexterity: {
+        short: "Des",
         description: "Destreza",
         proficient: true,
         points: 16,
       },
       constitution: {
+        short: "Con",
         description: "Constituição",
         proficient: true,
         points: 14,
       },
       intelligence: {
+        short: "Int",
         description: "Inteligência",
         proficient: false,
         points: 8,
       },
       wisdom: {
+        short: "Sab",
         description: "Sabedoria",
         proficient: false,
         points: 10,
       },
       charisma: {
+        short: "Car",
         description: "Carisma",
         proficient: true,
-        points: 18,
+        points: 20,
       },
     };
+
+    const expertises = [
+      { name: "Acrobacia", attribute: attributes.dexterity, proficient: 1 },
+      {
+        name: "Arcanismo",
+        attribute: attributes.intelligence,
+        proficient: 0.5,
+      },
+      { name: "Atletismo", attribute: attributes.strength, proficient: 0.5 },
+      { name: "Atuação", attribute: attributes.charisma, proficient: 2 },
+      { name: "Enganação", attribute: attributes.charisma, proficient: 1 },
+      { name: "Furtividade", attribute: attributes.dexterity, proficient: 1 },
+      { name: "História", attribute: attributes.intelligence, proficient: 0.5 },
+      { name: "Intimidação", attribute: attributes.charisma, proficient: 1 },
+      { name: "Intuição", attribute: attributes.wisdom, proficient: 0.5 },
+      {
+        name: "Investigação",
+        attribute: attributes.intelligence,
+        proficient: 0.5,
+      },
+      {
+        name: "Lidar com Animais",
+        attribute: attributes.wisdom,
+        proficient: 0.5,
+      },
+      { name: "Medicina", attribute: attributes.wisdom, proficient: 0.5 },
+      { name: "Natureza", attribute: attributes.intelligence, proficient: 0.5 },
+      { name: "Percepção", attribute: attributes.wisdom, proficient: 0.5 },
+      { name: "Persuasão", attribute: attributes.charisma, proficient: 2 },
+      {
+        name: "Prestidigitação",
+        attribute: attributes.dexterity,
+        proficient: 1,
+      },
+      { name: "Religião", attribute: attributes.intelligence, proficient: 0.5 },
+      { name: "Sobrevivência", attribute: attributes.wisdom, proficient: 0.5 },
+    ];
 
     const images_anime = [
       "inspiration_violin_x5j1zc.png",
@@ -1378,37 +1539,52 @@
       "realist_carnaval_wcvagh.png",
     ];
 
+    const images_3d = ["3d_obelist_k6ldul.png", "3d_fire_dancing_ysxmcc.png"];
+
     const getModifier = (value) => `${value >= 0 ? "+" : ""}${value}`;
 
     createApp({
       setup() {
-        const levelBard = 3;
+        const levelBard = 4;
         const levelSorcerer = 1;
         const proficiency = Math.floor((levelBard + levelSorcerer + 1) / 2);
 
-        const listAtributes = Object.keys(atributes);
-        listAtributes.forEach((key) => {
-          const { proficient, points } = atributes[key];
+        const listAttributes = Object.keys(attributes);
+        listAttributes.forEach((key) => {
+          const { proficient, points } = attributes[key];
 
           const bonus = Math.floor((points - 10) / 2);
 
-          atributes[key].bonus = bonus;
-          atributes[key].modifier = getModifier(bonus);
-          atributes[key].saveThrow = getModifier(
+          attributes[key].bonus = bonus;
+          attributes[key].modifier = getModifier(bonus);
+          attributes[key].saveThrow = getModifier(
             bonus + (proficient ? proficiency : 0)
           );
         });
 
-        const hitPoints = `Barda (3d8+${
-          atributes.constitution.bonus * levelBard
-        }) + Feiticeira (1d6+${atributes.constitution.bonus * levelSorcerer})`;
+        expertises.forEach((expertise) => {
+          expertise.bonus = getModifier(
+            Math.ceil(expertise.proficient * proficiency) +
+              expertise.attribute.bonus
+          );
+        });
+
+        const hitPoints = `Barda (${levelBard}d8+${
+          attributes.constitution.bonus * levelBard
+        }) + Feiticeira (${levelSorcerer}d6+${
+          attributes.constitution.bonus * levelSorcerer
+        })`;
 
         return {
-          listAtributes,
-          atributes,
+          levelBard,
+          levelSorcerer,
+          listAttributes,
+          attributes,
           proficiency,
+          expertises,
           images_anime,
           images_realist,
+          images_3d,
           hitPoints,
           cndImages: "https://res.cloudinary.com/dqvb6qgtj/image/upload",
         };
