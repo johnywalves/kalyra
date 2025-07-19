@@ -8,22 +8,35 @@
     <meta name="theme-color" content="#282c35" />
 
     <title>Kalyra</title>
-    <meta name="title" property="og:title" content="Kalyra" />
+    <meta name="title" content="Kalyra" />
     <meta
       name="description"
-      property="og:description"
       content="Kalyra, a ‘deusa’ bardo-feiticeira: dança com rapieiras, cura com êxtase e espalha festas onde passa. Será divindade ou só delírio encantador?"
     />
     <meta
       name="image"
+      content="https://res.cloudinary.com/dqvb6qgtj/image/upload/c_thumb,g_face,w_1200,h_630/dancing_square_u8cjft.png"
+    />
+
+    <meta name="type" property="og:type" content="website" />
+    <meta name="url" property="og:url" content="http://kalyra.jwalves.com/" />
+    <meta name="locale" property="og:locale" content="pt_BR" />
+    <meta
+      name="site_name"
+      property="og:site_name"
+      itemprop="name"
+      content="Kalyra"
+    />
+    <meta
+      property="og:description"
+      itemprop="description"
+      content="Kalyra, a ‘deusa’ bardo-feiticeira: dança com rapieiras, cura com êxtase e espalha festas onde passa. Será divindade ou só delírio encantador?"
+    />
+    <meta
       property="og:image"
       itemprop="image"
       content="https://res.cloudinary.com/dqvb6qgtj/image/upload/c_thumb,g_face,w_1200,h_630/dancing_square_u8cjft.png"
     />
-    <meta name="type" property="og:type" content="website" />
-    <meta name="url" property="og:url" content="http://kalyra.jwalves.com/" />
-    <meta name="site_name" property="og:site_name" content="Kalyra" />
-    <meta name="locale" property="og:locale" content="pt_BR" />
 
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:url" content="http://kalyra.jwalves.com/" />
@@ -133,6 +146,7 @@
 
         & li {
           margin: 0.25rem 0 0 1.25rem;
+          line-height: 150%;
         }
 
         & ul {
@@ -297,7 +311,7 @@
       congregação."
     </p>
 
-    <small>Barda – Colégio da Espada – Nível {{ levelBard }}</small>
+    <small>Barda – Colégio da Bravura – Nível {{ levelBard }}</small>
     <small>Feiticeira – Alma Favorecida – Nível {{ levelSorcerer }}</small>
 
     <section id="description">
@@ -415,7 +429,7 @@
           <strong>Ferramentas</strong>: Kit de Artista, Violino, Alaude e
           Medalhas
         </p>
-        <p><strong>Armaduras</strong>: Leves e Médias</p>
+        <p><strong>Armaduras</strong>: Escudos, Leves, Médias e Marciais</p>
         <p>
           <strong>Armas</strong>: Simples, Leves, Bestas de Mão, Espadas Longas,
           Espadas Curtas, Rapieiras e Cimitarras
@@ -448,40 +462,47 @@
       <div id="resources" content="content">
         <a href="#resources"><h2>🎭 Recursos</h2></a>
 
+        <h3>Artista (Antecedente)</h3>
         <p><strong>Atrações</strong>: Dançarina, Cantora e Música</p>
+
+        <h3>Meio-elfa (Raça)</h3>
         <p><strong>Visão no Escuro</strong> visibilidade de 18m</p>
         <p>
           <strong>Ancestralidade Feérica</strong>: imunidade dormir e vantagem
           contra ser enfeitiçado
         </p>
+
+        <h3>Barda (Classe)</h3>
         <p>
-          <strong>Inspiração de Bardo (d6)</strong>: {{
-          attributes.charisma.bonus }} vezes por descanso longo
+          <a href="#bardic-inspiration"
+            ><strong>Inspiração de Bardo (d6)</strong></a
+          >: {{ attributes.charisma.bonus }} vezes por descanso longo
         </p>
         <p>
-          <strong>Pau pra Toda Obra</strong>: metade da proficiência testes não
-          proficientes
+          <a href="#jack-of-all-trades"><strong>Pau pra Toda Obra</strong></a
+          >: metade da proficiência testes não proficientes
         </p>
         <p>
-          <strong>Canção de Descanso</strong>: cura adicional de 1d6 no descanso
-          curto
+          <a href="#song-of-rest"><strong>Canção de Descanso</strong></a
+          >: cura adicional de 1d6 no descanso curto
         </p>
         <p>
-          <strong>Especialista</strong>: dobrar proficiência em duas habilidade
-          proficientes (Atuação e Persuasão)
+          <a href="#specialist"><strong>Especialista</strong> </a>: dobrar
+          proficiência em duas habilidade proficientes (Atuação e Persuasão)
+        </p>
+        <p><strong>Aumento no Valor de Atributo</strong>: +2 em Carisma</p>
+
+        <h3>Colégio da Bravura (Especialização de Classe)</h3>
+        <p>
+          <strong>Proficiência Bônus</strong>: proficiência com escudo, armadura
+          media e armas marciais
         </p>
         <p>
-          <strong>Proficiência Bônus</strong>: proficiência com armadura media e
-          cimitarras
+          <strong>Inspiração em Combate</strong>: outro usar inspiração para
+          Ataque e CA
         </p>
-        <p>
-          <strong>Estilo de Luta (Combate com Duas Armas)</strong>: modificador
-          de habilidade ao dano do segundo ataque
-        </p>
-        <p>
-          <strong>Floreio de Lâminas</strong>: exibições impressionantes de
-          proeza e velocidade marcial
-        </p>
+
+        <h3>Feiticeira (Classe)</h3>
         <p>
           <strong>Magia Divina (Boa)</strong>: conhecer magia Curar Ferimentos
         </p>
@@ -489,8 +510,6 @@
           <strong>Favorecido pelos Deuses</strong>: adicionar 2d4 em falhas por
           descanso curto
         </p>
-
-        <p><strong>Aumento no Valor de Atributo</strong>: +2 em Carisma</p>
 
         <section id="magic-slot">
           <a href="#magic-slot"><h2>🪄 Características da magia</h2></a>
@@ -551,14 +570,16 @@
           <a href="#speak_with_animals">
             <p>Falar com Animais (<em>Speak with Animals</em>)</p>
           </a>
+          <a href="#tasha_hideous_laughter">
+            <p>
+              Gargalhada Nefasta de Tasha (<em>Tasha`s Hideous Laughter</em>)
+            </p>
+          </a>
           <a href="#witch-bolt">
             <p>Raio de Bruxa (<em>Witch Bolt</em>)</p>
           </a>
           <a href="#healing_word">
             <p>Palavra Curativa (<em>Healing Word</em>)</p>
-          </a>
-          <a href="#feather_fall">
-            <p>Queda Suave (<em>Feather Fall</em>)</p>
           </a>
 
           <h3>Magias de Nível 2:</h3>
@@ -684,6 +705,22 @@
           (psíquico, efeito: confuso)
         </p>
 
+        <h3>Raio de Fogo</h3>
+        <a
+          href="https://youtu.be/wtFG3kq9tKA?si=40Kl6Qb2oy5pbHqI&t=40"
+          target="_blank"
+        >
+          <small>🎞️ Representação visual</small>
+        </a>
+        <p>
+          <strong>Ataque</strong> (truque, evocação: V, S): +{{ proficiency +
+          attributes.charisma.bonus }}
+        </p>
+        <p>
+          <strong>Dano</strong>: 2d10{{ attributes.charisma.modifier }} (fogo,
+          efeito: incêndio)
+        </p>
+
         <h3>Raio de Bruxa</h3>
         <a
           href="https://youtu.be/SWwFogRQVnk?si=BLI77572ZVKX9rpO&t=34"
@@ -699,22 +736,6 @@
           <strong>Dano</strong>: 1d12{{ attributes.charisma.modifier }} (1°) /
           2d12{{ attributes.charisma.modifier }} (2°) / 3d12{{
           attributes.charisma.modifier }} (3°) (elétrico, efeito: continuado)
-        </p>
-
-        <h3>Raio de Fogo</h3>
-        <a
-          href="https://youtu.be/wtFG3kq9tKA?si=40Kl6Qb2oy5pbHqI&t=40"
-          target="_blank"
-        >
-          <small>🎞️ Representação visual</small>
-        </a>
-        <p>
-          <strong>Ataque</strong> (truque, evocação: V, S): +{{ proficiency +
-          attributes.charisma.bonus }}
-        </p>
-        <p>
-          <strong>Dano</strong>: 2d10{{ attributes.charisma.modifier }} (fogo,
-          efeito: incêndio)
         </p>
 
         <h3>Despedaçar</h3>
@@ -748,7 +769,7 @@
 
     <section id="skills" class="skills">
       <a href="#skills"><h2>💃🏼 Habilidades</h2></a>
-      <h3>Visão no Escuro</h3>
+      <h3 id="darkvision">Visão no Escuro</h3>
       <p>
         Graças ao seu sangue élfico, você possui uma visão superior no escuro.
         Você consegue enxergar até 18 metros na meia-luz como se fosse dia e, na
@@ -756,20 +777,20 @@
         discernir tons de cinza.
       </p>
 
-      <h3>Ancestralidade Feérica</h3>
+      <h3 id="faerie-ancestry">Ancestralidade Feérica</h3>
       <p>
         Nenhum tipo de magia pode colocá-lo para dormir, e você tem vantagem em
         salvaguardas contra ser enfeitiçado. Versatilidade com Perícias. Você
         ganha proficiência em duas perícias à sua escolha.
       </p>
 
-      <h3>Idiomas</h3>
+      <h3 id="languages">Idiomas</h3>
       <p>
         Você pode falar, ler e escrever Comum, Élfico e outro idioma à sua
         escolha.
       </p>
 
-      <h3>Inspiração de Bardo (d6)</h3>
+      <h3 id="bardic-inspiration">Inspiração de Bardo (d6)</h3>
       <p>
         Você pode inspirar os outros por meio da música ou das palavras. Para
         isso, no seu turno, deve usar uma ação bônus para escolher uma criatura
@@ -796,14 +817,14 @@
         nível.
       </p>
 
-      <h3>Pau pra Toda Obra</h3>
+      <h3 id="jack-of-all-trades">Pau pra Toda Obra</h3>
       <p>
         A partir do 2° nível, você pode adicionar metade do seu bônus de
         proficiência, arredondado para baixo, a qualquer teste de atributo que
         realizar e que já não inclua seu bônus de proficiência.
       </p>
 
-      <h3>Canção de Descanso</h3>
+      <h3 id="song-of-rest">Canção de Descanso</h3>
       <p>
         A partir do 2° nível, durante um descanso curto, você pode usar uma
         música ou discurso tranquilizador para ajudar a revitalizar seus aliados
@@ -817,7 +838,7 @@
         nível.
       </p>
 
-      <h3>Especialista</h3>
+      <h3 id="specialist">Especialista</h3>
       <p>
         No 3° nível, escolha duas perícias na quais já seja proficiente. Seu
         bônus de proficiência é duplicado em qualquer teste de atributo que
@@ -827,62 +848,34 @@
         perícias em que seja proficiente.
       </p>
 
-      <h3>Proficiência Bônus</h3>
+      <h3 id="attribute-value-increase">Aumento no Valor de Atributo</h3>
       <p>
-        Quando você entra no Colégio das Espadas no 3° nível, você ganha
-        proficiência com armadura media e cimitarras.
+        Ao alcançar o 4° nível e novamente no 8°, 12°, 16° e 19° níveis, você
+        pode aumentar em 2 o valor de um atributo à sua escolha, ou pode
+        aumentar em 1 o valor de dois atributos.
         <br />
-        Se você é proficiente com uma arma simples ou marcial, você pode usar
-        como foco de feitiço para os seus feitiços difíceis.
+        Como sempre, não é possível aumentar o valor de um atributo acima de 20
+        usando esta característica.
       </p>
 
-      <h3>Estilo de Luta</h3>
+      <h3 id="bonus-proficiency">Proficiência Bônus</h3>
       <p>
-        No 3° nível, você adota um estilo de luta como sua especialidade.
-        Escolha uma das seguintes opções. Você não pode escolher um estilo uma
-        opção mais de uma vez, mesmo que algo no jogo lhe permita.
-        <br />
-        <strong>Duelo</strong>. Quando você está empunhando uma arma corpo a
-        corpo em uma mão e nenhuma outra, você ganha um bônus de +2 nas rolagens
-        de ataque com essa arma.
-        <br />
-        <strong>Combate com Duas Armas</strong>. Quando você se empenha em duas
-        armas, você pode adicionar o modificador de habilidade ao dano do
-        segundo ataque.
+        Ao se juntar ao Colégio da Bravura no 3° nível, você adquire
+        proficiência com armaduras médias, escudos e armas marciais.
       </p>
 
-      <h3>Floreio de Lâminas</h3>
+      <h3 id="combat-inspiration">Inspiração em Combate</h3>
       <p>
-        No 3° nível, você aprende a realizar exibições impressionantes de proeza
-        e velocidade marcial.
-        <br />
-        Sempre que você toma a ação de Ataque no seu turno, sua velocidade de
-        caminhada aumenta 3 metros até o final do turno, e se um ataque de arma
-        que você faz como parte desta ação atinge uma criatura, você pode usar
-        uma das seguintes opções de Floreios de Lâmina de sua escolha. Você pode
-        usar apenas uma opção por turno.
-        <br />
-        <strong>Floreio Defensivo</strong>. Você pode gastar uma Inspiração de
-        Bardo para causar dano extra ao alvo que acerta. O dano é igual ao
-        número que você rola no dado de inspiração de bardo. Você também
-        adiciona o número rolado a sua CA até o início de seu próximo turno.
-        <br />
-        <strong>Floreio Cortante</strong>. Você pode gastar uma de suas
-        Inspirações de Bardo para causar dano extra ao alvo que acerta e a
-        qualquer outra criatura de sua escolha que você possa a 1,5 metros de
-        você. O dano é igual ao número que você rola no dado de inspiração de
-        bardo.
-        <br />
-        <strong>Floreio Móvel</strong>. Você pode gastar uma de suas Inspirações
-        de Bardo para causar dano extra ao alvo que acerta. O dano é igual ao
-        número que você rola no dado de inspiração de bardo. Você também pode
-        empurrar o alvo até 1,5 metros de distância de você, além de um valor de
-        30 centímetros a cada número que você rola naquele dado. Você pode então
-        usar instantaneamente sua reação para se deslocar até um espaço
-        desocupado dentro de 1,5 metros do alvo.
+        Ainda no 3° nível, você aprende a inspirar terceiros durante uma
+        batalha. Uma criatura que possua um dado concedido por sua Inspiração de
+        Bardo pode jogá-lo e adicionar o resultado a uma jogada de dano que
+        tenha acabado de realizar. Ou, se preferir, ao sofrer um ataque, a
+        criatura poderá usar uma reação para jogar o dado de Inspiração de Bardo
+        e adicionar o resultado à sua CA contra esse ataque - isso depois da
+        jogada ser feita, mas antes de saber se foi um acerto ou não
       </p>
 
-      <h3>Magia Divina (Boa)</h3>
+      <h3 id="divine-magic">Magia Divina (Boa)</h3>
       <p>
         Seu vínculo com o divino permite que você aprenda magias da classe
         clérigo. Quando o sua característica como conjurador permite que você
@@ -902,7 +895,7 @@
         (Afinidade: Boa | Magia: Curar Ferimentos)
       </p>
 
-      <h3>Favorecido pelos Deuses</h3>
+      <h3 id="favored-by-the-gods">Favorecido pelos Deuses</h3>
       <p>
         A partir do 1° nível, o poder divino protege seu destino. Se você falhar
         em um teste de resistência ou errar um ataque, pode rolar 2d4 e
@@ -910,15 +903,40 @@
         essa característica, não pode usá-la novamente até terminar um descanso
         curto ou longo.
       </p>
+    </section>
 
-      <h3>Aumento no Valor de Atributo</h3>
+    <section id="combat" class="skills">
+      <a href="#combat"><h2>⚔️ Combate</h2></a>
       <p>
-        Ao alcançar o 4° nível e novamente no 8°, 12°, 16° e 19° níveis, você
-        pode aumentar em 2 o valor de um atributo à sua escolha, ou pode
-        aumentar em 1 o valor de dois atributos.
-        <br />
-        Como sempre, não é possível aumentar o valor de um atributo acima de 20
-        usando esta característica.
+        Suporte ofensivo e controle híbrido, alternando entre combate corpo a
+        corpo e magias.
+      </p>
+
+      <h3>Ações Prioritárias</h3>
+      <p>
+        Use
+        <a href="#bardic-inspiration"><strong>Inspiração de Bardo</strong></a>
+        como ação bônus para conceder 1d6 a aliados (ataques, testes ou CA via
+        reação) ou
+        <a href="#healing-word"><strong>Palavra Curativa</strong></a> para cura
+        emergencial. Em combate direto, ataque com Rapieira/Cimitarra ou, à
+        distância, use
+        <a href="#vicious_mockery"><strong>Zombaria Perversa</strong></a> (para
+        desvantagem inimiga) ou
+        <a href="#fire_bolt"><strong>Raio de Fogo</strong></a> (dano confiável).
+      </p>
+
+      <h3>Magias Estratégicas</h3>
+      <p>
+        <a href="#witch_bolt"><strong>Raio de Bruxa</strong></a> para dano
+        sustentado e <a href="#shatter"><strong>Despedaçar</strong></a> contra
+        grupos.
+        <a href="#tasha_hideous_laughter">
+          <strong>Gargalhada Nefasta de Tasha</strong>
+        </a>
+        para incapacitar adversários. Mantenha-se na linha média do combate para
+        equilibrar alcance e segurança. Priorize Zombaria Perversa em chefes e
+        combine Inspiração com ataques aliados para maximizar eficiência.
       </p>
     </section>
 
@@ -926,264 +944,6 @@
       <a href="#grimoire"><h2>📘 Grimório</h2></a>
 
       <div class="columns">
-        <div id="cure_wounds" class="content">
-          <h3>Curar Ferimentos</h3>
-          <small>1° círculo, evocação</small>
-          <ul>
-            <li><strong>Tempo de Conjuração</strong>: 1 ação</li>
-            <li><strong>Alcance</strong>: Toque</li>
-            <li><strong>Componentes</strong>: V, S</li>
-            <li><strong>Duração</strong>: Instantânea</li>
-          </ul>
-          <p>
-            Uma criatura tocada por você recupera um número de pontos de vida
-            igual a 1d8 + o modificador do seu atributo de conjuração ({{
-            attributes.charisma.modifier }}). Esta magia não tem efeito sobre
-            mortos-vivos ou constructos.
-            <br />
-            <strong>Em Círculos Superiores</strong>. Ao conjurar esta magia
-            usando um espaço de magia de 2° círculo ou superior, a cura aumenta
-            em 1d8 para cada círculo do espaço acima do 1°.
-          </p>
-        </div>
-
-        <div id="speak_with_animals" class="content">
-          <h3>Falar com Animais</h3>
-          <small>1 ° círculo, adivinhação (ritual)</small>
-          <ul>
-            <li><strong>Tempo de Conjuração</strong>: 1 ação</li>
-            <li><strong>Alcance</strong>: Pessoal</li>
-            <li><strong>Componentes</strong>: V, S</li>
-            <li><strong>Duração</strong>: 10 minutos</li>
-          </ul>
-          <p>
-            Você adquire a habilidade de compreender e se comunicar verbalmente
-            com feras enquanto a magia durar. O conhecimento e a consciência são
-            limitados pela inteligência delas mas, no mínimo, são capazes de dar
-            informação sobre localidades e monstros próximos, incluindo tudo o
-            que notam ou notaram nas últimas 24 horas. Você pode tentar
-            persuadir uma fera a lhe fazer um pequeno favor, a critério do DM.
-          </p>
-        </div>
-
-        <div id="lesser_restoration" class="content">
-          <h3>Restauração Menor</h3>
-          <small>2° círculo, abjuração</small>
-          <ul>
-            <li><strong>Tempo de Conjuração</strong>: 1 ação</li>
-            <li><strong>Alcance</strong>: Toque</li>
-            <li><strong>Componentes</strong>: V, S</li>
-            <li><strong>Duração</strong>: Instantânea</li>
-          </ul>
-          <p>
-            Você toca uma criatura e pode tanto curar uma doença quanto remover
-            uma condição que a aflija. A condição pode ser cego, envenenado,
-            paralisado ou surdo.
-          </p>
-        </div>
-
-        <div id="prestidigitation" class="content">
-          <h3>Prestidigitação</h3>
-          <small>Truque, transmutação</small>
-          <ul>
-            <li><strong>Tempo de Conjuração</strong>: 1 ação</li>
-            <li><strong>Alcance</strong>: 3 metros</li>
-            <li><strong>Componentes</strong>: V, S</li>
-            <li><strong>Duração</strong>: Até 1 hora</li>
-          </ul>
-          <p>
-            Esta magia é um pequeno truque mágico que conjuradores iniciantes
-            usam para praticar. Crie um dos seguintes efeitos mágicos no alcance
-            da magia:
-          </p>
-          <p>
-            • Você cria um efeito sensorial instantâneo e inofensivo como uma
-            chuva de faíscas, um sopro de vento, notas ' musicais
-            fantasmagóricas ou um odor característico.
-          </p>
-          <p>
-            • Você faz com que uma vela, tocha ou pequena fogueira seja
-            imediatamente acesa ou apagada.
-          </p>
-          <p>
-            • Você instantaneamente limpa ou suja um objeto que não seja maior
-            que um cubo de 30 centímetros de lado.
-          </p>
-          <p>
-            • Você resfria, esquenta ou tempera um cubo de até 30 centímetros de
-            lado feito de matéria não-viva por 1 hora.
-          </p>
-          <p>
-            • Você colore, faz uma pequena marca ou um símbolo aparecer em um
-            objeto ou superfície por 1 hora.
-          </p>
-          <p>
-            • Você cria uma bugiganga não-mágica ou uma imagem ilusória que pode
-            caber em sua mão e esta dura até o fim do seu próximo turno.
-          </p>
-          <p>
-            Se você conjurar esta magia múltiplas vezes, é possível ter três de
-            seus efeitos não instantâneos ativos ao mesmo tempo e qualquer
-            desses efeitos pode ser encerrado com uma ação.
-          </p>
-        </div>
-
-        <div id="sure_shot" class="content">
-          <h3>Golpe Certeiro</h3>
-          <small>Truque, adivinhação</small>
-          <ul>
-            <li><strong>Tempo de Conjuração</strong>: 1 ação</li>
-            <li><strong>Alcance</strong>: 9 metros</li>
-            <li><strong>Componentes</strong>: S</li>
-            <li><strong>Duração</strong>: Concentração, até 1 rodada</li>
-          </ul>
-          <p>
-            Você aponta o seu dedo para um alvo no alcance. Sua magia garante
-            uma leve intuição das defesas do alvo. Em seu próximo turno, você
-            ganha vantagem em sua primeira jogada de ataque contra o alvo, desde
-            que a magia não tenha terminado.
-          </p>
-        </div>
-
-        <div id="blade_barrier" class="content">
-          <h3>Proteção contra Lâminas</h3>
-          <small>Truque,abjuração</small>
-          <ul>
-            <li><strong>Tempo de Conjuração</strong>: 1 ação</li>
-            <li><strong>Alcance</strong>: Pessoal</li>
-            <li><strong>Componentes</strong>: V, S</li>
-            <li><strong>Duração</strong>: 1 rodada</li>
-          </ul>
-          <p>
-            Você estende a sua mão e traça um símbolo de proteção no ar. Até o
-            final do seu próximo turno, você tem resistência contra dano
-            contundente, cortante e perfurante causado por ataques armados.
-          </p>
-        </div>
-
-        <div id="fire_bolt" class="content">
-          <h3>Raio de Fogo</h3>
-          <small>Truque, evocação</small>
-          <ul>
-            <li><strong>Tempo de Conjuração</strong>: 1 ação</li>
-            <li><strong>Alcance</strong>: 36 metros</li>
-            <li><strong>Componentes</strong>: V, S</li>
-            <li><strong>Duração</strong>: Instantânea</li>
-          </ul>
-          <p>
-            Você lança uma faísca de fogo em uma criatura ou objeto no alcance
-            da magia. Faça um ataque mágico à distância contra o alvo. Se
-            acertar, o alvo sofre 1d1O pontos de dano ígneo. Um objeto
-            inflamável atingido por esta magia inflama-se caso não esteja sendo
-            vestido ou carregado.
-          </p>
-          <p>
-            O dano desta magia aumenta em ld6 quando você alcança o 5° nível
-            (2d10), o 11 ° nível (3d10) e o 17° nível (4d10).
-          </p>
-        </div>
-
-        <div id="dancing_lights" class="content">
-          <h3>Luzes Dançantes</h3>
-          <small>Truque, evocação</small>
-          <ul>
-            <li><strong>Tempo de Conjuração</strong>: 1 ação</li>
-            <li>Alcance: 36 metros</li>
-            <li>
-              <strong>Componentes</strong>: V, S, M (um pouco de fósforo, uma
-              folha de olmo ou uma larva luminosa)
-            </li>
-            <li><strong>Duração</strong>: Concentração, até 1 minuto</li>
-          </ul>
-          <p>
-            Você cria até quatro luzes no alcance da magia, fazendo com que se
-            pareçam com tochas, lanternas ou globos brilhantes que pairam no ar
-            por toda a duração da magia. Você também pode combinar as quatro
-            luzes para que brilhem em uma forma vagamente humanoide de tamanho
-            Médio. Qualquer que seja a forma escolhida, cada luz emite meia-luz
-            em um raio de 3 metros.
-          </p>
-          <p>
-            Com uma ação bônus em seu turno, você pode mover as luzes até 18
-            metros para um novo lugar dentro do alcance da magia. Uma luz deve
-            estar a até 6 metros de outra luz criada por esta magia, e uma luz
-            começa a piscar quando ultrapassa o alcance da magia.
-          </p>
-        </div>
-
-        <div id="vicious_mockery" class="content">
-          <h3>Zombaria Perversa</h3>
-          <small>Truque, encantamento</small>
-          <ul>
-            <li><strong>Tempo de Conjuração</strong>: 1 ação</li>
-            <li><strong>Alcance</strong>: 18 metros</li>
-            <li><strong>Componentes</strong>: V</li>
-            <li><strong>Duração</strong>: Instantânea</li>
-          </ul>
-          <p>
-            Você lança uma série de insultos carregados com sutis encantamentos
-            contra uma criatura à sua vista e no alcance da magia. Se o alvo
-            puder ouvir você (embora ele não precise lhe entender), ele deve ser
-            bem-sucedido em uma salvaguarda de Carisma. Se falhar, sofre ld4
-            pontos de dano psíquico e terá desvantagem na próxima jogada de
-            ataque que ele fizer antes do fim do próximo turno dele.
-          </p>
-          <p>
-            O dano desta magia aumenta em ld4 quando você alcança o 5° nível
-            (2d4), o 11° nível (3d4) e o 17° nível (4d4).
-          </p>
-        </div>
-
-        <div id="healing_word" class="content">
-          <h3>Palavra Curativa</h3>
-          <small>1° círculo, evocação</small>
-          <ul>
-            <li><strong>Tempo de Conjuração</strong>: 1 ação bônus</li>
-            <li><strong>Alcance</strong>: 18 metros</li>
-            <li><strong>Componentes</strong>: V</li>
-            <li><strong>Duração</strong>: Instantânea</li>
-          </ul>
-          <p>
-            Escolha uma criatura à sua vista e no alcance da magia. Ela recupera
-            uma quantidade de pontos de vida igual a 1d4 + seu modificador de
-            atributo de conjuração. Esta magia não tem efeito sobre mortos-vivos
-            ou constructos.
-            <br />
-            <strong>Em Círculos Superiores</strong>. Ao conjurar esta magia
-            usando um espaço de magia de 2° círculo ou superior, a cura aumenta
-            em 1d4 para cada círculo do espaço acima do 1°
-          </p>
-        </div>
-
-        <div id="shatter" class="content">
-          <h3>Despedaçar</h3>
-          <small>2° círculo, evocação</small>
-          <ul>
-            <li><strong>Tempo de Conjuração</strong>: 1 ação</li>
-            <li><strong>Alcance</strong>: 18 metros</li>
-            <li><strong>Componentes</strong>: V, S, M (uma lasca de mica)</li>
-            <li><strong>Duração</strong>: Instantânea</li>
-          </ul>
-          <p>
-            Um ruído súbito e estridente, dolorosamente intenso, irrompe a
-            partir de um ponto à sua escolha, no alcance da magia. Cada criatura
-            em uma esfera de 3 metros de raio centrado naquele ponto deve fazer
-            uma salvaguarda de Constituição. Se falhar, sofre 3d8 pontos de dano
-            trovejante, ou metade do dano em caso de sucesso. Uma criatura feita
-            de material inorgânico, como pedra, cristal ou metal tem desvantagem
-            nesta salvaguarda.
-          </p>
-          <p>
-            Um objeto não-mágico que não esteja sendo usado ou carregado também
-            sofre o dano se estiver na área da magia.
-          </p>
-          <p>
-            <strong>Em Círculos Superiores</strong>. Ao conjurar esta magia
-            usando um espaço de magia de 3° círculo ou superior, o dano aumenta
-            em ld8 para cada círculo do espaço acima do 2°.
-          </p>
-        </div>
-
         <div id="comprehend_languages" class="content">
           <h3>Compreender Idiomas</h3>
           <small>1° círculo, adivinhação (ritual)</small>
@@ -1209,79 +969,24 @@
           </p>
         </div>
 
-        <div id="witch-bolt" class="content">
-          <h3>Raio de Bruxa</h3>
+        <div id="cure_wounds" class="content">
+          <h3>Curar Ferimentos</h3>
           <small>1° círculo, evocação</small>
           <ul>
             <li><strong>Tempo de Conjuração</strong>: 1 ação</li>
-            <li><strong>Alcance</strong>: 9 metros</li>
-            <li>
-              <strong>Componentes</strong>: V, S, M (um galho de uma árvore que
-              foi atingido por um raio)
-            </li>
-            <li><strong>Duração</strong>: Concentração, até 1 minuto</li>
-          </ul>
-
-          <p>
-            Você lança um raio de energia azul crepitante em direção a uma
-            criatura no alcance da magia, formando um arco elétrico contínuo
-            entre você e o alvo. Faça um ataque mágico a distância contra o
-            alvo. Se acertar, o alvo sofre ld12 pontos de dano elétrico, e em
-            cada um dos seus turnos, enquanto a magia durar, você pode usar uma
-            ação para causar ldl2 pontos de dano elétrico no alvo
-            automaticamente. A magia se encerra se você usar a sua ação para
-            fazer qualquer outra coisa. A magia também se encerra se o alvo sair
-            do alcance da magia ou tiver cobertura total.
-            <br />
-            <strong>Em Círculos Superiores</strong>. Ao conjurar esta magia
-            usando um espaço de magia de 2° círculo ou superior, o dano aumenta
-            em 1d12 para cada círculo do espaço acima do 1°.
-          </p>
-        </div>
-
-        <div id="repair" class="content">
-          <h3>Reparar</h3>
-          <small>Truque, transmutação</small>
-          <ul>
-            <li><strong>Tempo de Conjuração</strong>: 1 minuto</li>
             <li><strong>Alcance</strong>: Toque</li>
-            <li><strong>Componentes</strong>: V, S, M (duas magnetitas)</li>
+            <li><strong>Componentes</strong>: V, S</li>
             <li><strong>Duração</strong>: Instantânea</li>
           </ul>
-
           <p>
-            Esta magia repara um objeto quebrado ou rompido que você toque, como
-            um elo de corrente quebrp.do, duas metades de uma chave quebrada, um
-            manto rasgado ou um odre vazando. Se a quebra ou ruptura não for
-            maior do que 30 centímetros em qualquer direção, você a repara sem
-            deixar traços do dano anterior.
-          </p>
-          <p>
-            Esta magia pode reparar um item mágico ou constructo, mas não pode
-            restaurar a magia de tal objeto.
-          </p>
-        </div>
-
-        <div id="feather_fall" class="content">
-          <h3>Queda Suave</h3>
-          <small>1° círculo, transmutação</small>
-          <ul>
-            <li>
-              <strong>Tempo de Conjuração</strong>: 1 reação, executada quando
-              você ou uma criatura a 18 metros do seu alcance cai
-            </li>
-            <li><strong>Alcance</strong>: 18 metros</li>
-            <li>
-              <strong>Componentes</strong>: V, M (uma pena pequena ou penugem)
-            </li>
-            <li><strong>Duração</strong>: 1 minuto</li>
-          </ul>
-          <p>
-            Escolha até cinco criaturas no alcance da magia e que estejam
-            caindo. A velocidade de queda de uma criatura é reduzida para 18
-            metros por rodada enquanto a magia durar. Se a criatura pousar antes
-            do fim da magia, não sofrerá dano por queda, podendo aterrissar eiv-
-            pé, e a magia se encerra para ela.
+            Uma criatura tocada por você recupera um número de pontos de vida
+            igual a 1d8 + o modificador do seu atributo de conjuração ({{
+            attributes.charisma.modifier }}). Esta magia não tem efeito sobre
+            mortos-vivos ou constructos.
+            <br />
+            <strong>Em Círculos Superiores</strong>. Ao conjurar esta magia
+            usando um espaço de magia de 2° círculo ou superior, a cura aumenta
+            em 1d8 para cada círculo do espaço acima do 1°.
           </p>
         </div>
 
@@ -1318,6 +1023,324 @@
             ação dela para inspecionar sua aparência, devendo ser bem-sucedida
             em um teste de Inteligência (Investigação) contra a CD para evitar
             sua magia.
+          </p>
+        </div>
+
+        <div id="shatter" class="content">
+          <h3>Despedaçar</h3>
+          <small>2° círculo, evocação</small>
+          <ul>
+            <li><strong>Tempo de Conjuração</strong>: 1 ação</li>
+            <li><strong>Alcance</strong>: 18 metros</li>
+            <li><strong>Componentes</strong>: V, S, M (uma lasca de mica)</li>
+            <li><strong>Duração</strong>: Instantânea</li>
+          </ul>
+          <p>
+            Um ruído súbito e estridente, dolorosamente intenso, irrompe a
+            partir de um ponto à sua escolha, no alcance da magia. Cada criatura
+            em uma esfera de 3 metros de raio centrado naquele ponto deve fazer
+            uma salvaguarda de Constituição. Se falhar, sofre 3d8 pontos de dano
+            trovejante, ou metade do dano em caso de sucesso. Uma criatura feita
+            de material inorgânico, como pedra, cristal ou metal tem desvantagem
+            nesta salvaguarda.
+          </p>
+          <p>
+            Um objeto não-mágico que não esteja sendo usado ou carregado também
+            sofre o dano se estiver na área da magia.
+          </p>
+          <p>
+            <strong>Em Círculos Superiores</strong>. Ao conjurar esta magia
+            usando um espaço de magia de 3° círculo ou superior, o dano aumenta
+            em ld8 para cada círculo do espaço acima do 2°.
+          </p>
+        </div>
+
+        <div id="speak_with_animals" class="content">
+          <h3>Falar com Animais</h3>
+          <small>1 ° círculo, adivinhação (ritual)</small>
+          <ul>
+            <li><strong>Tempo de Conjuração</strong>: 1 ação</li>
+            <li><strong>Alcance</strong>: Pessoal</li>
+            <li><strong>Componentes</strong>: V, S</li>
+            <li><strong>Duração</strong>: 10 minutos</li>
+          </ul>
+          <p>
+            Você adquire a habilidade de compreender e se comunicar verbalmente
+            com feras enquanto a magia durar. O conhecimento e a consciência são
+            limitados pela inteligência delas mas, no mínimo, são capazes de dar
+            informação sobre localidades e monstros próximos, incluindo tudo o
+            que notam ou notaram nas últimas 24 horas. Você pode tentar
+            persuadir uma fera a lhe fazer um pequeno favor, a critério do DM.
+          </p>
+        </div>
+
+        <div id="tasha_hideous_laughter" class="content">
+          <h3>Gargalhada Nefasta de Tasha</h3>
+          <small>1° círculo, encantamento</small>
+          <ul>
+            <li><strong>Tempo de Conjuração</strong>: 1 ação</li>
+            <li><strong>Alcance</strong>: 9 metros</li>
+            <li>
+              <strong>Componentes</strong>: V, S, M (tortas minúsculas e uma
+              pena, que é agitada no ar)
+            </li>
+            <li><strong>Duração</strong>: Concentração, até 1 minuto</li>
+          </ul>
+          <p>
+            Você escolhe uma criatura à sua vista e no alcance da magia, que
+            passa a perceber tudo como hilariantemente engraçado, sofrendo
+            ataques de riso, caso seja afetada pela magia. O alvo deve ser
+            bem-sucedido em uma salvaguarda de Sabedoria ou fica caído,
+            incapacitado e incapaz de se levantar enquanto a magia durar. Uma
+            criatura de Inteligência 4 ou menos não pode ser afetada.
+          </p>
+          <p>
+            Ao final de cada turno, e em cada ocasião que sofrer dano, o alvo
+            pode tentar outra salvaguarda de Sabedoria. O alvo tem vantagem se a
+            salvaguarda for disparada por dano sofrido. Em caso de sucesso, a
+            magia se encerra.
+          </p>
+        </div>
+
+        <div id="sure_shot" class="content">
+          <h3>Golpe Certeiro</h3>
+          <small>Truque, adivinhação</small>
+          <ul>
+            <li><strong>Tempo de Conjuração</strong>: 1 ação</li>
+            <li><strong>Alcance</strong>: 9 metros</li>
+            <li><strong>Componentes</strong>: S</li>
+            <li><strong>Duração</strong>: Concentração, até 1 rodada</li>
+          </ul>
+          <p>
+            Você aponta o seu dedo para um alvo no alcance. Sua magia garante
+            uma leve intuição das defesas do alvo. Em seu próximo turno, você
+            ganha vantagem em sua primeira jogada de ataque contra o alvo, desde
+            que a magia não tenha terminado.
+          </p>
+        </div>
+
+        <div id="prestidigitation" class="content">
+          <h3>Prestidigitação</h3>
+          <small>Truque, transmutação</small>
+          <ul>
+            <li><strong>Tempo de Conjuração</strong>: 1 ação</li>
+            <li><strong>Alcance</strong>: 3 metros</li>
+            <li><strong>Componentes</strong>: V, S</li>
+            <li><strong>Duração</strong>: Até 1 hora</li>
+          </ul>
+          <p>
+            Esta magia é um pequeno truque mágico que conjuradores iniciantes
+            usam para praticar. Crie um dos seguintes efeitos mágicos no alcance
+            da magia:
+          </p>
+
+          <ul>
+            <li>
+              Você cria um efeito sensorial instantâneo e inofensivo como uma
+              chuva de faíscas, um sopro de vento, notas musicais
+              fantasmagóricas ou um odor característico.
+            </li>
+            <li>
+              Você faz com que uma vela, tocha ou pequena fogueira seja
+              imediatamente acesa ou apagada.
+            </li>
+            <li>
+              Você resfria, esquenta ou tempera um cubo de até 30 centímetros de
+              lado feito de matéria não-viva por 1 hora.
+            </li>
+            <li>
+              Você colore, faz uma pequena marca ou um símbolo aparecer em um
+              objeto ou superfície por 1 hora.
+            </li>
+            <li>
+              Você cria uma bugiganga não-mágica ou uma imagem ilusória que pode
+              caber em sua mão e esta dura até o fim do seu próximo turno.
+            </li>
+          </ul>
+
+          <p>
+            Se você conjurar esta magia múltiplas vezes, é possível ter três de
+            seus efeitos não instantâneos ativos ao mesmo tempo e qualquer
+            desses efeitos pode ser encerrado com uma ação.
+          </p>
+        </div>
+
+        <div id="fire_bolt" class="content">
+          <h3>Raio de Fogo</h3>
+          <small>Truque, evocação</small>
+          <ul>
+            <li><strong>Tempo de Conjuração</strong>: 1 ação</li>
+            <li><strong>Alcance</strong>: 36 metros</li>
+            <li><strong>Componentes</strong>: V, S</li>
+            <li><strong>Duração</strong>: Instantânea</li>
+          </ul>
+          <p>
+            Você lança uma faísca de fogo em uma criatura ou objeto no alcance
+            da magia. Faça um ataque mágico à distância contra o alvo. Se
+            acertar, o alvo sofre 1d1O pontos de dano ígneo. Um objeto
+            inflamável atingido por esta magia inflama-se caso não esteja sendo
+            vestido ou carregado.
+          </p>
+          <p>
+            O dano desta magia aumenta em 1d6 quando você alcança o 5° nível
+            (2d10), o 11 ° nível (3d10) e o 17° nível (4d10).
+          </p>
+        </div>
+
+        <div id="blade_barrier" class="content">
+          <h3>Proteção contra Lâminas</h3>
+          <small>Truque,abjuração</small>
+          <ul>
+            <li><strong>Tempo de Conjuração</strong>: 1 ação</li>
+            <li><strong>Alcance</strong>: Pessoal</li>
+            <li><strong>Componentes</strong>: V, S</li>
+            <li><strong>Duração</strong>: 1 rodada</li>
+          </ul>
+          <p>
+            Você estende a sua mão e traça um símbolo de proteção no ar. Até o
+            final do seu próximo turno, você tem resistência contra dano
+            contundente, cortante e perfurante causado por ataques armados.
+          </p>
+        </div>
+
+        <div id="witch-bolt" class="content">
+          <h3>Raio de Bruxa</h3>
+          <small>1° círculo, evocação</small>
+          <ul>
+            <li><strong>Tempo de Conjuração</strong>: 1 ação</li>
+            <li><strong>Alcance</strong>: 9 metros</li>
+            <li>
+              <strong>Componentes</strong>: V, S, M (um galho de uma árvore que
+              foi atingido por um raio)
+            </li>
+            <li><strong>Duração</strong>: Concentração, até 1 minuto</li>
+          </ul>
+
+          <p>
+            Você lança um raio de energia azul crepitante em direção a uma
+            criatura no alcance da magia, formando um arco elétrico contínuo
+            entre você e o alvo. Faça um ataque mágico a distância contra o
+            alvo. Se acertar, o alvo sofre ld12 pontos de dano elétrico, e em
+            cada um dos seus turnos, enquanto a magia durar, você pode usar uma
+            ação para causar 1d12 pontos de dano elétrico no alvo
+            automaticamente. A magia se encerra se você usar a sua ação para
+            fazer qualquer outra coisa. A magia também se encerra se o alvo sair
+            do alcance da magia ou tiver cobertura total.
+            <br />
+            <strong>Em Círculos Superiores</strong>. Ao conjurar esta magia
+            usando um espaço de magia de 2° círculo ou superior, o dano aumenta
+            em 1d12 para cada círculo do espaço acima do 1°.
+          </p>
+        </div>
+
+        <div id="repair" class="content">
+          <h3>Reparar</h3>
+          <small>Truque, transmutação</small>
+          <ul>
+            <li><strong>Tempo de Conjuração</strong>: 1 minuto</li>
+            <li><strong>Alcance</strong>: Toque</li>
+            <li><strong>Componentes</strong>: V, S, M (duas magnetitas)</li>
+            <li><strong>Duração</strong>: Instantânea</li>
+          </ul>
+
+          <p>
+            Esta magia repara um objeto quebrado ou rompido que você toque, como
+            um elo de corrente quebrado, duas metades de uma chave quebrada, um
+            manto rasgado ou um odre vazando. Se a quebra ou ruptura não for
+            maior do que 30 centímetros em qualquer direção, você a repara sem
+            deixar traços do dano anterior.
+          </p>
+          <p>
+            Esta magia pode reparar um item mágico ou constructo, mas não pode
+            restaurar a magia de tal objeto.
+          </p>
+        </div>
+
+        <div id="dancing_lights" class="content">
+          <h3>Luzes Dançantes</h3>
+          <small>Truque, evocação</small>
+          <ul>
+            <li><strong>Tempo de Conjuração</strong>: 1 ação</li>
+            <li>Alcance: 36 metros</li>
+            <li>
+              <strong>Componentes</strong>: V, S, M (um pouco de fósforo, uma
+              folha de olmo ou uma larva luminosa)
+            </li>
+            <li><strong>Duração</strong>: Concentração, até 1 minuto</li>
+          </ul>
+          <p>
+            Você cria até quatro luzes no alcance da magia, fazendo com que se
+            pareçam com tochas, lanternas ou globos brilhantes que pairam no ar
+            por toda a duração da magia. Você também pode combinar as quatro
+            luzes para que brilhem em uma forma vagamente humanoide de tamanho
+            Médio. Qualquer que seja a forma escolhida, cada luz emite meia-luz
+            em um raio de 3 metros.
+          </p>
+          <p>
+            Com uma ação bônus em seu turno, você pode mover as luzes até 18
+            metros para um novo lugar dentro do alcance da magia. Uma luz deve
+            estar a até 6 metros de outra luz criada por esta magia, e uma luz
+            começa a piscar quando ultrapassa o alcance da magia.
+          </p>
+        </div>
+
+        <div id="lesser_restoration" class="content">
+          <h3>Restauração Menor</h3>
+          <small>2° círculo, abjuração</small>
+          <ul>
+            <li><strong>Tempo de Conjuração</strong>: 1 ação</li>
+            <li><strong>Alcance</strong>: Toque</li>
+            <li><strong>Componentes</strong>: V, S</li>
+            <li><strong>Duração</strong>: Instantânea</li>
+          </ul>
+          <p>
+            Você toca uma criatura e pode tanto curar uma doença quanto remover
+            uma condição que a aflija. A condição pode ser cego, envenenado,
+            paralisado ou surdo.
+          </p>
+        </div>
+
+        <div id="healing_word" class="content">
+          <h3>Palavra Curativa</h3>
+          <small>1° círculo, evocação</small>
+          <ul>
+            <li><strong>Tempo de Conjuração</strong>: 1 ação bônus</li>
+            <li><strong>Alcance</strong>: 18 metros</li>
+            <li><strong>Componentes</strong>: V</li>
+            <li><strong>Duração</strong>: Instantânea</li>
+          </ul>
+          <p>
+            Escolha uma criatura à sua vista e no alcance da magia. Ela recupera
+            uma quantidade de pontos de vida igual a 1d4 + seu modificador de
+            atributo de conjuração. Esta magia não tem efeito sobre mortos-vivos
+            ou constructos.
+            <br />
+            <strong>Em Círculos Superiores</strong>. Ao conjurar esta magia
+            usando um espaço de magia de 2° círculo ou superior, a cura aumenta
+            em 1d4 para cada círculo do espaço acima do 1°
+          </p>
+        </div>
+
+        <div id="vicious_mockery" class="content">
+          <h3>Zombaria Perversa</h3>
+          <small>Truque, encantamento</small>
+          <ul>
+            <li><strong>Tempo de Conjuração</strong>: 1 ação</li>
+            <li><strong>Alcance</strong>: 18 metros</li>
+            <li><strong>Componentes</strong>: V</li>
+            <li><strong>Duração</strong>: Instantânea</li>
+          </ul>
+          <p>
+            Você lança uma série de insultos carregados com sutis encantamentos
+            contra uma criatura à sua vista e no alcance da magia. Se o alvo
+            puder ouvir você (embora ele não precise lhe entender), ele deve ser
+            bem-sucedido em uma salvaguarda de Carisma. Se falhar, sofre 1d4
+            pontos de dano psíquico e terá desvantagem na próxima jogada de
+            ataque que ele fizer antes do fim do próximo turno dele.
+          </p>
+          <p>
+            O dano desta magia aumenta em 1d4 quando você alcança o 5° nível
+            (2d4), o 11° nível (3d4) e o 17° nível (4d4).
           </p>
         </div>
       </div>
@@ -1392,7 +1415,7 @@
 
           <div class="video">
             <iframe
-              src="https://www.youtube.com/embed/WDlZ_SXx5gA?si=DadRR8QIC6jOXYP4&amp;clip=Ugkxqh6omcSEHbJYiAs5OpWF22ou6zTW8MKW&amp;clipt=EMD-DBig0xA"
+              src="https://www.youtube.com/embed/GT0TBWg3C3k?si=cH93NsQ-4m0UUxWJ&amp;start=7"
               title="Inigo Montoya"
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
               referrerpolicy="strict-origin-when-cross-origin"
