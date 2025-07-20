@@ -265,7 +265,11 @@
           }
         }
 
-        & button#moveToTop {
+        & button {
+          appearance: none;
+          background: none;
+          cursor: pointer;
+
           position: fixed;
           right: 1rem;
           bottom: 1rem;
@@ -273,9 +277,7 @@
           width: 2.5rem;
           height: 2.5rem;
           border-radius: 50%;
-          cursor: pointer;
 
-          border: none;
           border: 1px solid var(--color-text);
           background-color: var(--color-background);
 
@@ -290,6 +292,46 @@
 
             width: 100%;
             height: 100%;
+          }
+        }
+
+        & button#moveToTop {
+          right: 1rem;
+          bottom: 4.5rem;
+        }
+
+        & button#menu {
+          right: 1rem;
+          bottom: 1rem;
+
+          .hamburger {
+            position: relative;
+            display: block;
+            background: var(--color-text);
+            width: 1rem;
+            height: 2px;
+            top: 0;
+            left: 0;
+            transition: 0.5s ease-in-out;
+          }
+
+          .hamburger::before,
+          .hamburger::after {
+            content: "";
+            display: block;
+            background: var(--color-text);
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            transition: 0.5s ease-in-out;
+          }
+
+          .hamburger::before {
+            top: 0.325rem;
+          }
+
+          .hamburger::after {
+            bottom: 0.325rem;
           }
         }
       }
@@ -840,9 +882,9 @@
 
         <h4>Defesa Coreográfica</h4>
         <p>
-          Você recebe +2 na CA contra ataques de inimigos que estejam
-          flanqueando você ou seu parceiro, representando sua habilidade de
-          desviar em sincronia.
+          Você e seu parceiro recebem +2 na CA contra ataques de inimigos que
+          estejam flanqueando você ou seu parceiro, representando sua habilidade
+          de desviar em sincronia.
         </p>
         <p>
           Se estiver desprevenido ou sem armadura, ainda pode usar Destreza +
@@ -1585,6 +1627,12 @@
             d="M11 20V6.164l-4.293 4.293a1 1 0 1 1-1.414-1.414l5.293-5.293.151-.138a2 2 0 0 1 2.677.138l5.293 5.293.068.076a1 1 0 0 1-1.406 1.406l-.076-.068L13 6.164V20a1 1 0 0 1-2 0Z"
           ></path>
         </svg>
+      </div>
+    </button>
+
+    <button onclick="fnMoveTop()" id="menu" title="Go to top">
+      <div>
+        <span class="hamburger"></span>
       </div>
     </button>
   </body>

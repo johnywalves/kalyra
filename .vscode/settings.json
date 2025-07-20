@@ -1,5 +1,12 @@
 {
   "editor.formatOnSave": true,
   "editor.defaultFormatter": "esbenp.prettier-vscode",
-  "cSpell.words": ["coreográfica", "dracônico", "élfico", "kalyra"]
+  "cSpell.words": [
+    "arcanismo",
+    "coreográfica",
+    "dracônico",
+    "élfico",
+    "Johny",
+    "kalyra"
+  ]
 }
