@@ -334,6 +334,31 @@
             bottom: 0.325rem;
           }
         }
+
+        & nav {
+          display: none;
+          flex-direction: column;
+          justify-content: center;
+          align-items: center;
+          gap: 0.5rem;
+
+          position: fixed;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100vh;
+
+          background: var(--color-background);
+
+          & h2 {
+            font-size: 1rem;
+            margin: 0;
+          }
+
+          &.opened {
+            display: flex;
+          }
+        }
       }
     </style>
   </head>
@@ -579,7 +604,7 @@
         </section>
 
         <section id="magic">
-          <a href="#magic"><h2>🎶 Magias conhecidas:</h2></a>
+          <a href="#magic"><h2>🎶 Magias conhecidas</h2></a>
 
           <h3>Truques:</h3>
           <a href="#prestidigitation">
@@ -855,7 +880,9 @@
       <section id="maneuvers">
         <a href="#maneuvers"><h2>🩰 Estilos de dança</h2></a>
         <p>
-          Regras personalizadas para adicionar novos sabores para interpretação
+          Regras personalizadas para quem acredita que o combate pode ser tão
+          expressivo quanto um poema, e cada habilidade, uma chance de contar
+          uma história.
         </p>
 
         <a href="#duet-of-blades">
@@ -882,9 +909,9 @@
 
         <h4>Defesa Coreográfica</h4>
         <p>
-          Você e seu parceiro recebem +2 na CA contra ataques de inimigos que
-          estejam flanqueando você ou seu parceiro, representando sua habilidade
-          de desviar em sincronia.
+          Você recebe +2 na CA contra ataques de inimigos que estejam
+          flanqueando você ou seu parceiro, representando sua habilidade de
+          desviar em sincronia.
         </p>
         <p>
           Se estiver desprevenido ou sem armadura, ainda pode usar Destreza +
@@ -1630,7 +1657,9 @@
       </div>
     </button>
 
-    <button onclick="fnMoveTop()" id="menu" title="Go to top">
+    <nav></nav>
+
+    <button onclick="fnToggleMenu()" id="menu" title="Go to top">
       <div>
         <span class="hamburger"></span>
       </div>
@@ -1820,5 +1849,17 @@
       }
     };
     window.onscroll = listenerScroll;
+
+    const fnToggleMenu = () => {
+      document.querySelector("nav").classList.toggle("opened");
+    };
+
+    const menu = document.querySelector("nav");
+    document.querySelectorAll("h2").forEach((elem) => {
+      const itemMenu = elem.parentNode.cloneNode(true);
+      itemMenu.addEventListener("click", fnToggleMenu);
+      itemMenu.addEventListener("keydown", fnToggleMenu);
+      menu.append(itemMenu);
+    });
   </script>
 </html>
