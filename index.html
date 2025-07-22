@@ -161,6 +161,19 @@
           margin-bottom: 0.5rem;
         }
 
+        & img {
+          appearance: none;
+          border: none;
+          outline: none;
+        }
+
+        & img.feature {
+          min-height: 280px;
+          max-height: 360px;
+          object-fit: cover;
+          width: 100%;
+        }
+
         & div.columns {
           display: grid;
           grid-template-columns: 1fr 1fr;
@@ -659,8 +672,8 @@
           <a href="#shatter">
             <p>Despedaçar (<em>Shatter</em>)</p>
           </a>
-          <a href="#mirror_images">
-            <p>Reflexos (<em>Mirror Images</em>)</p>
+          <a href="#mirror_image">
+            <p>Reflexos (<em>Mirror Image</em>)</p>
           </a>
           <a href="#lesser_restoration">
             <p>Restauração Menor (<em>Lesser Restoration</em>)</p>
@@ -1349,7 +1362,7 @@
           </p>
         </div>
 
-        <div id="mirror_images" class="content">
+        <div id="mirror_image" class="content">
           <h3>Reflexos</h3>
           <small>2° círculo, ilusão</small>
           <ul>
@@ -1800,15 +1813,12 @@
       "parade_glitter_usbzza.png",
       "parade_violin_rlevg9.png",
       "dancing_square_u8cjft.png",
-      "dancing_court_enm6aj.png",
       "dancing_guards_dh4vkk.png",
       "vicious_mockery_rvldwv.png",
       "desert_caravan_k4krno.png",
       "sword_fighting_goblins_oo9qll.png",
-      "fighting_house_psjx9w.png",
       "show_fires_v7yyxn.png",
       "reveal_swords_tqfdns.png",
-      "reveal_square_hxmaxd.png",
       "reveal_aura_hskfib.png",
       "reveal_square_cover_vym5eb.png",
       "beach_brazilian_fmobnx.png",
@@ -1822,7 +1832,11 @@
       "realist_carnaval_wcvagh.png",
     ];
 
-    const images_3d = ["3d_obelist_k6ldul.png", "3d_fire_dancing_ysxmcc.png"];
+    const images_3d = [
+      "3d_obelist_k6ldul.png",
+      "3d_fire_dancing_ysxmcc.png",
+      "3d_horse_h5apsc.png",
+    ];
 
     const getModifier = (value) => `${value >= 0 ? "+" : ""}${value}`;
 
