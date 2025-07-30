@@ -8,13 +8,17 @@
     <meta name="theme-color" content="#282c35" />
 
     <title>Kalyra</title>
-    <meta name="title" content="Kalyra" />
+    <meta name="title" property="og:title" content="Kalyra" />
     <meta
       name="description"
+      property="og:description"
+      itemprop="description"
       content="Kalyra, a ‘deusa’ bardo-feiticeira: dança com rapieiras, cura com êxtase e espalha festas onde passa. Será divindade ou só delírio encantador?"
     />
     <meta
       name="image"
+      property="og:image"
+      itemprop="image"
       content="https://res.cloudinary.com/dqvb6qgtj/image/upload/c_thumb,g_face,w_1200,h_630/dancing_square_u8cjft.png"
     />
 
@@ -23,19 +27,9 @@
     <meta name="locale" property="og:locale" content="pt_BR" />
     <meta
       name="site_name"
-      property="og:site_name"
+      property="og:name"
       itemprop="name"
       content="Kalyra"
-    />
-    <meta
-      property="og:description"
-      itemprop="description"
-      content="Kalyra, a ‘deusa’ bardo-feiticeira: dança com rapieiras, cura com êxtase e espalha festas onde passa. Será divindade ou só delírio encantador?"
-    />
-    <meta
-      property="og:image"
-      itemprop="image"
-      content="https://res.cloudinary.com/dqvb6qgtj/image/upload/c_thumb,g_face,w_1200,h_630/dancing_square_u8cjft.png"
     />
 
     <meta name="twitter:card" content="summary_large_image" />
@@ -265,6 +259,47 @@
           }
         }
 
+        & div.tune {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          gap: 2rem;
+
+          margin: 2rem 0 1rem;
+
+          & p {
+            margin: 0 !important;
+            padding: 0 !important;
+            line-height: 100% !important;
+            vertical-align: middle;
+
+            &.number {
+              font-size: 1.75rem;
+              font-weight: 600;
+            }
+          }
+
+          & div.classLevel {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+
+            padding: 1rem;
+            background-color: var(--color-text);
+            color: var(--color-background);
+
+            border-radius: 0.5rem;
+
+            & div.value {
+              display: flex;
+              flex-direction: column;
+              justify-content: center;
+              align-items: center;
+              gap: 0.5rem;
+            }
+          }
+        }
+
         & footer {
           display: flex;
           justify-content: center;
@@ -281,8 +316,30 @@
         & button {
           appearance: none;
           background: none;
+          border: none;
           cursor: pointer;
+        }
 
+        & button.btnLevel {
+          background-color: var(--color-background);
+          color: var(--color-text);
+
+          width: 2.5rem;
+          height: 2.5rem;
+          border-radius: 50%;
+
+          display: flex;
+          align-items: center;
+          justify-content: center;
+
+          &:disabled {
+            opacity: 0.5;
+            cursor: default;
+          }
+        }
+
+        & button#moveToTop,
+        & button#menu {
           position: fixed;
           right: 1rem;
           bottom: 1rem;
@@ -396,8 +453,12 @@
       congregação."
     </p>
 
-    <small>Barda – Colégio da Bravura – Nível {{ levelBard }}</small>
-    <small>Feiticeira – Alma Favorecida – Nível {{ levelSorcerer }}</small>
+    <small v-if="levelBard >= 1">
+      Barda – Colégio da Bravura – Nível {{ levelBard }}
+    </small>
+    <small v-if="levelSorcerer >= 1">
+      Feiticeira – Alma Favorecida – Nível {{ levelSorcerer }}
+    </small>
 
     <section id="description">
       <a href="#description"><h2>ℹ️ Descrição</h2></a>
@@ -557,41 +618,45 @@
           contra ser enfeitiçado
         </p>
 
-        <h3>Barda (Classe)</h3>
-        <p>
+        <h3 v-if="levelBard >= 1">Barda (Classe)</h3>
+        <p v-if="levelBard >= 1">
           <a href="#bardic-inspiration"
             ><strong>Inspiração de Bardo (d6)</strong></a
           >: {{ attributes.charisma.bonus }} vezes por descanso longo
         </p>
-        <p>
+        <p v-if="levelBard >= 2">
           <a href="#jack-of-all-trades"><strong>Pau pra Toda Obra</strong></a
           >: metade da proficiência testes não proficientes
         </p>
-        <p>
+        <p v-if="levelBard >= 2">
           <a href="#song-of-rest"><strong>Canção de Descanso</strong></a
           >: cura adicional de 1d6 no descanso curto
         </p>
-        <p>
+        <p v-if="levelBard >= 3">
           <a href="#specialist"><strong>Especialista</strong> </a>: dobrar
           proficiência em duas habilidade proficientes (Atuação e Persuasão)
         </p>
-        <p><strong>Aumento no Valor de Atributo</strong>: +2 em Carisma</p>
+        <p v-if="levelBard >= 4">
+          <strong>Aumento no Valor de Atributo</strong>: +2 em Carisma
+        </p>
 
-        <h3>Colégio da Bravura (Especialização de Classe)</h3>
-        <p>
+        <h3 v-if="levelBard >= 3">
+          Colégio da Bravura (Especialização de Classe)
+        </h3>
+        <p v-if="levelBard >= 3">
           <strong>Proficiência Bônus</strong>: proficiência com escudo, armadura
           media e armas marciais
         </p>
-        <p>
+        <p v-if="levelBard >= 3">
           <strong>Inspiração em Combate</strong>: outro usar inspiração para
           Ataque e CA
         </p>
 
-        <h3>Feiticeira (Classe)</h3>
-        <p>
+        <h3 v-if="levelSorcerer >= 1">Feiticeira (Classe)</h3>
+        <p v-if="levelSorcerer >= 1">
           <strong>Magia Divina (Boa)</strong>: conhecer magia Curar Ferimentos
         </p>
-        <p>
+        <p v-if="levelSorcerer >= 1">
           <a href="#favored-by-the-gods"
             ><strong>Favorecido pelos Deuses</strong></a
           >: adicionar 2d4 em falhas por descanso curto
@@ -602,19 +667,16 @@
         <section id="magic-slot">
           <a href="#magic-slot"><h2>🪄 Características da magia</h2></a>
           <p><strong>Habilidade Chave</strong>: Car</p>
-          <p>
-            <strong>Classe de Dificuldade</strong>: {{ 8 + proficiency +
-            attributes.charisma.bonus }}
-          </p>
-          <p>
-            <strong>Bonus de Ataque</strong>: +{{ proficiency +
-            attributes.charisma.bonus }}
-          </p>
+          <p><strong>Classe de Dificuldade</strong>: {{ spellClass }}</p>
+          <p><strong>Bonus de Ataque</strong>: +{{ spellAttack }}</p>
 
           <h3>Espaços de magia</h3>
-          <p><strong>Nível 1</strong>: 4 espaços de magia</p>
-          <p><strong>Nível 2</strong>: 3 espaços de magia</p>
-          <p><strong>Nível 3</strong>: 2 espaços de magia</p>
+          <span v-for="(slot, index) in spellSlots">
+            <p v-if="slot > 0">
+              <strong>Nível {{ index + 1 }}</strong>: {{ slot }} espaços de
+              magia
+            </p>
+          </span>
         </section>
 
         <section id="magic">
@@ -627,7 +689,7 @@
           <a href="#sure_shot">
             <p>Golpe Certeiro (<em>Sure Shot</em>)</p>
           </a>
-          <a href="#fire_bolt">
+          <a href="#fire_bolt" v-if="levelSorcerer >= 1">
             <p>Raio de Fogo (<em>Fire Bolt</em>)</p>
           </a>
           <a href="#blade_barrier">
@@ -647,7 +709,7 @@
           <a href="#comprehend_languages">
             <p>Compreender Idiomas (<em>Comprehend Languages</em>)</p>
           </a>
-          <a href="#cure_wounds">
+          <a href="#cure_wounds" v-if="levelSorcerer >= 1">
             <p>Curar Ferimentos (<em>Cure Wounds</em>)</p>
           </a>
           <a href="#disguise_self">
@@ -661,21 +723,21 @@
               Gargalhada Nefasta de Tasha (<em>Tasha`s Hideous Laughter</em>)
             </p>
           </a>
-          <a href="#witch-bolt">
+          <a href="#witch-bolt" v-if="levelSorcerer >= 1">
             <p>Raio de Bruxa (<em>Witch Bolt</em>)</p>
           </a>
           <a href="#healing_word">
             <p>Palavra Curativa (<em>Healing Word</em>)</p>
           </a>
 
-          <h3>Magias de Nível 2:</h3>
-          <a href="#shatter">
+          <h3 v-if="levelBard >= 3">= 3">Magias de Nível 2:</h3>
+          <a href="#shatter" v-if="levelBard >= 3">
             <p>Despedaçar (<em>Shatter</em>)</p>
           </a>
-          <a href="#mirror_image">
+          <a href="#mirror_image" v-if="levelBard >= 4">
             <p>Reflexos (<em>Mirror Image</em>)</p>
           </a>
-          <a href="#lesser_restoration">
+          <a href="#lesser_restoration" v-if="levelBard >= 3">
             <p>Restauração Menor (<em>Lesser Restoration</em>)</p>
           </a>
         </section>
@@ -700,52 +762,6 @@
               alt=""
             />
           </picture>
-        </a>
-      </section>
-    </section>
-
-    <section id="gallery-realism">
-      <a href="#gallery-realism"><h2>🖼️ Galeria - Realismo Fantástico</h2></a>
-
-      <section class="gallery">
-        <a
-          v-for="image in images_realist"
-          v-bind:href="`${cndImages}/${image}`"
-          aria-label="Ver imagem completa"
-        >
-          <img
-            sizes="(min-width: 25rem) 25rem, 95vw"
-            v-bind:srcset="`${cndImages}/c_auto,w_256,ar_2:3/${image} 256w,
-            ${cndImages}/c_auto,w_512,ar_2:3/${image} 512w,
-            ${cndImages}/c_auto,w_768,ar_2:3/${image} 768w,
-            ${cndImages}/c_auto,w_1024,ar_2:3/${image} 1024w,
-            ${cndImages}/c_auto,w_1280,ar_2:3/${image} 1280w`"
-            v-bind:src="`${cndImages}/c_auto,w_512,ar_2:3/${image}`"
-            alt=""
-          />
-        </a>
-      </section>
-    </section>
-
-    <section id="gallery-3d">
-      <a href="#gallery-3d"><h2>🖼️ Galeria - 3D</h2></a>
-
-      <section class="gallery">
-        <a
-          v-for="image in images_3d"
-          v-bind:href="`${cndImages}/${image}`"
-          aria-label="Ver imagem completa"
-        >
-          <img
-            sizes="(min-width: 25rem) 25rem, 95vw"
-            v-bind:srcset="`${cndImages}/c_auto,w_256,ar_2:3/${image} 256w,
-            ${cndImages}/c_auto,w_512,ar_2:3/${image} 512w,
-            ${cndImages}/c_auto,w_768,ar_2:3/${image} 768w,
-            ${cndImages}/c_auto,w_1024,ar_2:3/${image} 1024w,
-            ${cndImages}/c_auto,w_1280,ar_2:3/${image} 1280w`"
-            v-bind:src="`${cndImages}/c_auto,w_512,ar_2:3/${image}`"
-            alt=""
-          />
         </a>
       </section>
     </section>
@@ -794,51 +810,54 @@
           (psíquico, efeito: confuso)
         </p>
 
-        <h3>Raio de Fogo</h3>
+        <h3 v-if="levelSorcerer >= 1">Raio de Fogo</h3>
         <a
+          v-if="levelSorcerer >= 1"
           href="https://youtu.be/wtFG3kq9tKA?si=40Kl6Qb2oy5pbHqI&t=40"
           target="_blank"
         >
           <small>🎞️ Representação visual</small>
         </a>
-        <p>
+        <p v-if="levelSorcerer >= 1">
           <strong>Ataque</strong> (truque, evocação: V, S): +{{ proficiency +
           attributes.charisma.bonus }}
         </p>
-        <p>
+        <p v-if="levelSorcerer >= 1">
           <strong>Dano</strong>: 2d10{{ attributes.charisma.modifier }} (fogo,
           efeito: incêndio)
         </p>
 
-        <h3>Raio de Bruxa</h3>
+        <h3 v-if="levelSorcerer >= 1">Raio de Bruxa</h3>
         <a
+          v-if="levelSorcerer >= 1"
           href="https://youtu.be/SWwFogRQVnk?si=BLI77572ZVKX9rpO&t=34"
           target="_blank"
         >
           <small>🎞️ Representação visual</small>
         </a>
-        <p>
+        <p v-if="levelSorcerer >= 1">
           <strong>Ataque</strong> (1° círculo, evocação: V, S, M): +{{
           proficiency + attributes.charisma.bonus }}
         </p>
-        <p>
+        <p v-if="levelSorcerer >= 1">
           <strong>Dano</strong>: 1d12{{ attributes.charisma.modifier }} (1°) /
           2d12{{ attributes.charisma.modifier }} (2°) / 3d12{{
           attributes.charisma.modifier }} (3°) (elétrico, efeito: continuado)
         </p>
 
-        <h3>Despedaçar</h3>
+        <h3 v-if="levelBard >= 3">Despedaçar</h3>
         <a
+          v-if="levelBard >= 3"
           href="https://youtu.be/RJTeatDqXrc?si=MJ46ymcmIkPA2RmU&t=21"
           target="_blank"
         >
           <small>🎞️ Representação visual</small>
         </a>
-        <p>
+        <p v-if="levelBard >= 3">
           <strong>Ataque</strong> (2° círculo, evocação: V, S, M): +{{
           proficiency + attributes.charisma.bonus }}
         </p>
-        <p>
+        <p v-if="levelBard >= 3">
           <strong>Dano</strong>: 3d8{{ attributes.charisma.modifier }} (2°) /
           4d8{{ attributes.charisma.modifier }} (3°) (trovejante, efeito:
           resistível (Con), destrutivo)
@@ -976,6 +995,29 @@
       </section>
     </div>
 
+    <section id="gallery-realism">
+      <a href="#gallery-realism"><h2>🖼️ Galeria - Realismo Fantástico</h2></a>
+
+      <section class="gallery">
+        <a
+          v-for="image in images_realist"
+          v-bind:href="`${cndImages}/${image}`"
+          aria-label="Ver imagem completa"
+        >
+          <img
+            sizes="(min-width: 25rem) 25rem, 95vw"
+            v-bind:srcset="`${cndImages}/c_auto,w_256,ar_2:3/${image} 256w,
+            ${cndImages}/c_auto,w_512,ar_2:3/${image} 512w,
+            ${cndImages}/c_auto,w_768,ar_2:3/${image} 768w,
+            ${cndImages}/c_auto,w_1024,ar_2:3/${image} 1024w,
+            ${cndImages}/c_auto,w_1280,ar_2:3/${image} 1280w`"
+            v-bind:src="`${cndImages}/c_auto,w_512,ar_2:3/${image}`"
+            alt=""
+          />
+        </a>
+      </section>
+    </section>
+
     <section id="skills" class="skills">
       <a href="#skills"><h2>💃🏼 Habilidades</h2></a>
       <h3 id="darkvision">Visão no Escuro</h3>
@@ -999,8 +1041,10 @@
         escolha.
       </p>
 
-      <h3 id="bardic-inspiration">Inspiração de Bardo (d6)</h3>
-      <p>
+      <h3 v-if="levelBard >= 1" id="bardic-inspiration">
+        Inspiração de Bardo (d6)
+      </h3>
+      <p v-if="levelBard >= 1">
         Você pode inspirar os outros por meio da música ou das palavras. Para
         isso, no seu turno, deve usar uma ação bônus para escolher uma criatura
         que não seja você mesmo, que esteja a no máximo 18 metros de distância,
@@ -1026,15 +1070,15 @@
         nível.
       </p>
 
-      <h3 id="jack-of-all-trades">Pau pra Toda Obra</h3>
-      <p>
+      <h3 v-if="levelBard >= 2" id="jack-of-all-trades">Pau pra Toda Obra</h3>
+      <p v-if="levelBard >= 2">
         A partir do 2° nível, você pode adicionar metade do seu bônus de
         proficiência, arredondado para baixo, a qualquer teste de atributo que
         realizar e que já não inclua seu bônus de proficiência.
       </p>
 
-      <h3 id="song-of-rest">Canção de Descanso</h3>
-      <p>
+      <h3 v-if="levelBard >= 2" id="song-of-rest">Canção de Descanso</h3>
+      <p v-if="levelBard >= 2">
         A partir do 2° nível, durante um descanso curto, você pode usar uma
         música ou discurso tranquilizador para ajudar a revitalizar seus aliados
         feridos. Ao final do descanso, se você ou quaisquer criaturas amigáveis
@@ -1047,8 +1091,8 @@
         nível.
       </p>
 
-      <h3 id="specialist">Especialista</h3>
-      <p>
+      <h3 v-if="levelBard >= 3" id="specialist">Especialista</h3>
+      <p v-if="levelBard >= 3">
         No 3° nível, escolha duas perícias na quais já seja proficiente. Seu
         bônus de proficiência é duplicado em qualquer teste de atributo que
         utilize uma dessas perícias.
@@ -1057,8 +1101,10 @@
         perícias em que seja proficiente.
       </p>
 
-      <h3 id="attribute-value-increase">Aumento no Valor de Atributo</h3>
-      <p>
+      <h3 v-if="levelBard >= 4" id="attribute-value-increase">
+        Aumento no Valor de Atributo
+      </h3>
+      <p v-if="levelBard >= 4">
         Ao alcançar o 4° nível e novamente no 8°, 12°, 16° e 19° níveis, você
         pode aumentar em 2 o valor de um atributo à sua escolha, ou pode
         aumentar em 1 o valor de dois atributos.
@@ -1067,14 +1113,16 @@
         usando esta característica.
       </p>
 
-      <h3 id="bonus-proficiency">Proficiência Bônus</h3>
-      <p>
+      <h3 v-if="levelBard >= 3" id="bonus-proficiency">Proficiência Bônus</h3>
+      <p v-if="levelBard >= 3">
         Ao se juntar ao Colégio da Bravura no 3° nível, você adquire
         proficiência com armaduras médias, escudos e armas marciais.
       </p>
 
-      <h3 id="combat-inspiration">Inspiração em Combate</h3>
-      <p>
+      <h3 v-if="levelBard >= 3" id="combat-inspiration">
+        Inspiração em Combate
+      </h3>
+      <p v-if="levelBard >= 3">
         Ainda no 3° nível, você aprende a inspirar terceiros durante uma
         batalha. Uma criatura que possua um dado concedido por sua Inspiração de
         Bardo pode jogá-lo e adicionar o resultado a uma jogada de dano que
@@ -1084,8 +1132,8 @@
         jogada ser feita, mas antes de saber se foi um acerto ou não
       </p>
 
-      <h3 id="divine-magic">Magia Divina (Boa)</h3>
-      <p>
+      <h3 v-if="levelSorcerer >= 1" id="divine-magic">Magia Divina (Boa)</h3>
+      <p v-if="levelSorcerer >= 1">
         Seu vínculo com o divino permite que você aprenda magias da classe
         clérigo. Quando o sua característica como conjurador permite que você
         aprenda ou substitua um truque ou uma magia de feiticeiro de 1° nível ou
@@ -1104,14 +1152,39 @@
         (Afinidade: Boa | Magia: Curar Ferimentos)
       </p>
 
-      <h3 id="favored-by-the-gods">Favorecido pelos Deuses</h3>
-      <p>
+      <h3 v-if="levelSorcerer >= 1" id="favored-by-the-gods">
+        Favorecido pelos Deuses
+      </h3>
+      <p v-if="levelSorcerer >= 1">
         A partir do 1° nível, o poder divino protege seu destino. Se você falhar
         em um teste de resistência ou errar um ataque, pode rolar 2d4 e
         adicioná-lo ao total, possivelmente alterando o resultado. Depois de uar
         essa característica, não pode usá-la novamente até terminar um descanso
         curto ou longo.
       </p>
+    </section>
+
+    <section id="gallery-3d">
+      <a href="#gallery-3d"><h2>🖼️ Galeria - 3D</h2></a>
+
+      <section class="gallery">
+        <a
+          v-for="image in images_3d"
+          v-bind:href="`${cndImages}/${image}`"
+          aria-label="Ver imagem completa"
+        >
+          <img
+            sizes="(min-width: 25rem) 25rem, 95vw"
+            v-bind:srcset="`${cndImages}/c_auto,w_256,ar_2:3/${image} 256w,
+            ${cndImages}/c_auto,w_512,ar_2:3/${image} 512w,
+            ${cndImages}/c_auto,w_768,ar_2:3/${image} 768w,
+            ${cndImages}/c_auto,w_1024,ar_2:3/${image} 1024w,
+            ${cndImages}/c_auto,w_1280,ar_2:3/${image} 1280w`"
+            v-bind:src="`${cndImages}/c_auto,w_512,ar_2:3/${image}`"
+            alt=""
+          />
+        </a>
+      </section>
     </section>
 
     <section id="grimoire" class="grimoire">
@@ -1200,7 +1273,7 @@
           </p>
         </div>
 
-        <div id="shatter" class="content">
+        <div id="shatter" class="content" v-if="levelBard >= 3">
           <h3>Despedaçar</h3>
           <small>2° círculo, evocação</small>
           <ul>
@@ -1340,7 +1413,7 @@
           </p>
         </div>
 
-        <div id="fire_bolt" class="content">
+        <div id="fire_bolt" class="content" v-if="levelSorcerer >= 1">
           <h3>Raio de Fogo</h3>
           <small>Truque, evocação</small>
           <ul>
@@ -1362,7 +1435,7 @@
           </p>
         </div>
 
-        <div id="mirror_image" class="content">
+        <div id="mirror_image" class="content" v-if="levelBard >= 4">
           <h3>Reflexos</h3>
           <small>2° círculo, ilusão</small>
           <ul>
@@ -1419,7 +1492,7 @@
           </p>
         </div>
 
-        <div id="witch-bolt" class="content">
+        <div id="witch-bolt" class="content" v-if="levelSorcerer >= 1">
           <h3>Raio de Bruxa</h3>
           <small>1° círculo, evocação</small>
           <ul>
@@ -1500,7 +1573,7 @@
           </p>
         </div>
 
-        <div id="lesser_restoration" class="content">
+        <div id="lesser_restoration" class="content" v-if="levelBard >= 3">
           <h3>Restauração Menor</h3>
           <small>2° círculo, abjuração</small>
           <ul>
@@ -1687,6 +1760,94 @@
       </div>
     </section>
 
+    <section id="tune">
+      <a href="#tune"><h2>⏱️ Ajuste de Nível</h2></a>
+      <p>
+        Se a sua aventura precisar de um personagem com nível diferente, você
+        pode ajustar nos contadores abaixo.
+      </p>
+
+      <div class="tune">
+        <div class="classLevel">
+          <button
+            class="btnLevel"
+            @click="levelBard--"
+            v-bind:disabled="levelBard <= 1 ? true : false"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="1rem"
+              viewBox="0 0 448 512"
+            >
+              <path
+                fill="var(--color-text)"
+                d="M0 256c0-17.7 14.3-32 32-32l384 0c17.7 0 32 14.3 32 32s-14.3 32-32 32L32 288c-17.7 0-32-14.3-32-32z"
+              />
+            </svg>
+          </button>
+          <div class="value">
+            <p class="number">{{ levelBard }}</p>
+            <p>Barda</p>
+          </div>
+          <button
+            class="btnLevel"
+            @click="levelBard++"
+            v-bind:disabled="levelBard >= 4 ? true : false"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="1rem"
+              viewBox="0 0 448 512"
+            >
+              <path
+                fill="var(--color-text)"
+                d="M256 64c0-17.7-14.3-32-32-32s-32 14.3-32 32l0 160-160 0c-17.7 0-32 14.3-32 32s14.3 32 32 32l160 0 0 160c0 17.7 14.3 32 32 32s32-14.3 32-32l0-160 160 0c17.7 0 32-14.3 32-32s-14.3-32-32-32l-160 0 0-160z"
+              />
+            </svg>
+          </button>
+        </div>
+
+        <div class="classLevel">
+          <button
+            class="btnLevel"
+            @click="levelSorcerer--"
+            v-bind:disabled="levelSorcerer < 1 ? true : false"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="1rem"
+              viewBox="0 0 448 512"
+            >
+              <path
+                fill="var(--color-text)"
+                d="M0 256c0-17.7 14.3-32 32-32l384 0c17.7 0 32 14.3 32 32s-14.3 32-32 32L32 288c-17.7 0-32-14.3-32-32z"
+              />
+            </svg>
+          </button>
+          <div class="value">
+            <p class="number">{{ levelSorcerer }}</p>
+            <p>Feiticeira</p>
+          </div>
+          <button
+            class="btnLevel"
+            @click="levelSorcerer++"
+            v-bind:disabled="levelSorcerer >= 1 ? true : false"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="1rem"
+              viewBox="0 0 448 512"
+            >
+              <path
+                fill="var(--color-text)"
+                d="M256 64c0-17.7-14.3-32-32-32s-32 14.3-32 32l0 160-160 0c-17.7 0-32 14.3-32 32s14.3 32 32 32l160 0 0 160c0 17.7 14.3 32 32 32s32-14.3 32-32l0-160 160 0c17.7 0 32-14.3 32-32s-14.3-32-32-32l-160 0 0-160z"
+              />
+            </svg>
+          </button>
+        </div>
+      </div>
+    </section>
+
     <footer>
       <p>
         Made with <span>♥</span> by
@@ -1726,82 +1887,7 @@
 
   <script src="https://unpkg.com/vue@3/dist/vue.global.prod.js"></script>
   <script type="text/javascript">
-    const { createApp, ref } = Vue;
-    const attributes = {
-      strength: {
-        short: "For",
-        description: "Força",
-        proficient: false,
-        points: 10,
-      },
-      dexterity: {
-        short: "Des",
-        description: "Destreza",
-        proficient: true,
-        points: 16,
-      },
-      constitution: {
-        short: "Con",
-        description: "Constituição",
-        proficient: false,
-        points: 14,
-      },
-      intelligence: {
-        short: "Int",
-        description: "Inteligência",
-        proficient: false,
-        points: 8,
-      },
-      wisdom: {
-        short: "Sab",
-        description: "Sabedoria",
-        proficient: false,
-        points: 10,
-      },
-      charisma: {
-        short: "Car",
-        description: "Carisma",
-        proficient: true,
-        points: 20,
-      },
-    };
-
-    const expertises = [
-      { name: "Acrobacia", attribute: attributes.dexterity, proficient: 1 },
-      {
-        name: "Arcanismo",
-        attribute: attributes.intelligence,
-        proficient: 0.5,
-      },
-      { name: "Atletismo", attribute: attributes.strength, proficient: 0.5 },
-      { name: "Atuação", attribute: attributes.charisma, proficient: 2 },
-      { name: "Enganação", attribute: attributes.charisma, proficient: 1 },
-      { name: "Furtividade", attribute: attributes.dexterity, proficient: 1 },
-      { name: "História", attribute: attributes.intelligence, proficient: 0.5 },
-      { name: "Intimidação", attribute: attributes.charisma, proficient: 1 },
-      { name: "Intuição", attribute: attributes.wisdom, proficient: 0.5 },
-      {
-        name: "Investigação",
-        attribute: attributes.intelligence,
-        proficient: 0.5,
-      },
-      {
-        name: "Lidar com Animais",
-        attribute: attributes.wisdom,
-        proficient: 0.5,
-      },
-      { name: "Medicina", attribute: attributes.wisdom, proficient: 0.5 },
-      { name: "Natureza", attribute: attributes.intelligence, proficient: 0.5 },
-      { name: "Percepção", attribute: attributes.wisdom, proficient: 0.5 },
-      { name: "Persuasão", attribute: attributes.charisma, proficient: 2 },
-      {
-        name: "Prestidigitação",
-        attribute: attributes.dexterity,
-        proficient: 1,
-      },
-      { name: "Religião", attribute: attributes.intelligence, proficient: 0.5 },
-      { name: "Sobrevivência", attribute: attributes.wisdom, proficient: 0.5 },
-    ];
+    const { createApp, ref, computed } = Vue;
 
     const images_anime = [
       "inspiration_violin_x5j1zc.png",
@@ -1842,9 +1928,54 @@
 
     createApp({
       setup() {
-        const levelBard = 4;
-        const levelSorcerer = 1;
-        const proficiency = Math.floor((levelBard + levelSorcerer + 1) / 2);
+        const levelBard = ref(4);
+        const levelSorcerer = ref(1);
+
+        const levelCharacter = computed(
+          () => levelBard.value + levelSorcerer.value
+        );
+        const proficiency = computed(() =>
+          Math.floor((levelCharacter.value + 1) / 2)
+        );
+
+        const attributes = {
+          strength: {
+            short: "For",
+            description: "Força",
+            proficient: false,
+            points: 10,
+          },
+          dexterity: {
+            short: "Des",
+            description: "Destreza",
+            proficient: true,
+            points: 16,
+          },
+          constitution: {
+            short: "Con",
+            description: "Constituição",
+            proficient: false,
+            points: 14,
+          },
+          intelligence: {
+            short: "Int",
+            description: "Inteligência",
+            proficient: false,
+            points: 8,
+          },
+          wisdom: {
+            short: "Sab",
+            description: "Sabedoria",
+            proficient: false,
+            points: 10,
+          },
+          charisma: {
+            short: "Car",
+            description: "Carisma",
+            proficient: true,
+            points: 18 + (levelBard.value >= 4 ? 2 : 0),
+          },
+        };
 
         const listAttributes = Object.keys(attributes);
         listAttributes.forEach((key) => {
@@ -1855,22 +1986,130 @@
           attributes[key].bonus = bonus;
           attributes[key].modifier = getModifier(bonus);
           attributes[key].saveThrow = getModifier(
-            bonus + (proficient ? proficiency : 0)
+            bonus + (proficient.value ? proficiency.value : 0)
           );
         });
 
-        expertises.forEach((expertise) => {
-          expertise.bonus = getModifier(
-            Math.ceil(expertise.proficient * proficiency) +
-              expertise.attribute.bonus
-          );
+        const expertises = computed(() =>
+          [
+            {
+              name: "Acrobacia",
+              attribute: attributes.dexterity,
+              proficient: 1,
+            },
+            {
+              name: "Arcanismo",
+              attribute: attributes.intelligence,
+              proficient: 0.5,
+            },
+            {
+              name: "Atletismo",
+              attribute: attributes.strength,
+              proficient: 0.5,
+            },
+            { name: "Atuação", attribute: attributes.charisma, proficient: 2 },
+            {
+              name: "Enganação",
+              attribute: attributes.charisma,
+              proficient: 1,
+            },
+            {
+              name: "Furtividade",
+              attribute: attributes.dexterity,
+              proficient: 1,
+            },
+            {
+              name: "História",
+              attribute: attributes.intelligence,
+              proficient: 0.5,
+            },
+            {
+              name: "Intimidação",
+              attribute: attributes.charisma,
+              proficient: 1,
+            },
+            { name: "Intuição", attribute: attributes.wisdom, proficient: 0.5 },
+            {
+              name: "Investigação",
+              attribute: attributes.intelligence,
+              proficient: 0.5,
+            },
+            {
+              name: "Lidar com Animais",
+              attribute: attributes.wisdom,
+              proficient: 0.5,
+            },
+            { name: "Medicina", attribute: attributes.wisdom, proficient: 0.5 },
+            {
+              name: "Natureza",
+              attribute: attributes.intelligence,
+              proficient: 0.5,
+            },
+            {
+              name: "Percepção",
+              attribute: attributes.wisdom,
+              proficient: 0.5,
+            },
+            {
+              name: "Persuasão",
+              attribute: attributes.charisma,
+              proficient: 2,
+            },
+            {
+              name: "Prestidigitação",
+              attribute: attributes.dexterity,
+              proficient: 1,
+            },
+            {
+              name: "Religião",
+              attribute: attributes.intelligence,
+              proficient: 0.5,
+            },
+            {
+              name: "Sobrevivência",
+              attribute: attributes.wisdom,
+              proficient: 0.5,
+            },
+          ].map((expertise) => ({
+            ...expertise,
+            bonus: getModifier(
+              Math.ceil(expertise.proficient * proficiency.value) +
+                expertise.attribute.bonus
+            ),
+          }))
+        );
+
+        const hitPoints = computed(() => {
+          const hp = [];
+
+          if (levelBard.value >= 1) {
+            const bonusCon = attributes.constitution.bonus * levelBard.value;
+            hp.push(`Barda (${levelBard.value}d8+${bonusCon})`);
+          }
+
+          if (levelSorcerer.value >= 1) {
+            const bonusCon =
+              attributes.constitution.bonus * levelSorcerer.value;
+            hp.push(`Feiticeira (${levelSorcerer.value}d8+${bonusCon})`);
+          }
+
+          return hp.join(" + ");
         });
 
-        const hitPoints = `Barda (${levelBard}d8+${
-          attributes.constitution.bonus * levelBard
-        }) + Feiticeira (${levelSorcerer}d6+${
-          attributes.constitution.bonus * levelSorcerer
-        })`;
+        const spellClass = computed(
+          () => 8 + proficiency.value + attributes.charisma.bonus
+        );
+        const spellAttack = computed(
+          () => proficiency.value + attributes.charisma.bonus
+        );
+
+        const spellSlots = computed(() => [
+          Math.min(levelCharacter.value + 1, 4),
+          levelCharacter.value >= 3 ? Math.min(levelCharacter.value - 1, 3) : 0,
+          levelCharacter.value >= 5 ? Math.min(levelCharacter.value - 3, 3) : 0,
+          levelCharacter.value >= 7 ? Math.min(levelCharacter.value - 6, 3) : 0,
+          levelCharacter.value >= 9 ? Math.min(levelCharacter.value - 8, 3) : 0,
+        ]);
 
         return {
           levelBard,
@@ -1883,6 +2122,9 @@
           images_realist,
           images_3d,
           hitPoints,
+          spellClass,
+          spellAttack,
+          spellSlots,
           cndImages: "https://res.cloudinary.com/dqvb6qgtj/image/upload",
         };
       },
