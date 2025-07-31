@@ -430,6 +430,51 @@
             display: flex;
           }
         }
+
+        @media print {
+          & img.feature,
+          & section#description,
+          & section#character,
+          & section#gallery-anime,
+          & section#gallery-realism,
+          & section#gallery-3d,
+          & section#vitral,
+          & section#references,
+          & section#tune,
+          & button,
+          & nav {
+            display: none !important;
+          }
+
+          & section#skills {
+            break-after: page;
+          }
+
+          & .columns {
+            grid-template-columns: 1fr 1fr !important;
+            gap: 1rem !important;
+          }
+
+          & h1 {
+            font-size: 1.25rem;
+          }
+
+          & h2 {
+            font-size: 1rem;
+            margin: 1rem 0 0.25rem;
+          }
+
+          & h3,
+          & h4,
+          & h5 {
+            font-size: 1.125rem;
+          }
+
+          & p,
+          & li {
+            font-size: 0.75rem;
+          }
+        }
       }
     </style>
   </head>
@@ -730,7 +775,7 @@
             <p>Palavra Curativa (<em>Healing Word</em>)</p>
           </a>
 
-          <h3 v-if="levelBard >= 3">= 3">Magias de Nível 2:</h3>
+          <h3 v-if="levelBard >= 3">Magias de Nível 2:</h3>
           <a href="#shatter" v-if="levelBard >= 3">
             <p>Despedaçar (<em>Shatter</em>)</p>
           </a>
