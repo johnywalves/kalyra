@@ -728,42 +728,42 @@
           <a href="#magic"><h2>🎶 Magias conhecidas</h2></a>
 
           <h3>Truques:</h3>
-          <a href="#prestidigitation">
+          <a href="#prestidigitation" v-if="levelSorcerer >= 1">
             <p>Prestidigitação (<em>Prestidigitation</em>)</p>
           </a>
-          <a href="#sure_shot">
+          <a href="#sure_shot" v-if="levelSorcerer >= 1">
             <p>Golpe Certeiro (<em>Sure Shot</em>)</p>
           </a>
           <a href="#fire_bolt" v-if="levelSorcerer >= 1">
             <p>Raio de Fogo (<em>Fire Bolt</em>)</p>
           </a>
-          <a href="#blade_barrier">
+          <a href="#blade_barrier" v-if="levelSorcerer >= 1">
             <p>Proteção contra Lâminas (<em>Blade Barrier</em>)</p>
           </a>
-          <a href="#repair">
+          <a href="#repair" v-if="levelSorcerer >= 1">
             <p>Reparar (<em>Repair</em>)</p>
           </a>
-          <a href="#dancing_lights">
+          <a href="#dancing_lights" v-if="levelBard >= 1">
             <p>Luzes Dançantes (<em>Dancing Lights</em>)</p>
           </a>
-          <a href="#vicious_mockery">
+          <a href="#vicious_mockery" v-if="levelBard >= 1">
             <p>Zombaria Perversa (<em>Vicious Mockery</em>)</p>
           </a>
 
           <h3>Magias de Nível 1:</h3>
-          <a href="#comprehend_languages">
+          <a href="#comprehend_languages" v-if="levelBard >= 2">
             <p>Compreender Idiomas (<em>Comprehend Languages</em>)</p>
           </a>
           <a href="#cure_wounds" v-if="levelSorcerer >= 1">
             <p>Curar Ferimentos (<em>Cure Wounds</em>)</p>
           </a>
-          <a href="#disguise_self">
+          <a href="#disguise_self" v-if="levelBard >= 1">
             <p>Disfarçar-se (<em>Disguise Self</em>)</p>
           </a>
-          <a href="#arcane-shield">
+          <a href="#arcane-shield" v-if="levelBard >= 1">
             <p>Escudo Arcano (<em>Arcane Shield</em>)</p>
           </a>
-          <a href="#tasha_hideous_laughter">
+          <a href="#tasha_hideous_laughter" v-if="levelBard >= 1">
             <p>
               Gargalhada Nefasta de Tasha (<em>Tasha`s Hideous Laughter</em>)
             </p>
@@ -771,7 +771,7 @@
           <a href="#witch-bolt" v-if="levelSorcerer >= 1">
             <p>Raio de Bruxa (<em>Witch Bolt</em>)</p>
           </a>
-          <a href="#healing_word">
+          <a href="#healing_word" v-if="levelBard >= 1">
             <p>Palavra Curativa (<em>Healing Word</em>)</p>
           </a>
 
@@ -1256,7 +1256,7 @@
       <a href="#grimoire"><h2>📘 Grimório</h2></a>
 
       <div class="columns">
-        <div id="comprehend_languages" class="content">
+        <div id="comprehend_languages" class="content" v-if="levelBard >= 2">
           <h3>Compreender Idiomas</h3>
           <small>1° círculo, adivinhação (ritual)</small>
           <ul>
@@ -1281,7 +1281,7 @@
           </p>
         </div>
 
-        <div id="cure_wounds" class="content">
+        <div id="cure_wounds" class="content" v-if="levelSorcerer >= 1">
           <h3>Curar Ferimentos</h3>
           <small>1° círculo, evocação</small>
           <ul>
@@ -1302,7 +1302,7 @@
           </p>
         </div>
 
-        <div id="disguise_self" class="content">
+        <div id="disguise_self" class="content" v-if="levelBard >= 1">
           <h3>Disfarçar-se</h3>
           <small>1° círculo, ilusão</small>
           <ul>
@@ -1367,7 +1367,7 @@
           </p>
         </div>
 
-        <div id="arcane-shield" class="content">
+        <div id="arcane-shield" class="content" v-if="levelBard >= 1">
           <h3>Escudo Arcano</h3>
           <small>1 ° círculo, abjuração</small>
           <ul>
@@ -1387,7 +1387,7 @@
           </p>
         </div>
 
-        <div id="tasha_hideous_laughter" class="content">
+        <div id="tasha_hideous_laughter" class="content" v-if="levelBard >= 1">
           <h3>Gargalhada Nefasta de Tasha</h3>
           <small>1° círculo, encantamento</small>
           <ul>
@@ -1415,7 +1415,7 @@
           </p>
         </div>
 
-        <div id="sure_shot" class="content">
+        <div id="sure_shot" class="content" v-if="levelSorcerer >= 1">
           <h3>Golpe Certeiro</h3>
           <small>Truque, adivinhação</small>
           <ul>
@@ -1432,7 +1432,7 @@
           </p>
         </div>
 
-        <div id="prestidigitation" class="content">
+        <div id="prestidigitation" class="content" v-if="levelSorcerer >= 1">
           <h3>Prestidigitação</h3>
           <small>Truque, transmutação</small>
           <ul>
@@ -1541,7 +1541,7 @@
           </p>
         </div>
 
-        <div id="blade_barrier" class="content">
+        <div id="blade_barrier" class="content" v-if="levelSorcerer >= 1">
           <h3>Proteção contra Lâminas</h3>
           <small>Truque,abjuração</small>
           <ul>
@@ -1587,7 +1587,7 @@
           </p>
         </div>
 
-        <div id="repair" class="content">
+        <div id="repair" class="content" v-if="levelSorcerer >= 1">
           <h3>Reparar</h3>
           <small>Truque, transmutação</small>
           <ul>
@@ -1610,7 +1610,7 @@
           </p>
         </div>
 
-        <div id="dancing_lights" class="content">
+        <div id="dancing_lights" class="content" v-if="levelBard >= 1">
           <h3>Luzes Dançantes</h3>
           <small>Truque, evocação</small>
           <ul>
@@ -1654,7 +1654,7 @@
           </p>
         </div>
 
-        <div id="healing_word" class="content">
+        <div id="healing_word" class="content" v-if="levelBard >= 1">
           <h3>Palavra Curativa</h3>
           <small>1° círculo, evocação</small>
           <ul>
@@ -1675,7 +1675,7 @@
           </p>
         </div>
 
-        <div id="vicious_mockery" class="content">
+        <div id="vicious_mockery" class="content" v-if="levelBard >= 1">
           <h3>Zombaria Perversa</h3>
           <small>Truque, encantamento</small>
           <ul>
@@ -2010,7 +2010,7 @@
           Math.floor((levelCharacter.value + 1) / 2)
         );
 
-        const attributes = {
+        const { value: attributes } = computed(() => ({
           strength: {
             short: "For",
             description: "Força",
@@ -2047,7 +2047,7 @@
             proficient: true,
             points: 18 + (levelBard.value >= 4 ? 2 : 0),
           },
-        };
+        }));
 
         const listAttributes = Object.keys(attributes);
         listAttributes.forEach((key) => {
