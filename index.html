@@ -88,14 +88,14 @@
 
       /* Content CSS */
       :root {
-        --color-background: #f5f5f5;
+        --color-background: #f8f8f8;
         --color-hover: #d4d4d4;
         --color-text: #282c35;
 
         @media (prefers-color-scheme: dark) {
           --color-background: #282c35;
           --color-hover: #464d5d;
-          --color-text: #f5f5f5;
+          --color-text: #f8f8f8;
         }
       }
 
@@ -920,125 +920,40 @@
       </section>
     </div>
 
-    <div class="columns">
-      <section id="combat" class="skills">
-        <a href="#combat"><h2>⚔️ Combate</h2></a>
-        <p>
-          Suporte ofensivo e controle híbrido, alternando entre combate corpo a
-          corpo e magias.
-        </p>
+    <section id="combat" class="skills">
+      <a href="#combat"><h2>⚔️ Combate</h2></a>
+      <p>
+        Suporte ofensivo e controle híbrido, alternando entre combate corpo a
+        corpo e magias.
+      </p>
 
-        <h3>Ações Prioritárias</h3>
-        <p>
-          Use
-          <a href="#bardic-inspiration"><strong>Inspiração de Bardo</strong></a>
-          como ação bônus para conceder 1d6 a aliados (ataques, testes ou CA via
-          reação) ou
-          <a href="#healing-word"><strong>Palavra Curativa</strong></a> para
-          cura emergencial. Em combate direto, ataque com Rapieira/Cimitarra ou,
-          à distância, use
-          <a href="#vicious_mockery"><strong>Zombaria Perversa</strong></a>
-          (para desvantagem inimiga) ou
-          <a href="#fire_bolt"><strong>Raio de Fogo</strong></a> (dano
-          confiável).
-        </p>
+      <h3>Ações Prioritárias</h3>
+      <p>
+        Use
+        <a href="#bardic-inspiration"><strong>Inspiração de Bardo</strong></a>
+        como ação bônus para conceder 1d6 a aliados (ataques, testes ou CA via
+        reação) ou
+        <a href="#healing-word"><strong>Palavra Curativa</strong></a> para cura
+        emergencial. Em combate direto, ataque com Rapieira/Cimitarra ou, à
+        distância, use
+        <a href="#vicious_mockery"><strong>Zombaria Perversa</strong></a>
+        (para desvantagem inimiga) ou
+        <a href="#fire_bolt"><strong>Raio de Fogo</strong></a> (dano confiável).
+      </p>
 
-        <h3>Magias Estratégicas</h3>
-        <p>
-          <a href="#witch_bolt"><strong>Raio de Bruxa</strong></a> para dano
-          sustentado e <a href="#shatter"><strong>Despedaçar</strong></a> contra
-          grupos.
-          <a href="#tasha_hideous_laughter">
-            <strong>Gargalhada Nefasta de Tasha</strong>
-          </a>
-          para incapacitar adversários. Mantenha-se na linha média do combate
-          para equilibrar alcance e segurança. Priorize Zombaria Perversa em
-          chefes e combine Inspiração com ataques aliados para maximizar
-          eficiência.
-        </p>
-      </section>
-
-      <section id="maneuvers">
-        <a href="#maneuvers"><h2>🩰 Estilos de dança</h2></a>
-        <p>
-          Regras personalizadas para quem acredita que o combate pode ser tão
-          expressivo quanto um poema, e cada habilidade, uma chance de contar
-          uma história.
-        </p>
-
-        <a href="#duet-of-blades">
-          <h3 id="duet-of-blades">Dueto de Lâminas</h3>
+      <h3>Magias Estratégicas</h3>
+      <p>
+        <a href="#witch_bolt"><strong>Raio de Bruxa</strong></a> para dano
+        sustentado e <a href="#shatter"><strong>Despedaçar</strong></a> contra
+        grupos.
+        <a href="#tasha_hideous_laughter">
+          <strong>Gargalhada Nefasta de Tasha</strong>
         </a>
-        <small>
-          Para bardos que desejam combater com graça e justiça, transformando a
-          batalha em um espetáculo de precisão e proteção mútua
-        </small>
-
-        <h4>Parceria de Dança</h4>
-        <p>
-          Enquanto você estiver engajado no mesmo inimigo que um aliado ou em
-          contato físico com ele (como de mãos dadas, apoiando-se ou girando
-          juntos), você pode usar magias de alcance pessoal (como Golpe
-          Certeiro, Proteção com Lâminas ou Salto Dimensional) como se afetassem
-          seu parceiro também.
-        </p>
-        <p>
-          <strong>Restrição</strong>: Seus únicos alvos para magias e efeitos
-          devem ser seu parceiro de dança ou os inimigos engajados (você não
-          pode mirar aliados distantes ou lançar magias de área ampla).
-        </p>
-
-        <h4>Defesa Coreográfica</h4>
-        <p>
-          Você recebe +2 na CA contra ataques de inimigos que estejam
-          flanqueando você ou seu parceiro, representando sua habilidade de
-          desviar em sincronia.
-        </p>
-        <p>
-          Se estiver desprevenido ou sem armadura, ainda pode usar Destreza +
-          Modificador de Carisma para CA (limitado por itens mágicos ou efeitos
-          similares).
-        </p>
-
-        <h4>Contrapasso Elegante (Nível 7)</h4>
-        <p>
-          Quando um inimigo erra um ataque contra você ou seu parceiro, você
-          pode usar sua reação para realizar um ataque de oportunidade elegante
-          (como um giro com sua arma ou um toque mágico de
-          <a href="#vicious_mockery"><strong>Zombaria Perversa</strong> </a>).
-        </p>
-
-        <h4>Finalização em Dueto (Nível 10)</h4>
-        <p>
-          Uma vez por combate, se você e seu parceiro atacarem o mesmo inimigo
-          no mesmo turno, podem gastar uma carga de Inspiração de Bardo para
-          realizar um ataque combinado:
-        </p>
-        <ul>
-          <li>Role o dano de ambos os ataques e some os resultados.</li>
-          <li>
-            Se o inimigo for derrotado, você e seu parceiro podem se
-            reposicionar como parte de um movimento de dança (até metade do seu
-            deslocamento).
-          </li>
-        </ul>
-
-        <h4>Restrições</h4>
-        <p>
-          <strong>Requer Sintonia</strong>: Você e seu parceiro devem estar
-          visual ou fisicamente sincronizados (se o parceiro ficar incapacitado,
-          você perde os benefícios até reestabelecer contato).
-        </p>
-        <p>
-          <strong>Armadura Leve</strong>: Só funciona com armaduras leves ou
-          nenhuma armadura, para manter a liberdade de movimento.
-        </p>
-        <p>
-          <strong>Sem Escudos Pesados</strong>: Você pode usar um escudo leve ou
-          armas versáteis, mas não pode usar escudos grandes.
-        </p>
-      </section>
-    </div>
+        para incapacitar adversários. Mantenha-se na linha média do combate para
+        equilibrar alcance e segurança. Priorize Zombaria Perversa em chefes e
+        combine Inspiração com ataques aliados para maximizar eficiência.
+      </p>
+    </section>
 
     <section id="gallery-realism">
       <a href="#gallery-realism"><h2>🖼️ Galeria - Realismo Fantástico</h2></a>
@@ -1206,6 +1121,111 @@
         adicioná-lo ao total, possivelmente alterando o resultado. Depois de uar
         essa característica, não pode usá-la novamente até terminar um descanso
         curto ou longo.
+      </p>
+    </section>
+
+    <section id="gallery-art-nouveu">
+      <a href="#gallery-art-nouveu">
+        <h2>🖼️ Galeria - Art Nouveau (Alphonse Mucha)</h2>
+      </a>
+
+      <section class="gallery">
+        <a
+          v-for="image in images_art_nouveau"
+          v-bind:href="`${cndImages}/${image}`"
+          aria-label="Ver imagem completa"
+        >
+          <img
+            sizes="(min-width: 25rem) 25rem, 95vw"
+            v-bind:srcset="`${cndImages}/c_auto,w_256,ar_2:3/${image} 256w,
+            ${cndImages}/c_auto,w_512,ar_2:3/${image} 512w,
+            ${cndImages}/c_auto,w_768,ar_2:3/${image} 768w,
+            ${cndImages}/c_auto,w_1024,ar_2:3/${image} 1024w,
+            ${cndImages}/c_auto,w_1280,ar_2:3/${image} 1280w`"
+            v-bind:src="`${cndImages}/c_auto,w_512,ar_2:3/${image}`"
+            alt=""
+          />
+        </a>
+      </section>
+    </section>
+
+    <section id="maneuvers">
+      <a href="#maneuvers"><h2>🩰 Estilos de dança</h2></a>
+      <p>
+        Regras personalizadas para quem acredita que o combate pode ser tão
+        expressivo quanto um poema, e cada habilidade, uma chance de contar uma
+        história.
+      </p>
+
+      <a href="#duet-of-blades">
+        <h3 id="duet-of-blades">Dueto de Lâminas</h3>
+      </a>
+      <small>
+        Para bardos que desejam combater com graça e justiça, transformando a
+        batalha em um espetáculo de precisão e proteção mútua
+      </small>
+
+      <h4>Parceria de Dança</h4>
+      <p>
+        Enquanto você estiver engajado no mesmo inimigo que um aliado ou em
+        contato físico com ele (como de mãos dadas, apoiando-se ou girando
+        juntos), você pode usar magias de alcance pessoal (como Golpe Certeiro,
+        Proteção com Lâminas ou Salto Dimensional) como se afetassem seu
+        parceiro também.
+      </p>
+      <p>
+        <strong>Restrição</strong>: Seus únicos alvos para magias e efeitos
+        devem ser seu parceiro de dança ou os inimigos engajados (você não pode
+        mirar aliados distantes ou lançar magias de área ampla).
+      </p>
+
+      <h4>Defesa Coreográfica</h4>
+      <p>
+        Você recebe +2 na CA contra ataques de inimigos que estejam flanqueando
+        você ou seu parceiro, representando sua habilidade de desviar em
+        sincronia.
+      </p>
+      <p>
+        Se estiver desprevenido ou sem armadura, ainda pode usar Destreza +
+        Modificador de Carisma para CA (limitado por itens mágicos ou efeitos
+        similares).
+      </p>
+
+      <h4>Contrapasso Elegante (Nível 7)</h4>
+      <p>
+        Quando um inimigo erra um ataque contra você ou seu parceiro, você pode
+        usar sua reação para realizar um ataque de oportunidade elegante (como
+        um giro com sua arma ou um toque mágico de
+        <a href="#vicious_mockery"><strong>Zombaria Perversa</strong> </a>).
+      </p>
+
+      <h4>Finalização em Dueto (Nível 10)</h4>
+      <p>
+        Uma vez por combate, se você e seu parceiro atacarem o mesmo inimigo no
+        mesmo turno, podem gastar uma carga de Inspiração de Bardo para realizar
+        um ataque combinado:
+      </p>
+      <ul>
+        <li>Role o dano de ambos os ataques e some os resultados.</li>
+        <li>
+          Se o inimigo for derrotado, você e seu parceiro podem se reposicionar
+          como parte de um movimento de dança (até metade do seu deslocamento).
+        </li>
+      </ul>
+
+      <h4>Restrições</h4>
+      <p>
+        <strong>Requer Sintonia</strong>: Você e seu parceiro devem estar visual
+        ou fisicamente sincronizados (se o parceiro ficar incapacitado, você
+        perde os benefícios até reestabelecer contato).
+      </p>
+      <p>
+        <strong>Armadura Leve</strong>: Só funciona com armaduras leves ou
+        nenhuma armadura, para manter a liberdade de movimento.
+      </p>
+      <p>
+        <strong>Sem Escudos Pesados</strong>: Você pode usar um escudo leve ou
+        armas versáteis, mas não pode usar escudos grandes.
       </p>
     </section>
 
@@ -1969,6 +1989,13 @@
       "3d_horse_h5apsc.png",
     ];
 
+    const images_stained_glass = ["stained_glass_bzpqwo.png"];
+
+    const images_art_nouveau = [
+      "art_nouveau_calm_s6pztr.png",
+      "art_nouveau_veins_throfb.png",
+    ];
+
     const getModifier = (value) => `${value >= 0 ? "+" : ""}${value}`;
 
     createApp({
@@ -2166,6 +2193,8 @@
           images_anime,
           images_realist,
           images_3d,
+          images_stained_glass,
+          images_art_nouveau,
           hitPoints,
           spellClass,
           spellAttack,
